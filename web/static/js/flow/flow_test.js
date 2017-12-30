@@ -184,6 +184,11 @@ const history = syncHistoryWithStore(browserHistory, store)
         <Route path="/user/payment" component={ProfilePayment} />
         <Route path="/user/orders" component={UserOrder} />*/
 
+
+        ///collections/
+        ///collections/valentines
+        ///partners/
+
 const Root = () => (
   <Provider store={store}>
     <Router history={history}>

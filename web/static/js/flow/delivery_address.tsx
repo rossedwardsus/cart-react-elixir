@@ -461,9 +461,9 @@ class DeliveryAddress extends React.Component<any, any> {
       this.setState({zipcode: e.target.value});
       this.props.setDeliveryContactAddressZipcode(e);
 
-      let dtla = [90012, 90014, 90017, 90074, 90071, 90081, 90012, 90013, 90017, 90012, 90053, 90014, 90015, 90021, 90079, 90055, 90012, 90014, 90071, 90012, 90015, 90017, 90021, 90086]
+      let dtla_zipcodes = [90012, 90014, 90017, 90074, 90071, 90081, 90012, 90013, 90017, 90012, 90053, 90014, 90015, 90021, 90079, 90055, 90012, 90014, 90071, 90012, 90015, 90017, 90021, 90086]
 
-      let sm = [90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411]
+      //let sm = [90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411]
 
       //console.log("e" + e.target.value);
       //console.log("dtla" + dtla.indexOf(parseInt(e.target.value)));
@@ -479,6 +479,25 @@ class DeliveryAddress extends React.Component<any, any> {
           this.props.setDeliveryCost(10);
 
       }*/
+
+      let order_type = this.props.User.orders[0].order_type;
+
+      if(order_type === "social" && dtla_zipcodes.includes(parseInt(e.target.value))){
+
+          console.log("here2");
+
+          //    days == anyday
+          //    anytime
+          //      this.setState({time_value: ["8:00", "9:00"]});
+          //      this.setState({delivery_times: "9-11pm"});
+          
+          this.props.setDeliveryCost(0);     
+
+      }else{
+
+          this.props.setDeliveryCost(15);           
+
+      }
 
       //this.props.setDeliveryAddressZipcode(e);
       //set location for delivery time

@@ -201,7 +201,9 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     let paymentValidations = this.props.User.orderSession.validations;
 
-    if(paymentValidations.paymentMethodCardNumberValidated == true && paymentValidations.paymentMethodExpiryMonthValidated == true && paymentValidations.paymentMethodExpiryYearValidated == true && paymentValidations.paymentMethodSecurityCodeValidated == true){
+    if(paymentValidations.paymentMethodSecurityCodeValidated == true){
+
+    /*if(paymentValidations.paymentMethodCardNumberValidated == true && paymentValidations.paymentMethodExpiryMonthValidated == true && paymentValidations.paymentMethodExpiryYearValidated == true && paymentValidations.paymentMethodSecurityCodeValidated == true){*/
     
       this.setState({button_complete_order_classname: "btn btn-default"});
       this.setState({button_complete_order_disabled: false});
@@ -242,8 +244,8 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
     if(this.props.User.orderSession.orderStatus == "processing"){
 
-          this.setState({button_complete_order_classname: "btn btn-default disabled"});
-          this.setState({button_complete_order_disabled: "disabled"});
+          //this.setState({button_complete_order_classname: "btn btn-default disabled"});
+          //this.setState({button_complete_order_disabled: "disabled"});
           
     }
 
@@ -1167,6 +1169,16 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                   </div>
                                   <div className="col-md-2">
                                       %{this.state.promo_code_discount}
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-md-3">
+                                    Delivery Charge: 
+                                  </div>
+                                  <div className="col-md-3">
+                                    ${this.props.User.orderSession.deliveryCost.toFixed(2)}
                                   </div>
                                 </div>
                             </form>

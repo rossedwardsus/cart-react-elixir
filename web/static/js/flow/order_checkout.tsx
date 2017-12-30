@@ -34,7 +34,7 @@ import DeliveryContactAddress from './delivery_address.tsx';
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 
-import {setPoolName, setOrderDeliveryDatetimeDate, setOrderDeliveryDatetimeSpecificTime, setOrderNote, setGiftOrder, setGiftNote, setPickupLocation} from './actions/order.ts';
+import {setPoolName, setOrderDeliveryDatetimeDate, setOrderDeliveryDatetimeSpecificTime, setDeliveryCost, setOrderNote, setGiftOrder, setGiftNote, setPickupLocation} from './actions/order.ts';
 
 //import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode, setDeliveryContactAddressNote} from './actions/order_delivery_contact_address.ts';
 
@@ -253,15 +253,15 @@ class DateTime extends React.Component<any, any> {
 
   }
 
-  setSpecificTime(date: any){
+  setSpecificTime(e: any){
 
-    console.log("date " + moment(date).toISOString());
+    //console.log("date " + moment(date).toISOString());
 
     //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
     //this.props.setSpecificTime();
 
     //this.setState({selected_specific_time: e.target.value});
-    //this.props.setOrderDeliveryDatetimeSpecificTime(e.target.value);
+    this.props.setOrderDeliveryDatetimeSpecificTime(e.target.value);
     
   }
 
@@ -269,10 +269,27 @@ class DateTime extends React.Component<any, any> {
 
       
       let dtla_zipcodes = [90013, 90014, 90015, 90021, 90071];
-      let santa_monica_zipcodes = ["90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411", "90291", "90292", "90293", "90294", "90295", "90296"]
-      let venice_zipcodes = ["90291", "90292", "90293"];
+      //let santa_monica_zipcodes = ["90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411", "90291", "90292", "90293", "90294", "90295", "90296"]
+      //let venice_zipcodes = ["90291", "90292", "90293"];
 
       let order_type = this.props.User.orders[0].order_type;
+
+      if(order_type === "social" && dtla_zipcodes.includes(parseInt(e.target.value))){
+
+          console.log("here2");
+
+          //    days == anyday
+          //    anytime
+          //      this.setState({time_value: ["8:00", "9:00"]});
+          //      this.setState({delivery_times: "9-11pm"});
+              this.props.deliveryCost(0);     
+
+      }else{
+
+          this.props.deliveryCost(15);           
+
+      }
+
 
       console.log(order_type === "social");
       console.log(dtla_zipcodes.includes(parseInt(e.target.value)));
@@ -280,7 +297,7 @@ class DateTime extends React.Component<any, any> {
       //this.props.setDeliveryAddressZipcode(e.target.value)
 
 
-      if(this.props.User.orders[0].order_type === "yours" && dtla_zipcodes.includes(parseInt(e.target.value))){
+      /*if(this.props.User.orders[0].order_type === "yours" && dtla_zipcodes.includes(parseInt(e.target.value))){
 
           console.log("here000");
 
@@ -343,9 +360,9 @@ class DateTime extends React.Component<any, any> {
           //    anytime
           //      this.setState({time_value: ["8:00", "9:00"]});
           //      this.setState({delivery_times: "9-11pm"});
-          //    this.props.deliveryCost     
+              this.props.deliveryCost(0);     
 
-          this.setState({delivery_times: "1-3pm"}); 
+          //this.setState({delivery_times: "1-3pm"}); 
          
 
       }else if(this.props.User.orders[0].order_type === "social" && venice_zipcodes.includes(e.target.value)){
@@ -357,7 +374,7 @@ class DateTime extends React.Component<any, any> {
       //    anytime
       //    this.props.deliveryCost      
      
-      }
+      }*/
 
 
 
@@ -482,13 +499,7 @@ class DateTime extends React.Component<any, any> {
     //change to "pool_response"
     if(this.props.User.orders[0].order_type == "pool"){
 
-    /*{this.props.User.orders[0].order_type == "social" &&
-                                  <div className="col-md-3">
-                                    <select onChange={(e: any) => this.setSpecicTimeRange(e)} className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
-                                        <option>8:00</option>
-                                        <option>8:30</option>
-                                    </select>
-                                  </div>}*/
+    
 
           return(<div>
                     <PublicTopNavbar/>
@@ -561,7 +572,7 @@ class DateTime extends React.Component<any, any> {
                             setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
                             setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} 
                             setOrderNote={(e: any) => this.props.setOrderNote(e)} 
-                            setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
+                            setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)} setDeliveryCost={(e: any) => this.props.setDeliveryCost(e)}
                             deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
 
                             <form className="form-horizontal">
@@ -576,15 +587,20 @@ class DateTime extends React.Component<any, any> {
                                 <div className="col-md-3">
                                   <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+2))}, {daysOfWeek: [0, 1, 2]}]}}/>
                                 </div>
-                                <div className="col-md-3">
-                                  Free Delivery
-                                  <br/>
-                                  8:00 am - 12:00 pm
-                                </div>
-                                
                                 {this.props.User.orders[0].order_type == "social" &&
                                   <div className="col-md-3">
-                                    For other times please email eat@sconely.com
+                                    <select onChange={(e: any) => this.setSpecificTime(e)} className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                                        <option>Time</option>
+                                        <option value="800-830">8:00-8:30</option>
+                                        <option value="830-900">8:30-9:00</option>
+                                        <option value="900-930">9:00-9:30</option>
+                                        <option value="930-1000">9:30-10:00</option>
+                                        <option value="1000-1030">10:00-10:30</option>
+                                        <option value="1030-1100">10:30-11:00</option>
+                                        <option value="1100-1130">11:00-11:30</option>
+                                        <option value="1130-1200">11:30-12:00</option>
+                                        <option>12:00</option>
+                                    </select>
                                   </div>}
                               </div>
                             </form>
@@ -734,6 +750,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setPickupLocation: (e: any) => {
       dispatch(setPickupLocation(e.target.value));
+    },
+    setDeliveryCost: (value: any) => {
+      dispatch(setDeliveryCost(value));
     },
     deliveryContactAddressValidated: () => {
       dispatch(deliveryContactAddressValidated());
