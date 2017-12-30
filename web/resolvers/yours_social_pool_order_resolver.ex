@@ -751,6 +751,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     delivery_date_formatted = nil
 
     delivery_time = nil
+    delivery_time_formatted = nil
 
     delivery_address = nil
 
@@ -764,6 +765,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     subtotal_formatted = nil
     total = 0.00
     total_formatted = nil
+
+    delivery_cost = nil
 
     admin_email_subject = nil
 
@@ -837,12 +840,14 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
         
     end
 
+    total = total + String.to_integer(args[:order_delivery_cost])
+
     IO.puts("total")
     IO.puts(total*100)
     IO.puts(trunc(total*100))
 
     total_formatted = :erlang.float_to_binary(total, [decimals: 2])
-
+    delivery_cost_formatted = delivery_cost = "$" <> args[:order_delivery_cost] <> ".00"
     
 
     IO.inspect(args[:save_for_later])
@@ -1538,13 +1543,16 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                                       _ -> order_datetime_converted_minute_formatted = Integer.to_string(order_datetime_converted.minute)
                                     end
 
-                                    if order_datetime_converted.hour < 12 do
-                                        converted_hour = order_datetime_converted.hour
-                                        am_pm = "am"
-                                    else
-                                        IO.puts(">12")
-                                        converted_hour = order_datetime_converted.hour - 12
-                                        am_pm = "pm"
+                                    cond do
+                                      order_datetime_converted.hour < 12 -> converted_hour = order_datetime_converted.hour
+                                      am_pm = "am"
+
+                                      order_datetime_converted.hour > 12 -> IO.puts(">12")
+                                      converted_hour = order_datetime_converted.hour - 12
+                                      am_pm = "pm"
+
+                                      order_datetime_converted.hour == 12 -> converted_hour = order_datetime_converted.hour
+                                      am_pm = "pm"
                                     end
 
 
@@ -1630,6 +1638,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                     delivery_date_formatted = delivery_date_day_of_week <> " " <> delivery_date_month <> " " <> delivery_date_day_formatted <> ", 2017"
 
+                                    delivery_time_formatted = args[:order_delivery_datetime_time] <> " am"
+
                                     admin_email_subject = order_type <> " order " <> delivery_date_formatted 
                         
                                     #IO.inspect(delivery_date_formatted)
@@ -1708,7 +1718,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
                         
                         
                         
-                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, delivery_date: delivery_date, user_delivery_contact_address_id: 1, user_payment_method_id: 1, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
+                        yours_social_order_changeset = YoursSocialOrder.changeset(%YoursSocialOrder{}, %{user_id: user_id, parent_order_id: parent_order_id, delivery_date: delivery_date, delivery_time_range: args[:order_delivery_datetime_time], user_delivery_contact_address_id: 1, user_payment_method_id: 1, order_note: args[:order_note], gift_order: args[:gift_order], gift_note: args[:gift_note], stripe_charge_token: stripe_charge_token})
 
                         #delivery_contact_address_id, contact_id, payment_id
 
@@ -1993,6 +2003,7 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                         #delivery_date_formatted = delivery_date_day_of_week <> " " <> delivery_date_month <> " " <> delivery_date_day_formatted <> ", " <> Integer.to_string(delivery_date.year)
 
+                        
                         #IO.puts(delivery_date_formatted)
 
                         #IO.inspect(Timex.now.year)
@@ -2182,11 +2193,11 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                           #IO.inspect(delivery_address)
 
-                          response = Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_email_subject: admin_email_subject, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: delivery_time, delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          response = Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, admin_email_subject: admin_email_subject, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time_formatted: delivery_time_formatted, delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: delivery_cost, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                           IO.inspect(response)
                   
-                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time: delivery_time, delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: 0.00, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.YoursSocialPoolCompleteOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time_formatted: delivery_time_formatted, delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: delivery_cost, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                           
                         #end

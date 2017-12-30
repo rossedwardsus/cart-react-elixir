@@ -461,7 +461,7 @@ class DeliveryAddress extends React.Component<any, any> {
       this.setState({zipcode: e.target.value});
       this.props.setDeliveryContactAddressZipcode(e);
 
-      let dtla_zipcodes = [90012, 90014, 90017, 90074, 90071, 90081, 90012, 90013, 90017, 90012, 90053, 90014, 90015, 90021, 90079, 90055, 90012, 90014, 90071, 90012, 90015, 90017, 90021, 90086]
+      let dtla_zipcodes = [90012, 90014, 90017, 90074, 90071, 90081, 90012, 90013, 90017, 90012, 90053, 90015, 90021, 90079, 90055, 90014, 90015, 90021, 90086]
 
       //let sm = [90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411]
 
@@ -484,7 +484,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
       if(order_type === "social" && dtla_zipcodes.includes(parseInt(e.target.value))){
 
-          console.log("here2");
+          console.log("free delivery");
 
           //    days == anyday
           //    anytime
@@ -494,6 +494,8 @@ class DeliveryAddress extends React.Component<any, any> {
           this.props.setDeliveryCost(0);     
 
       }else{
+
+          console.log("15 dollar delivery");
 
           this.props.setDeliveryCost(15);           
 
@@ -756,12 +758,12 @@ class DeliveryAddress extends React.Component<any, any> {
                         <div className="col-sm-3">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>Zip Code</option>
-                            <option>Venice Free Delivery</option>
-                            <option value="90013">90013</option>
-                            <option value="90014">90014</option>
-                            <option value="90015">90015</option>
-                            <option value="90021">90021</option>
-                            <option value="90071">90071</option>
+                            <option>Venice</option>
+                            <option value="90291">90291</option>
+                            <option value="90293">90293</option>
+                            <option value="90294">90294</option>
+                            <option value="90295">90295</option>
+                            <option value="90296">90296</option>
                             <option>Santa Monica</option>
                             <option value="90291">90291</option>
                             <option value="90401">90401</option>

@@ -48,11 +48,11 @@ import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
 
 //import { getPublicMenu } from './reducers/name';
 //const Immutable  = require('immutable');
-var DatePicker = require('react-datepicker');
-var moment = require('moment');
-import axios from 'axios';
+//var DatePicker = require('react-datepicker');
+//var moment = require('moment');
+//import axios from 'axios';
 
-require('react-datepicker/dist/react-datepicker.css');
+//require('react-datepicker/dist/react-datepicker.css');
 
 
 function addTodoWithDispatch() {
@@ -100,7 +100,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
         city: "",
         state: "",
         zipcode: "",
-        startDate: moment(),
+        //startDate: moment(),
         form_inputs_validated: false,
         first_name_classname: "form-group has-error",
         first_name_validated: false,
@@ -1178,7 +1178,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                     Delivery Charge: 
                                   </div>
                                   <div className="col-md-3">
-                                    ${this.props.User.orderSession.deliveryCost.toFixed(2)}
+                                    ${this.props.User.orders[0].deliveryCost.toFixed(2)}
                                   </div>
                                 </div>
                             </form>

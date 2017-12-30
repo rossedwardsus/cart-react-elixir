@@ -31,7 +31,7 @@ import axios from 'axios';
 //};
 
 
-class SocialMenuItems extends React.Component<any, any> {
+class CollectionOrderMenuItems extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -400,6 +400,6 @@ class SocialMenuItems extends React.Component<any, any> {
 
 
 
-export default SocialMenuItems;
+export default CollectionOrderMenuItems;
 
 //background: url(../images/down-arrow.png) no-repeat right 12px

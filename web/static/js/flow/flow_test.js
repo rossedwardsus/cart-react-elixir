@@ -30,6 +30,8 @@ import PublicTeam from './public/public_team.tsx';
 import PublicPrivacyPolicy from './public/public_privacy_policy.tsx';
 import PublicPress from './public/public_press.tsx';
 
+import Collections from './collections.tsx';
+
 
 import YoursRedirect from './yours_redirect.tsx';
 import SocialRedirect from './social_redirect.tsx';
@@ -211,6 +213,7 @@ const Root = () => (
         <Route path="/public/story" component={PublicStory} />
         <Route path="/public/press" component={PublicPress} />
         <Route path="/public/privacy_policy" component={PublicPrivacyPolicy} />
+        <Route path="/collections" component={Collections} />
         <Route component={checkLogin}>
           <Route path="/yours/order" component={YoursOrderMenu} />
           <Route path="/social/order" component={SocialOrderMenu} />
