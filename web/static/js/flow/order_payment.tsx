@@ -1178,7 +1178,7 @@ class OrderDateTimeContact extends React.Component<any, any> {
                                     Delivery Charge: 
                                   </div>
                                   <div className="col-md-3">
-                                    ${this.props.User.orders[0].deliveryCost.toFixed(2)}
+                                    ${parseInt(this.props.User.orders[0].deliveryCost).toFixed(2)}
                                   </div>
                                 </div>
                             </form>

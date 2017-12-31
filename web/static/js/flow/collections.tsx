@@ -31,7 +31,7 @@ import axios from 'axios';
 //};
 
 
-class SocialMenuItems extends React.Component<any, any> {
+class Collections extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -41,33 +41,12 @@ class SocialMenuItems extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        menuItems: [],
-        selected_item_id: "",
-        selected_item_size: "",
-        selected_item_quantity: 0,
-        selected_item_quantity_selector: 0,
-        selected_item_name: "",
-        selected_item_description: "",
-        selected_item_ingredients: "",
-        selected_item_assortment: false,
-        add_cart_item_button_classname: "btn-block btn btn-default disabled",
-        add_cart_item_button_disabled: true,
-        images: [],
-        hover_images: [],
-        options_count_array: [],
-        selected_item_quantity_options_array: [],
-        pool_message_viewed: false,
-        cartItems: [],
+        collections: [{collection_id: 1, collection_title: "valentines day", collection_url_name: "valentines_day"}],
+        
 
     };
 
-    //this.loadCart = this.loadCart.bind(this);
-    //this.showItem = this.showItem.bind(this);
-    //this.selectedItemDozens = this.selectedItemDozens.bind(this);
-    //this.selectedItemQuantity = this.selectedItemQuantity.bind(this);
-    //this.addCartItem = this.addCartItem.bind(this);
-    //this.onMouseEnter = this.onMouseEnter.bind(this);
-   
+     
   }
 
   componentWillUnmount(){
@@ -90,8 +69,9 @@ class SocialMenuItems extends React.Component<any, any> {
 
     window.scrollTo(0, 0);
 
-    this.props.createOrder("social", "", "");
-    this.props.getMenuItems();
+    //this.props.createOrder("social", "", "");
+    //this.props.getMenuItems();
+    
     //this.setState({menuItems: this.props.menuItems});
 
 
@@ -124,11 +104,14 @@ class SocialMenuItems extends React.Component<any, any> {
     };
   }
 
-  showItem = (menu_item_id: any) => {
+  showItem = (collection_id: any) => {
 
-      console.log("menu_item_id " + menu_item_id);
+      this.context.router.push('/collections/1');
 
-       let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
+
+      //console.log("menu_item_id " + menu_item_id);
+
+       /*let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
 
       console.log(JSON.stringify(menu_item));
 
@@ -145,7 +128,7 @@ class SocialMenuItems extends React.Component<any, any> {
 
       this.setState({selected_item_quantity_selector: 0});
     
-      $('#myModal').modal('show').css("background", "");;
+      $('#myModal').modal('show').css("background", "");*/
 
   }
 
@@ -197,53 +180,6 @@ class SocialMenuItems extends React.Component<any, any> {
 
   }
 
-  
-
-  addCartItem = () => {
-
-    //if order type is social and 12_or_24 == 24 then mini flag == true
-
-    console.log("add cart item");
-
-    //if they haven't selected quantity and dozens dont submit and show them an error
-
-    
-    //let item_count = 0
-
-  
-
-    //console.log("yours items count" + item_count);
-
-    //if(item_count < 12){
-
-    //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-
-    //    this.props.addCartItem(null, this.state.selected_item_id, "regular", this.state.selected_item_quantity);
-
-    //}else{
-
-        this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
-
-    //}
-    
-    //this.setState({pool_message_viewed: true});    
-    this.setState({selected_item_quantity_selector: 0});
-    this.setState({selected_item_size: ""});
-    this.setState({add_cart_item_button_classname: "btn-block btn btn-default disabled"});
-    this.setState({add_cart_item_button_disabled: true});
-
-
-
-    //}
-
-    //this.props.cartValidated();
-
-    $('#myModal').modal('toggle');
-
-    //cart validated in redux
-
-  }
-
  
  
   render(): JSX.Element{
@@ -259,139 +195,46 @@ class SocialMenuItems extends React.Component<any, any> {
 
     //if yours order show yours menu if social order show social menu
 
-    let options_count_array = [];
-    let selected_item_quantity_options_array = [];
-    let social_quantity_selector = null;
-    let cartItemsQuantity = 0;
-
-    if(this.props.User.orders.length > 0){
-
-      cartItemsQuantity = this.props.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
-
-    }
-
-    //let cartItemsQuantity = 12;
-
-    for (let i = 1; i < (12 - cartItemsQuantity); i++){ 
-
-        //console.log(i);
-        
-        options_count_array.push(i);
-    
-    };
-
-    //console.log("options count array " + JSON.stringify(11 - this.props.order.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)));
-
-    //this.setState{options_count_array: options_count_array};
-
-    //let options = {for (let i = 1; i == this.props.cartItemsTotalQuantity - 1; i++){ 
-    //                          <option value={i}>{i}</option>
-    //              })}
-
-    //let one = options_count_array.map((value: any) => <option value={value}>{value}</option>);
-
-    
-
-    //if order type == "pool"
-
-    //let social_item_quantity_options = null;
-
-    if(this.state.selected_item_size == "regular"){
-        
-    //    for (let i = 1; i <= 20; i++){
-
-    //          social_item_quantity_options = social_item_quantity_options =  + <option value={i}>{i}</option>})
-
-    //    };
-
-          for (let i = 1; i <= 20; i++){ 
-
-              //console.log(i);
-              
-              selected_item_quantity_options_array.push(i);
-          
-          };
-
-    }else{
-
-          for (let i = 1; i <= 40; i++){ 
-
-              //console.log(i);
-              
-              selected_item_quantity_options_array.push(i);
-          
-          };
-
-    }
-
-    let cost_text = <div><p>$60 per dozen</p><p>$54 per 2 dozen mini</p></div>;
-
-    
-    if(cartItemsQuantity < 11){
-
-        
-          social_quantity_selector =  <div>
-                                        <div className="col-xs-12 col-md-12">
-                                                <div className="col-xs-12 col-md-4">
-                                                <select className="form-control" value={this.state.selected_item_size} onChange={this.selectedItemSize} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
-                                                  <option value="">Regular or Mini</option> 
-                                                  <option value="regular">1 Dozen Regular</option>
-                                                  <option value="mini">2 Dozen Mini</option>
-                                                </select>
-                                                </div>
-                                                <div className="hidden-lg col-xs-1">
-                                                  <br/>
-                                                </div>
-                                                <div className="col-xs-12 col-md-4">
-                                                <select className="form-control input-large text-center text-align:center" value={this.state.selected_item_quantity_selector} onChange={this.selectedItemQuantity} style={{borderRadius: 0, height: 35, WebkitAppearance: "none", textAlign: "center", fontSize: 16}}>
-                                                  <option>Quantity</option> 
-                                                  {selected_item_quantity_options_array.map((value: any) => <option value={value}>{value}</option>)}
-                                                </select>
-                                                </div>
-                                                <div className="hidden-lg col-xs-1">
-                                                  <br/>
-                                                </div>
-                                                <div className="col-xs-12 col-md-4">
-                                                <button className={this.state.add_cart_item_button_classname} disabled={this.state.add_cart_item_button_disabled} type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Add</button>
-                                                </div>
-                                          </div>
-                                      </div>
-
-
-          //}
-        //}
-    }
-
+  
      
           return(<div>
-                          {this.props.menuItems.map(function(item: any, index: any){
+                      <PublicTopNavbar/>
+                      <div className="row">
+                          <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
+                          </div>
+                          <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
 
-                                //console.log(item);
+                              {this.state.collections.map(function(collection: any, index: any){
 
-                                //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
+                                    //console.log(item);
 
-                                //this.setState({image_id: image_id});
+                                    //let image_id = this.state.smorgasbourgh_menu_items.find((item1: any) => item1.item_id === item.item_id).image_id;
 
-                                //console.log("rerender ");
+                                    //this.setState({image_id: image_id});
 
-                                //console.log("image id " + this.state["image_src_" + item.item_id]);
+                                    //console.log("rerender ");
 
-                                //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
+                                    //console.log("image id " + this.state["image_src_" + item.item_id]);
 
-                                return(
-                                        <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
-                                      
-                                              <img id="1" className="img-responsive" onClick={() => this.showItem(item.menu_item_id)} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
-                                          <br/>
-                                          <b>{item.name}</b>
-                                          <br/>
-                                          <br/>
-                                          <br/>
-                                        </div>
-                              );
-                            }.bind(this))}
-                              
-              
+                                    //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
+
+                                    return(
+                                            <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
+                                          
+                                                  <img id="1" className="img-responsive" onClick={() => this.showItem(collection.collection_url_name)} src={"/images/collections/Ursaheart2.jpg"} data-target="myModal" alt="..." />
+                                              <br/>
+                                              <b>{collection.collection_title}</b>
+                                              <br/>
+                                              <br/>
+                                              <br/>
+                                            </div>
+                                  );
+                                }.bind(this))}
+
+                          </div>
+                    </div>
+                    <PublicBottomNavbar/>
+                    <PublicPrivacyTermsNavbar/>
                 </div>)
 
     
@@ -400,6 +243,6 @@ class SocialMenuItems extends React.Component<any, any> {
 
 
 
-export default SocialMenuItems;
+export default Collections;
 
 //background: url(../images/down-arrow.png) no-repeat right 12px

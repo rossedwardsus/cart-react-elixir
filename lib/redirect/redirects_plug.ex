@@ -96,8 +96,12 @@ defmodule Sconely.Plugs.RedirectsPlug do
                     conn |> halt
         "order" -> IO.puts("orders")
                     conn |> halt
+
         "public" -> IO.puts("public")
                     conn |> halt
+        "collections" -> conn |> halt
+        "partners" -> conn |> halt
+        
         "social" -> IO.puts("social")
         "user" -> IO.puts("social")
         "login" -> ""

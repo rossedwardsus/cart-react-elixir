@@ -1,4 +1,4 @@
-defmodule Sconely.MenuItem do
+defmodule Sconely.Collection do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
@@ -9,14 +9,10 @@ defmodule Sconely.MenuItem do
 
 		@primary_key {:id, :binary_id, autogenerate: true}
 
-		schema "menu_items" do
-			field :menu_item_id, :integer
+		schema "collections" do
 			field :name, :string
+			field :url_name, :string
 			field :description, :string
-			field :ingredients, :string
-			field :assortment, :boolean
-			field :active, :boolean
-			field :order, :integer
 			
 			#timestamps()
 		end
