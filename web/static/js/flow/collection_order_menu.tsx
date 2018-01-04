@@ -12,9 +12,9 @@ import {cartValidated} from './actions/order_validations.ts';
 import {updateOrderSession} from './actions/session.ts';
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
 
-import SocialSidebarCart from './social_order_sidebar_cart.tsx';
+import CollectionsSidebarCart from './collection_order_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
-import SocialMenuItems from './social_order_menu_items.tsx';
+import CollectionMenuItems from './collection_order_menu_items.tsx';
 import SocialMenuModal from './social_order_menu_modal.tsx';
 
 import PublicTopNavbar from './public/public_top_navbar.tsx';
@@ -92,8 +92,8 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     window.scrollTo(0, 0);
 
-    this.props.createOrder("social", "", "");
-    this.props.getMenuItems();
+    this.props.createOrder("collection", "", "");
+    //this.props.getMenuItems();
     //this.setState({menuItems: this.props.menuItems});
 
 
@@ -368,9 +368,9 @@ class CollectionOrderMenu extends React.Component<any, any> {
                           <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
-                            <b>SCONELY SOCIAL</b>
+                            <b>VALENTINES DAY</b>
                             <br/>
-                            <SocialSidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
+                            <CollectionsSidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>

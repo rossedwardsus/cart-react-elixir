@@ -80,7 +80,18 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
       //      dispatch({type: SET_ORDER_TYPE});
       //    dispatch(push("/order/1/signature"));
 
-      if(order_type == "yours" || order_type == "social"){
+      if(order_type == "collection"){
+
+            //dispatch(getCollections(order_type));
+            //dispatch(createOrderSession(order_type, ""));
+            dispatch({type: CREATE_ORDER, order_type: order_type});
+            
+            //dispatch(push("/order/menu"));   
+            //dispatch(push("/social/order"));
+
+
+
+      }else if(order_type == "yours" || order_type == "social"){
 
             //load menu
             //if menu items alrady exist then dont get from the database again

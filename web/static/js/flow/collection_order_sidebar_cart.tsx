@@ -341,7 +341,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
 
 
-    let item_quantity_message = "Please choose between 12 and 100 scones";
+    let item_quantity_message = "Please choose between 6 and 10 scones";
 
     
     console.log("message");
