@@ -1,10 +1,10 @@
-defmodule Sconely.CollectionItem do
+defmodule Sconely.CollectionMenuItem do
 		#use Ecto.Schema
 		#import Ecto.Changeset
 
 		use SconeHomeElixir.Web, :model
 
-		@optional_fields ~W(menu_item_id name description ingredients assortment active order)
+		@optional_fields ~W(menu_item_id )
 		@required_fields ~W()
 
 		@primary_key {:id, :binary_id, autogenerate: true}

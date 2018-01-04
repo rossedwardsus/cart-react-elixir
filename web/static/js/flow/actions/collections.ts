@@ -24,7 +24,7 @@ export function getCollections(){
 
                   //console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
 
-                  console.log("menu items response " + JSON.stringify(response));
+                  console.log("collections response " + JSON.stringify(response));
 
                   //that.props.history.push('/user');
                   //context.router
@@ -80,7 +80,7 @@ export function getCollectionItems(collection_id: any){
 
             //event full name
 
-            axios.post('/api/collections', {order_type: order_type}
+            axios.post('/api/collections', {collection_id: collection_id}
                      //{query: 'query {get_menu_items {id name description ingredients}}'}
                      //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
             )

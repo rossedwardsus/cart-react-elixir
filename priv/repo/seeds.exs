@@ -92,6 +92,9 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 16, order:
 
 Repo.insert!(menu_item_changeset)
 
+#collections_changeset
+#collection_items_changeset
+
 #MIX_ENV=prod mix run priv/repo/seeds.exs
 
 

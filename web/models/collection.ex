@@ -4,15 +4,15 @@ defmodule Sconely.Collection do
 
 		use SconeHomeElixir.Web, :model
 
-		@optional_fields ~W(menu_item_id name description ingredients assortment active order)
+		@optional_fields ~W(title description)
 		@required_fields ~W()
 
 		@primary_key {:id, :binary_id, autogenerate: true}
 
 		schema "collections" do
-			field :name, :string
-			field :url_name, :string
+			field :title, :string
 			field :description, :string
+			field :active, :boolean
 			
 			#timestamps()
 		end
