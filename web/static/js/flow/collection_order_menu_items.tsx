@@ -12,7 +12,7 @@ import {cartValidated} from './actions/order_validations.ts';
 import {updateOrderSession} from './actions/session.ts';
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
 
-import SocialSidebarCart from './social_order_sidebar_cart.tsx';
+import CollectionSidebarCart from './collection_order_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
 
 import PublicTopNavbar from './public/public_top_navbar.tsx';
@@ -364,7 +364,7 @@ class CollectionOrderMenuItems extends React.Component<any, any> {
 
      
           return(<div>
-                          {this.props.menuItems.map(function(item: any, index: any){
+                          {this.props.collectionsItems.map(function(item: any, index: any){
 
                                 //console.log(item);
 

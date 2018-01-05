@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 //import _ from 'lodash';
 
-import {getMenuItems} from './actions/menu.ts';
+import {getCollections} from './actions/collections.ts';
 import {cartValidated} from './actions/order_validations.ts';
 import {updateOrderSession} from './actions/session.ts';
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
@@ -19,9 +19,9 @@ import PublicTopNavbar from './public/public_top_navbar.tsx';
 import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
 import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
 
-import {getYoursMenuItems} from './selectors/menu.ts'; 
+//import {getCollections} from './menu.ts'; 
 
-import axios from 'axios';
+//import axios from 'axios';
 
 
 //type Props = {
@@ -49,15 +49,6 @@ class Collections extends React.Component<any, any> {
      
   }
 
-  componentWillUnmount(){
-
-    //window.onpopstate = () => {
-      
-      $('#myModal').modal('hide');
-
-    //}
-
-  }
 
   componentWillMount(){
 
@@ -70,7 +61,7 @@ class Collections extends React.Component<any, any> {
     window.scrollTo(0, 0);
 
     //this.props.createOrder("social", "", "");
-    //this.props.getMenuItems();
+    this.props.getCollections();
     
     //this.setState({menuItems: this.props.menuItems});
 
@@ -93,8 +84,8 @@ class Collections extends React.Component<any, any> {
       //cart items
 
       //console.log("menu props");
-      console.log("social menu mi cwrp " + JSON.stringify(this.props.menuItems));
-      this.setState({menuItems: this.props.menuItems});
+      //console.log("collections cwrp " + JSON.stringify(this.props.getCollections));
+      //this.setState({collections: this.props.collections});
 
   }
 
@@ -134,52 +125,7 @@ class Collections extends React.Component<any, any> {
 
 
 
-  selectedItemSize = (e: any) => {
-
-    console.log("selected_item size " + e.target.value);
-
-    this.setState({selected_item_size: e.target.value});
   
-  }
-
-
-  selectedItemQuantity = (e: any) => {
-
-    console.log("selected_item quantity " + e.target.value);
-
-    //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-
-    //  this.setState({selected_item_quantity: parseInt(e.target.value)});
-    //  this.setState({selected_item_quantity_selector: e.target.value});
-
-    //}else{
-
-      if(this.state.selected_item_size == "regular"){
-        
-        this.setState({selected_item_quantity: (parseInt(e.target.value) * 12)});
-        this.setState({selected_item_quantity_selector: e.target.value});
-      
-      }else if(this.state.selected_item_size == "mini"){
-        
-        this.setState({selected_item_quantity: (parseInt(e.target.value) * 24)});
-        this.setState({selected_item_quantity_selector: e.target.value});
-      
-      }//else{ 
-
-       // this.setState({selected_item_quantity: parseInt(e.target.value)});
-
-      //}
-
-    //}
-
-    this.setState({add_cart_item_button_classname: "form-control btn-block btn btn-default"});
-    this.setState({add_cart_item_button_disabled: false});
-      
-    //set add cart button == active
-    //this.set
-
-  }
-
  
  
   render(): JSX.Element{
@@ -241,8 +187,31 @@ class Collections extends React.Component<any, any> {
   }
 }
 
+const mapStateToProps = (state: any, ownProps: any) => {
+  //console.log("mapstatetoprops order menu " + JSON.stringify(state.routing));
+  return {
+
+  
+  }
+};
+
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    //viewmenuthunk
+
+    getCollections: () => {
+      //console.log("here");
+      dispatch(getCollections());
+    },
+  }
+}
+
+const CollectionsConnected = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Collections);
 
 
-export default Collections;
+export default CollectionsConnected;
 
 //background: url(../images/down-arrow.png) no-repeat right 12px

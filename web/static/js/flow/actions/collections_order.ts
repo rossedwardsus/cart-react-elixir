@@ -60,25 +60,7 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
     //console.log("create order action " + pool_url_date);
 
     return function(dispatch: any){
-      //getMenuItems();
-      //dispatch(getMenuItems());
-      //if name != "" then redirect
-      //return {
-      //  type: CREATE_ORDER,
-      //  order_type,
-      //  name
-      //}
-
-      //if user if logged in then dispatch(user_orders)
-      //else dispatch(orders)
-
-      //dispatch(createOrder1(order_type, name, 123));
-      //dispatch(getMenuItems(order_type));
       
-      //if(order_type == "signature"){
-
-      //      dispatch({type: SET_ORDER_TYPE});
-      //    dispatch(push("/order/1/signature"));
 
       if(order_type == "collection"){
 
@@ -87,178 +69,11 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
             dispatch({type: CREATE_ORDER, order_type: order_type});
             
             //dispatch(push("/order/menu"));   
-            //dispatch(push("/social/order"));
+            //dispatch(push("/collection/order"));
 
-
-
-      }else if(order_type == "yours" || order_type == "social"){
-
-            //load menu
-            //if menu items alrady exist then dont get from the database again
-
-            dispatch(getMenuItems(order_type));
-            //dispatch(createOrderSession(order_type, ""));
-            dispatch({type: CREATE_ORDER, order_type: order_type});
-            
-            dispatch(push("/order/menu"));
-            
-            //dispatch(push("/social/order"));
-
-      //}
-      }else if(order_type == "pool_order"){
-
-            //load menu
-            dispatch(getMenuItems("pool"));
-      //      dispatch(createOrderSession(order_type));
-            dispatch({type: CREATE_ORDER, order_type: order_type});
-            dispatch(push("/pool/order/menu"));
-
-      }else if(order_type == "pool"){
-
-            //let pool_name = this.props.params.pool_name;
-
-            console.log("create order action pool");
-
-            //get pool order data
-            //possibly do as an api and not graphql
-
-            //move this to order menu?
-            //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
-
-            //dispatch(push("/order/menu"));
-
-            dispatch(getMenuItems("pool_response"));
-            //dispatch(createOrderSession(order_type, pool_url_name));
-            //dispatch(setOrderStatus("processing"));
-
-            axios.post('/api/graphql',
-                     {query: 'query {get_pool_order_details (pool_url_name: "' + pool_url_name + '", pool_url_date: "' + pool_url_date + '") {user_pool_id parent_order_id pool_admin_receipt_order_id pool_name pool_delivery_date pool_delivery_time_range pool_address_street1 pool_address_city pool_address_state pool_address_zipcode pickup_location}}'}, {headers: {'authorization': "bearer"}}
-            )
-            .then((response: any) => {
-
-                  console.log("pool order graphql response " + JSON.stringify(response));
-
-                  //if pool date is greater then 24 hours before
-
-                  //console.log(pool_date);
-                  //console.log("pool date" + moment(pool_date).format('dddd'));
-                  //Wednesday January 20th, 2017 
-
-                  let pool_url_date_split = pool_url_date.split("-");
-
-                  let pool_delivery_date = moment(pool_url_date_split[2] + "" + pool_url_date_split[0] + "" + pool_url_date_split[1]);
-
-
-                  //response.data.data.getPoolOrderDetails.poolDeliveryDate
-
-                  let pool_delivery_date_formatted = moment(pool_delivery_date).format('ddd') + ", " + moment(pool_delivery_date).format('MMMM') + " " + moment(pool_delivery_date).format('D');
-
-                  let order_by_date = moment(pool_delivery_date).subtract(1, 'days');
-                  
-                  let pool_order_by_date_formatted = moment(order_by_date).format('ddd') + ", " + moment(order_by_date).format('MMMM') + " " + moment(order_by_date).format('D');
-
-                  //console.log(pool_order_date_formatted);
-
-                  dispatch({
-                              type: CREATE_ORDER, 
-                              order_type: order_type, 
-                              user_pool_id: response.data.data.getPoolOrderDetails.userPoolId,
-                              //pool_name: pool_url_name, 
-                              pool_admin_receipt_order_id: response.data.data.getPoolOrderDetails.poolAdminReceiptOrderId,
-                              pool_name: response.data.data.getPoolOrderDetails.poolName, 
-                              pool_address_street1: 
-                              response.data.data.getPoolOrderDetails.poolAddressStreet1,
-                              pool_address_city: 
-                              response.data.data.getPoolOrderDetails.poolAddressCity,
-                              pool_address_state: 
-                              response.data.data.getPoolOrderDetails.poolAddressState,
-                              pool_address_zipcode: 
-                              response.data.data.getPoolOrderDetails.poolAddressZipcode,
-                              pickup_location: response.data.data.getPoolOrderDetails.pickupLocation,
-                              pool_delivery_date_formatted: pool_delivery_date_formatted,
-                              pool_delivery_time_range: response.data.data.getPoolOrderDetails.poolDeliveryTimeRange,
-                              pool_order_by_date_formatted: pool_order_by_date_formatted,
-                  
-                  })
-
-                  //const delay = (ms: any) => new Promise(resolve =>
-                  //  setTimeout(resolve, ms)
-                  //);
-
-                  //delay(2000).then(() => dispatch(push("/order/menu")));
-
-                  //dispatch(setPoolOrder("pool_name", "pool_date", "pool_id", "pool_message")).then(() => {});
-
-                  dispatch(push("/order/menu"));
-                  //dispatch(push("/pool_response/weworkdtla/12-14-2017/menu"));
-
-            
-            }).then((response: any) => {
-                  
-                  
-                   //dispatch(push("/order/menu"));
-
-
-
-                  /*if(response.data.data.processYoursSocialOrder.errorReason != ""){
-
-                      console.log("graphql response " + JSON.stringify(response.data.data.processYoursSocialOrder.errorReason));
-
-                      dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_id: "", pool_message: "response.data.pool_message"});
-
-
-                      //if save_info_for_later == true...
-                      //last four card number
-
-                      localStorage.setItem("sconely_user", JSON.stringify({token: "", name: "ross", contact_email: "gmail", delivery_contacts_addresses: [{street1: "1109 santa monica blvd"}], pament_methods: [{last_four_digits: "4444"}]}));
-
-                      console.log(JSON.parse(localStorage.getItem("sconely_user")).name);
-
-                      //else delete from redux
-                      //console.log("clear order");
-                      
-                      //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "", pool_date: "", pool_admin_receipt_id: "", pool_message: response.data.pool_message});
-            
-
-                      //that.props.history.push('/user');
-                      //context.router
-
-                      //this.context.router.push('/order/complete');
-                      //dispatch(push("/order/complete"));
-
-                  }else{
-
-                    //dispatch({ type: , item_id: "session_id"});
-
-                  }*/
-      
-
-            })
-            .catch((error: any) => {
-
-                  console.log("axios error handler here" + error);
-
-                  //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});
-
-                  //dispatch(push("/order/menu"));
-
-
-                  //go to code/payment screen
-          //        this.props.loadView();
-
-
-                  //display errror to user - payment
-
-           //if (!error.status) {
-              // network error
-            //}
-
-            })
 
       }
-    }
-  //}
-}
+ }
 
 
 
@@ -279,6 +94,9 @@ export function processCollectionOrder() {
 
 
             //if order type == pool then address isnt needed
+
+
+            //user string interpolation
 
             axios.post('/api/graphql',
                      {query: 'mutation {process_collection_order (order_type: "' + getState().User.orders[0].order_type + '", pool_name: "' + getState().User.orders[0].poolName + '", order_delivery_cost: "' + getState().User.orders[0].deliveryCost + '", order_note: "' + getState().User.orders[0].orderNote + '", gift_order: ' + getState().User.orders[0].giftOrder + ', gift_note: "' + getState().User.orders[0].giftNote + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: ' + JSON.stringify(getState().User.orders[0].cartItems).replace(/\"([^(\")"]+)\":/g,"$1:") + ', cart_items1: [{menu_item_id: 1, quantity: 100, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '", user_delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].company_name + '", user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '", order_delivery_datetime_time: "' + getState().User.orders[0].deliveryDatetimeSpecificTime + '", payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}'}, {headers: {'authorization': "bearer"}}

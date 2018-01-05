@@ -436,7 +436,7 @@ class DeliveryAddress extends React.Component<any, any> {
       this.setState({city: e.target.value});
       this.props.setDeliveryContactAddressCity(e);
 
-      //if street1 street2 city state
+      //if "santa monica only show santa monica zipcodes"
 
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
@@ -758,26 +758,7 @@ class DeliveryAddress extends React.Component<any, any> {
                         <div className="col-sm-3">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>Zip Code</option>
-                            <option>Venice</option>
-                            <option value="90291">90291</option>
-                            <option value="90293">90293</option>
-                            <option value="90294">90294</option>
-                            <option value="90295">90295</option>
-                            <option value="90296">90296</option>
-                            <option>Santa Monica</option>
-                            <option value="90291">90291</option>
-                            <option value="90401">90401</option>
-                            <option value="90402">90402</option>
-                            <option value="90403">90403</option>
-                            <option value="90404">90404</option>
-                            <option value="90405">90405</option>
-                            <option value="90406">90406</option>
-                            <option value="90407">90407</option>
-                            <option value="90408">90408</option>
-                            <option value="90409">90409</option>
-                            <option value="90410">90410</option>
-                            <option value="90411">90411</option>
-                            <option>DTLA</option>
+                            <option>DTLA - free</option>
                             <option value="90012">90012</option>
                             <option value="90013">90013</option>
                             <option value="90014">90014</option>
@@ -790,28 +771,47 @@ class DeliveryAddress extends React.Component<any, any> {
                             <option value="90055">90055</option>
                             <option value="90079">90079</option>
                             <option value="90086">90086</option>
-                            <option>Beverly Hills</option>
+                            <option>Venice - $10</option>
+                            <option value="90291">90291</option>
+                            <option value="90293">90293</option>
+                            <option value="90294">90294</option>
+                            <option value="90295">90295</option>
+                            <option value="90296">90296</option>
+                            <option>Santa Monica - $10</option>
+                            <option value="90291">90291</option>
+                            <option value="90401">90401</option>
+                            <option value="90402">90402</option>
+                            <option value="90403">90403</option>
+                            <option value="90404">90404</option>
+                            <option value="90405">90405</option>
+                            <option value="90406">90406</option>
+                            <option value="90407">90407</option>
+                            <option value="90408">90408</option>
+                            <option value="90409">90409</option>
+                            <option value="90410">90410</option>
+                            <option value="90411">90411</option>
+                            <option>Beverly Hills - $10</option>
                             <option value="90035">90035</option>
                             <option value="90209">90209</option>
                             <option value="90210">90210</option>
                             <option value="90211">90211</option>
                             <option value="90212">90212</option>
                             <option value="90213">90213</option>
-                            <option>Marina Del Rey</option>
+                            <option>Marina Del Rey - $10</option>
                             <option value="90292">90292</option>
-                            <option>Playa Del Rey</option>
+                            <option>Playa Vista - $10</option>
                             <option value="90094">90094</option>
-                            <option>Brentwood</option>
+                            <option>Brentwood - $10</option>
                             <option value="90049">90049</option>
-                            <option>Century City</option>
+                            <option>Century City - $10</option>
                             <option value="90067">90067</option>
-                            <option>West Hollywood</option>
+                            <option>West Hollywood - $10</option>
                             <option>90046</option>
                             <option>90048</option>
                             <option>90069</option>
-                            <option>Hancock Park</option>
+                            <option>Hancock Park - $10</option>
                             <option>90004</option>
-                            <option>Westwood</option>
+                            <option>Westwood - $10</option>
                             <option>90024</option>
                           </select>
                         </div>
@@ -820,7 +820,7 @@ class DeliveryAddress extends React.Component<any, any> {
                 <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-5">
-                        <textarea className="form-control" cols={100} rows={5} placeholder="Order Note" style={{resize: "none"}} onChange={(e: any) => this.setOrderNote(e)}></textarea>
+                        <textarea className="form-control" cols={100} rows={5} placeholder="Delivery Instructions (e.g. leave at front desk or room number)" style={{resize: "none"}} onChange={(e: any) => this.setOrderNote(e)}></textarea>
                       </div>
                     </div>
                 </form>

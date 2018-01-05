@@ -577,8 +577,11 @@ class DateTime extends React.Component<any, any> {
 
                             <form className="form-horizontal">
                                 <div className="form-group">
-                                  <div className="col-sm-12">
-                                      Delivery Date Time
+                                  <div className="col-sm-3">
+                                      Select Your Delivery Date
+                                  </div>
+                                  <div className="col-sm-3">
+                                      Select Your Delivery Time
                                   </div>
                                 </div>
                             </form>
@@ -591,7 +594,7 @@ class DateTime extends React.Component<any, any> {
                                   <div className="col-md-3">
                                     <select onChange={(e: any) => this.setSpecificTime(e)} className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                                         <option>Time</option>
-                                        <option value="800-830">8:00-8:30</option>
+                                        <option value="800-830">8:00-8:30 am</option>
                                         <option value="830-900">8:30-9:00</option>
                                         <option value="900-930">9:00-9:30</option>
                                         <option value="930-1000">9:30-10:00</option>

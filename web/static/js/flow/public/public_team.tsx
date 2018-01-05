@@ -39,14 +39,6 @@ export class PublicTeam extends React.Component<any, any> {
         
     };
 
-    //this.createSignatureOrder = this.createSignatureOrder.bind(this);
-    this.guestCode = this.guestCode.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onSwipedLeft = this.onSwipedLeft.bind(this);
-    this.onSwipedRight = this.onSwipedRight.bind(this);
-    this.guestCodeChange = this.guestCodeChange.bind(this);
-    this.changeImage = this.changeImage.bind(this);
-
   }
 
   componentDidMount(){

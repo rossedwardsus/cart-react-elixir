@@ -15,7 +15,7 @@ import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuan
 import CollectionsSidebarCart from './collection_order_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
 import CollectionMenuItems from './collection_order_menu_items.tsx';
-import SocialMenuModal from './social_order_menu_modal.tsx';
+import CollectionMenuItemModal from './collection_order_menu_item_modal.tsx';
 
 import PublicTopNavbar from './public/public_top_navbar.tsx';
 import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
@@ -375,7 +375,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                           </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
                             <br/>
-                            {this.props.menuItems.map(function(item: any, index: any){
+                            {this.props.collectionItems.map(function(item: any, index: any){
 
                                 //console.log(item);
 
@@ -405,7 +405,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <SocialMenuModal menu_item_id={this.state.selected_item_id} selected_item_name={this.state.selected_item_name} selected_item_ingredients={this.state.selected_item_ingredients} selected_item_description={this.state.selected_item_description} selectedItemQuantity={(e: any) => this.selectedItemQuantity(e)} selectedItemSize={(e: any) => this.selectedItemSize(e)} addCartItem={() => this.addCartItem()}/>
+                          <CollectionMenuItemModal menu_item_id={this.state.selected_item_id} selected_item_name={this.state.selected_item_name} selected_item_ingredients={this.state.selected_item_ingredients} selected_item_description={this.state.selected_item_description} selectedItemQuantity={(e: any) => this.selectedItemQuantity(e)} selectedItemSize={(e: any) => this.selectedItemSize(e)} addCartItem={() => this.addCartItem()}/>
                         
                   </div>
                   <PublicBottomNavbar/>
