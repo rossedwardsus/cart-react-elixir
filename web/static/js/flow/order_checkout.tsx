@@ -595,13 +595,13 @@ class DateTime extends React.Component<any, any> {
                                     <select onChange={(e: any) => this.setSpecificTime(e)} className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                                         <option>Time</option>
                                         <option value="800-830">8:00-8:30 am</option>
-                                        <option value="830-900">8:30-9:00</option>
-                                        <option value="900-930">9:00-9:30</option>
-                                        <option value="930-1000">9:30-10:00</option>
-                                        <option value="1000-1030">10:00-10:30</option>
-                                        <option value="1030-1100">10:30-11:00</option>
-                                        <option value="1100-1130">11:00-11:30</option>
-                                        <option value="1130-1200">11:30-12:00</option>
+                                        <option value="830-900">8:30-9:00 am</option>
+                                        <option value="900-930">9:00-9:30 am </option>
+                                        <option value="930-1000">9:30-10:00 am</option>
+                                        <option value="1000-1030">10:00-10:30 am</option>
+                                        <option value="1030-1100">10:30-11:00 am</option>
+                                        <option value="1100-1130">11:00-11:30 am</option>
+                                        <option value="1130-1200">11:30-12:00 am</option>
                                         <option>12:00</option>
                                     </select>
                                   </div>}

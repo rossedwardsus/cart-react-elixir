@@ -497,7 +497,7 @@ class DeliveryAddress extends React.Component<any, any> {
 
           console.log("15 dollar delivery");
 
-          this.props.setDeliveryCost(15);           
+          this.props.setDeliveryCost(10);           
 
       }
 
