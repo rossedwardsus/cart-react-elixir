@@ -4,14 +4,14 @@ defmodule Sconely.CollectionMenuItem do
 
 		use SconeHomeElixir.Web, :model
 
-		@optional_fields ~W(menu_item_id )
+		@optional_fields ~W(item_id )
 		@required_fields ~W()
 
 		@primary_key {:id, :binary_id, autogenerate: true}
 
 		schema "collection_items" do
-			field :collection_id, :string
-			field :menu_item_id, :string
+			field :collection_id, Ecto.UUID
+			field :item_id, Ecto.UUID
 			
 			#timestamps()
 		end

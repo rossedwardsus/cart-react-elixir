@@ -1,4 +1,4 @@
-import { VIEW_PUBLIC_MENU, SET_ORDER_TYPE, COLLECTIONS } from '../constants/actionTypes.ts';
+import { VIEW_PUBLIC_MENU, SET_ORDER_TYPE, COLLECTIONS, COLLECTION_MENU_ITEMS } from '../constants/actionTypes.ts';
 import {createOrder} from './order.ts';
 
 import {push} from 'react-router-redux';
@@ -74,14 +74,14 @@ export function getCollections(){
 }
 
 //order_type
-export function getCollectionItems(collection_id: any){
+export function getCollectionMenuItems(collection_id: any){
 
       //console.log("action");
       return function (dispatch: any) { 
 
             //event full name
 
-            axios.post('/api/collections', {collection_id: collection_id}
+            axios.post('/api/collections/menu_items', {collection_id: collection_id}
                      //{query: 'query {get_menu_items {id name description ingredients}}'}
                      //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
             )
@@ -89,7 +89,7 @@ export function getCollectionItems(collection_id: any){
 
                   //console.log("graphql response " + JSON.stringify(response.data.data.getMenuItems));
 
-                  console.log("collections response " + JSON.stringify(response));
+                  console.log("collection menu items response " + JSON.stringify(response));
 
                   //that.props.history.push('/user');
                   //context.router
@@ -98,7 +98,7 @@ export function getCollectionItems(collection_id: any){
 
                   //this.context.router.push('/order/complete');
 
-                  dispatch({ type: VIEW_PUBLIC_MENU, items: response.data.items});
+                  dispatch({ type: COLLECTION_MENU_ITEMS, collection_items: response.data.collection_menu_items});
                     //dispatch(push("/order/url_name/guest/name"));
                   //dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
                   //dispatch(push("/order/menu"));

@@ -88,8 +88,8 @@ defmodule SconeHomeElixir.Router do
     post "/menu_items", Sconely.MenuItemsController, :index   
 
     post "/collections", Sconely.CollectionsController, :get_all_collections
+    post "/collections/menu_items", Sconely.CollectionsController, :get_collection_menu_items
     
-   
 
     #get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema
     forward "/graphql", Absinthe.Plug, schema: Sconely.Schema

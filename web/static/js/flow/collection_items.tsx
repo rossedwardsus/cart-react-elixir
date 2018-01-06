@@ -7,21 +7,22 @@ import {connect} from 'react-redux';
 
 //import _ from 'lodash';
 
-import {getMenuItems} from './actions/menu.ts';
-import {cartValidated} from './actions/order_validations.ts';
-import {updateOrderSession} from './actions/session.ts';
-import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
+//import {get} from './actions/menu.ts';
+//import {cartValidated} from './actions/order_validations.ts';
+//import {updateOrderSession} from './actions/session.ts';
+//import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
 
-import SocialSidebarCart from './social_order_sidebar_cart.tsx';
+//import SocialSidebarCart from './social_order_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
 
 import PublicTopNavbar from './public/public_top_navbar.tsx';
 import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
 import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
 
-import {getYoursMenuItems} from './selectors/menu.ts'; 
+import {getCollectionMenuItems} from './actions/collections.ts';  
+//import {getCollectionMenuItems} from './action/collections.ts'; 
 
-import axios from 'axios';
+//import axios from 'axios';
 
 
 //type Props = {
@@ -31,7 +32,7 @@ import axios from 'axios';
 //};
 
 
-class CollectionsItem extends React.Component<any, any> {
+class CollectionMenuItems extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -66,18 +67,20 @@ class CollectionsItem extends React.Component<any, any> {
 
   componentWillMount(){
 
-    
+      window.scrollTo(0, 0);
 
+      //this.props.createOrder("social", "", "");
+      this.props.getCollectionMenuItems("");
     
   }
 
-  componentWillReceiveProps = (nextProp:any) => {
+  componentWillReceiveProps = (nextProps:any) => {
 
       //cart items
 
       //console.log("menu props");
-      console.log("social menu mi cwrp " + JSON.stringify(this.props.menuItems));
-      this.setState({menuItems: this.props.menuItems});
+      console.log("collection menu items cwrp " + JSON.stringify(nextProps.collectionMenuItems));
+      //this.setState({menuItems: this.props.menuItems});
 
   }
 
@@ -216,7 +219,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
   console.log("mapstatetoprops collections " + JSON.stringify(state.User.collections));
   return {
 
-      collection_items: state.User.collection_items,
+      collections: state.User.collections,
+      collectionMenuItems: state.User.collectionMenuItems,
   
   }
 };
@@ -225,18 +229,18 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
-    //getCollectionItems: () => {
+    getCollectionMenuItems: (collection_id: any) => {
       //console.log("here");
-    //  dispatch(getCollectionItems());
-    //},
+      dispatch(getCollectionMenuItems(""));
+    },
   }
 }
 
-const CollectionsConnected = connect(
+const CollectionMenuItemsConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Collections);
+)(CollectionMenuItems);
 
-export default CollectionsItem;
+export default CollectionMenuItemsConnected;
 
 //background: url(../images/down-arrow.png) no-repeat right 12px
