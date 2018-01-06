@@ -11,6 +11,7 @@ defmodule Sconely.Collection do
 
 		schema "collections" do
 			field :title, :string
+			field :url_title, :string
 			field :description, :string
 			field :active, :boolean
 			

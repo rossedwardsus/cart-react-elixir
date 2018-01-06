@@ -1,4 +1,4 @@
-import { VIEW_PUBLIC_MENU, SET_ORDER_TYPE } from '../constants/actionTypes.ts';
+import { VIEW_PUBLIC_MENU, SET_ORDER_TYPE, COLLECTIONS } from '../constants/actionTypes.ts';
 import {createOrder} from './order.ts';
 
 import {push} from 'react-router-redux';
@@ -11,12 +11,13 @@ import axios from 'axios';
 
 export function getCollections(){
 
-      console.log("action");
+      console.log("get all collections action");
+
       return function (dispatch: any) { 
 
             //event full name
 
-            axios.get('/api/collections',
+            axios.post('/api/collections',
                      //{query: 'query {get_menu_items {id name description ingredients}}'}
                      //query: 'query {load_signature_guest_response_order_details (order_name: "laci") { parent_order_id event_full_name invited_guest_message }}'
             )
@@ -33,7 +34,7 @@ export function getCollections(){
 
                   //this.context.router.push('/order/complete');
 
-                  dispatch({type: VIEW_PUBLIC_MENU, items: response.data.items});
+                  dispatch({type: COLLECTIONS, collections: response.data.collections});
                   //dispatch(push("/order/url_name/guest/name"));
                   //dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
                   //dispatch({type: SET_ORDER_TYPE, value: order_type, pool_name: "graphql", pool_date: "graphql", pool_id: "", pool_message: "response.data.pool_message"});

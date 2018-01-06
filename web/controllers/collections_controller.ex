@@ -9,7 +9,7 @@ defmodule Sconely.CollectionsController do
   import Ecto.Query
   use Timex
   
-  def all_collections(conn, _args) do
+  def get_all_collections(conn, _args) do
     #IO.puts("create graphql")
 
     #Duration.now
@@ -18,7 +18,7 @@ defmodule Sconely.CollectionsController do
     #{:ok, Repo.all(from c in Collection, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
     #{:ok, [%{item_id: 1000}]}
 
-    json conn |> put_status(:ok), %{collections: Repo.all(from c in Collection, select: %{id: c.id, title: c.title, description: c.description})}
+    json conn |> put_status(:ok), %{collections: Repo.all(from c in Collection, select: %{id: c.id, title: c.title, url_title: c.url_title, description: c.description})}
 
   end
 

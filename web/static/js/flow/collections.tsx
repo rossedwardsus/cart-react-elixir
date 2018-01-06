@@ -41,8 +41,8 @@ class Collections extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        collections: [{collection_id: 1, collection_title: "valentines day", collection_url_name: "valentines_day"}],
-        
+        //collections: [{collection_id: 1, collection_title: "valentines day", collection_url_name: "valentines_day"}],
+        collections: [],
 
     };
 
@@ -65,6 +65,8 @@ class Collections extends React.Component<any, any> {
     
     //this.setState({menuItems: this.props.menuItems});
 
+    console.log("collections cdm " + JSON.stringify(this.props.collections));
+
 
     //get active items from the database
     //console.log("mi" + JSON.stringify(this.props.menuItems));
@@ -79,13 +81,13 @@ class Collections extends React.Component<any, any> {
     
   }
 
-  componentWillReceiveProps = (nextProp:any) => {
+  componentWillReceiveProps = (nextProps:any) => {
 
       //cart items
 
       //console.log("menu props");
-      //console.log("collections cwrp " + JSON.stringify(this.props.getCollections));
-      //this.setState({collections: this.props.collections});
+      console.log("collections cwrp " + JSON.stringify(nextProps.collections));
+      this.setState({collections: nextProps.collections});
 
   }
 
@@ -95,9 +97,9 @@ class Collections extends React.Component<any, any> {
     };
   }
 
-  showItem = (collection_id: any) => {
+  showCollectionItems = (url_title: any) => {
 
-      this.context.router.push('/collections/1');
+      this.context.router.push('/collections/' + url_title);
 
 
       //console.log("menu_item_id " + menu_item_id);
@@ -167,7 +169,7 @@ class Collections extends React.Component<any, any> {
                                     return(
                                             <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
                                           
-                                                  <img id="1" className="img-responsive" onClick={() => this.showItem(collection.collection_url_name)} src={"/images/collections/Ursaheart2.jpg"} data-target="myModal" alt="..." />
+                                                  <img id="1" className="img-responsive" onClick={() => this.showCollectionItems(collection.url_title)} src={"/images/collections/Ursaheart2.jpg"} data-target="myModal" alt="..." />
                                               <br/>
                                               <b>{collection.collection_title}</b>
                                               <br/>
@@ -188,9 +190,10 @@ class Collections extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  //console.log("mapstatetoprops order menu " + JSON.stringify(state.routing));
+  console.log("mapstatetoprops collections " + JSON.stringify(state.User.collections));
   return {
 
+      collections: state.User.collections,
   
   }
 };

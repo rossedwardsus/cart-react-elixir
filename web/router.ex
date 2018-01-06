@@ -86,6 +86,9 @@ defmodule SconeHomeElixir.Router do
     #move to /api1 aka api - no need for graphql call
     get "/menu_items", Sconely.MenuItemsController, :index
     post "/menu_items", Sconely.MenuItemsController, :index   
+
+    post "/collections", Sconely.CollectionsController, :get_all_collections
+    
    
 
     #get "/graphql", Absinthe.Plug.GraphiQL, schema: Sconely.Schema

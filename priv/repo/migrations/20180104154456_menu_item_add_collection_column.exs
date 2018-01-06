@@ -4,7 +4,7 @@ defmodule SconeHomeElixir.Repo.Migrations.MenuItemAddCollectionColumn do
   def up do
 
   		alter table(:menu_items) do
-		    add :collection, :boolean
+		    add :collection, :boolean, default: false
 		end
   end
 end

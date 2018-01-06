@@ -212,7 +212,30 @@ class CollectionsItem extends React.Component<any, any> {
   }
 }
 
+const mapStateToProps = (state: any, ownProps: any) => {
+  console.log("mapstatetoprops collections " + JSON.stringify(state.User.collections));
+  return {
 
+      collection_items: state.User.collection_items,
+  
+  }
+};
+
+const mapDispatchToProps = (dispatch: any, ownProps: any) => {
+  return {
+    //viewmenuthunk
+
+    //getCollectionItems: () => {
+      //console.log("here");
+    //  dispatch(getCollectionItems());
+    //},
+  }
+}
+
+const CollectionsConnected = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Collections);
 
 export default CollectionsItem;
 

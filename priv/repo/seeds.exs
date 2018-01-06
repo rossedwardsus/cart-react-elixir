@@ -74,7 +74,10 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 11, order:
 
 menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 12, order: 12, name: "Sconely Assortment", ingredients: "", description: "Sconely Assortment includes our best selling sweet and savory scones.  6 of each of the following Sconely favorites are included.\nDWK - An exquisite combination of flavors and textures with caramelized pears, praline pecans and fresh ginger\nRuby Q - Fresh cherries, semisweet chocolate chunks and Madagascan vanilla bean\nSavvy Go Go - Savory and satisfying, with sun-dried tomatoes, goat cheese and fresh herbs\nZilla - A savory powerhouse that perfectly combines gruyere cheese, caramelized purple onions and sage", assortment: true, active: false})
 
-Repo.insert!(menu_item_changeset)
+#Repo.insert!(menu_item_changeset)
+
+
+
 
 menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 13, order: 0, name: "Sweet + simple, you’re the best", ingredients: "Unbleached white all-purpose flour*, Fresh cherries*, Semisweet chocolate*, Unsalted butter*, Eggs*, Heavy cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascan vanilla bean*, Sea salt. *Organic", description: "6, 3-inch heart shaped Ruby Q scones, with fresh cherries, semisweet chocolate chunks and Madagascan vanilla bean", assortment: false, active: false, collection: true})
 
