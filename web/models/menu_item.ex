@@ -12,7 +12,9 @@ defmodule Sconely.MenuItem do
 		schema "menu_items" do
 			field :menu_item_id, :integer
 			field :name, :string
+			field :collection_name, :string
 			field :description, :string
+			field :collection_description, :string
 			field :ingredients, :string
 			field :assortment, :boolean
 			field :active, :boolean

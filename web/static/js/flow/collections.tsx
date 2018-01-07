@@ -87,7 +87,7 @@ class Collections extends React.Component<any, any> {
 
       //console.log("menu props");
       console.log("collections cwrp " + JSON.stringify(nextProps.collections));
-      this.setState({collections: nextProps.collections});
+      this.setState({collections: nextProps.collections.collections});
 
   }
 
@@ -190,10 +190,10 @@ class Collections extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops collections " + JSON.stringify(state.User.collections));
+  console.log("mapstatetoprops collections " + JSON.stringify(state.collections));
   return {
 
-      collections: state.User.collections,
+      collections: state.collections,
   
   }
 };

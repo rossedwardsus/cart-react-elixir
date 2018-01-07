@@ -43,7 +43,7 @@ export default function user(state:any = {collections: [], collectionMenuItems: 
     //complete_order
     //set order status to "completed"
 
-    case COLLECTIONS:
+    /*case COLLECTIONS:
 
       console.log("collections reducer " + JSON.stringify(action.collections));
 
@@ -60,7 +60,7 @@ export default function user(state:any = {collections: [], collectionMenuItems: 
       //collections_updated = state.collections;
       //collections_updated.push(action.collections);
 
-      return Object.assign({}, state, {...state, collections_items: action.collections});
+      return Object.assign({}, state, {...state, collections_items: action.collections});*/
 
 
 

@@ -7,6 +7,7 @@ import session from './session.ts';
 //import root from './root.ts';
 
 import menuItems from './menu.ts';
+import collections from './collections.ts';
 
 //import Order from './social_yours_order.ts';
 //import OrderDeliveryAddress from './order_delivery_Address.ts';
@@ -49,6 +50,7 @@ import User from './user.ts';
 export default combineReducers({
   //Register,
   session,
+  collections,
   menuItems,
   SignatureOrderGuestResponse,
   //Order,

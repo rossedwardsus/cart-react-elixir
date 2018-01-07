@@ -88,6 +88,7 @@ defmodule SconeHomeElixir.Router do
     post "/menu_items", Sconely.MenuItemsController, :index   
 
     post "/collections", Sconely.CollectionsController, :get_all_collections
+    post "/collections/details", Sconely.CollectionsController, :get_collection_details
     post "/collections/menu_items", Sconely.CollectionsController, :get_collection_menu_items
     
 

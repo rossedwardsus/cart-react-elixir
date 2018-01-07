@@ -15,11 +15,14 @@ import {connect} from 'react-redux';
 //import SocialSidebarCart from './social_order_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
 
+import CollectionItemModal from './collection_item_modal.tsx';
+
 import PublicTopNavbar from './public/public_top_navbar.tsx';
 import PublicBottomNavbar from './public/public_bottom_navbar.tsx';
 import PublicPrivacyTermsNavbar from './public/public_privacy_terms_navbar.tsx';
 
-import {getCollectionMenuItems} from './actions/collections.ts';  
+import {getCollectionDetails, getCollectionMenuItems} from './actions/collections.ts';  
+//import {} from './actions/collections.ts';  
 //import {getCollectionMenuItems} from './action/collections.ts'; 
 
 //import axios from 'axios';
@@ -70,6 +73,7 @@ class CollectionMenuItems extends React.Component<any, any> {
       window.scrollTo(0, 0);
 
       //this.props.createOrder("social", "", "");
+      this.props.getCollectionDetails("");
       this.props.getCollectionMenuItems("");
     
   }
@@ -92,7 +96,27 @@ class CollectionMenuItems extends React.Component<any, any> {
 
   showItem = (menu_item_id: any) => {
 
-     
+      console.log("menu_item_id " + menu_item_id);
+
+      /*let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
+
+      console.log(JSON.stringify(menu_item));
+
+      //let menu_item_description = menu_item["description"].replace(new RegExp('\n','g'), '<br/>');
+
+      let menu_item_description = menu_item["description"].split("\\n").map((item: any) => <p>{item}<br/></p>);
+
+      this.setState({selected_item_id: menu_item_id});
+      this.setState({selected_item_name: menu_item["name"]});
+      this.setState({selected_item_description: menu_item_description});
+      this.setState({selected_item_ingredients:  menu_item["ingredients"]});
+      this.setState({selected_item_assortment:  menu_item["assortment"]});
+
+
+      this.setState({selected_item_quantity_selector: 0});*/
+    
+      $('#myModal').modal('show').css("background", "");;
+
 
   }
 
@@ -155,7 +179,8 @@ class CollectionMenuItems extends React.Component<any, any> {
     
   }
 
- 
+  ////let message = this.props.User.orders[0].pool_message.split("\n").map((item: any, key: any) => {return <span key={key}>{item}<br/></span>});
+
  
   render(): JSX.Element{
 
@@ -165,6 +190,8 @@ class CollectionMenuItems extends React.Component<any, any> {
                       <PublicTopNavbar/>
                       <div className="row">
                           <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
+                              <Link to="/collections" className="btn btn-default btn-block" style={{borderRadius: 0}}>BAck to Collections</Link> 
+                              <br/>
                               Hearts Collection
                               <br/>
                               A selection of handcrafted, heart shaped, delicious scones -- all free of refined surags and soy. 
@@ -172,8 +199,8 @@ class CollectionMenuItems extends React.Component<any, any> {
                               Baking and delivery on Valentines Day
                               <br/>
                               <br/>
-                              <Link to="/collections/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link> 
-                          </div>
+                              <Link to="/collections/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Start Order</Link>   
+                              </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
                               <br/>
                               {this.state.collection_items.map(function(collection_item: any, index: any){
@@ -204,6 +231,7 @@ class CollectionMenuItems extends React.Component<any, any> {
                                 }.bind(this))}
 
                           </div>
+                          <CollectionItemModal collectionItems={[{item_id: 1, item_title: "test"}]} selectedItemName={"1"}/>
                     </div>
                     <PublicBottomNavbar/>
                     <PublicPrivacyTermsNavbar/>
@@ -216,11 +244,11 @@ class CollectionMenuItems extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops collections " + JSON.stringify(state.User.collections));
+  console.log("mapstatetoprops collection menu items " + JSON.stringify(state.collectionMenuItems));
   return {
 
-      collections: state.User.collections,
-      collectionMenuItems: state.User.collectionMenuItems,
+      collections: state.collections,
+      collectionMenuItems: state.collectionMenuItems,
   
   }
 };
@@ -228,6 +256,11 @@ const mapStateToProps = (state: any, ownProps: any) => {
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
+
+    getCollectionDetails: (collection_id: any) => {
+      //console.log("here");
+      dispatch(getCollectionDetails(""));
+    },
 
     getCollectionMenuItems: (collection_id: any) => {
       //console.log("here");

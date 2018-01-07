@@ -9,9 +9,9 @@ defmodule Sconely.CollectionMenuItem do
 
 		@primary_key {:id, :binary_id, autogenerate: true}
 
-		schema "collection_items" do
+		schema "collection_menu_items" do
 			field :collection_id, Ecto.UUID
-			field :item_id, Ecto.UUID
+			field :menu_item_id, Ecto.UUID
 			
 			#timestamps()
 		end
