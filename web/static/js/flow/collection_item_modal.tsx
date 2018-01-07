@@ -43,14 +43,9 @@ class CollectionItemModal extends React.Component<any, any> {
     this.state = {
         menuItems: [],
         selectedItemId: "",
-        selected_item_size: "",
-        selected_item_quantity: 0,
-        selected_item_quantity_value: 0,
         selectedItemName: "",
-        selected_item_description: "",
-        selected_item_ingredients: "",
-        selected_item_assortment: false,
-        images: [],
+        selectedItemIngredients: "",
+        selectedItemDescription: "",
         hover_images: [],
     };
 
@@ -107,7 +102,10 @@ class CollectionItemModal extends React.Component<any, any> {
 
       //console.log("menu props");
       console.log("collection modal cwrp " + JSON.stringify(nextProp));
+      
       this.setState({selectedItemName: nextProp.selectedItemName});
+      this.setState({selectedItemDescription: nextProp.selectedItemDescription});
+      this.setState({selectedItemIngredients: nextProp.selectedItemIngredients});
 
   }
 
@@ -116,8 +114,9 @@ class CollectionItemModal extends React.Component<any, any> {
       //cart items
 
       //console.log("menu props");
-      console.log("collection modal cdrp " + JSON.stringify(nextProp));
-      this.setState({selectedItemName: this.props.selectedItemName});
+      //console.log("collection modal cdrp " + JSON.stringify(nextProp));
+      //this.setState({selectedItemName: this.props.selectedItemName});
+      
 
   }
 
@@ -173,17 +172,14 @@ class CollectionItemModal extends React.Component<any, any> {
                       <div className="modal-content">
                         <div className="modal-header">
                           <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_name}</h4>
+                          <h4 className="modal-title" id="myModalLabel">{this.state.selectedItemName}</h4>
                         </div>
                         <div className="modal-body">
-                          {this.state.selectedItemName}
-                          <br/>
-                          {this.state.selected_item_description}
+                          {this.state.selectedItemDescription}
                           <br/>
                             <div>
-                                Ingredients: {this.state.selected_item_ingredients}
+                                Ingredients: {this.state.selectedItemIngredients}
                             </div>
-                          
                           <br/>
                           <br/>
                           <div>1/2 Dozen - 20</div>

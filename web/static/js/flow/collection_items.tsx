@@ -45,8 +45,15 @@ class CollectionMenuItems extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        collection_items: [{item_id: 1, item_title: "You make me smile"}, {item_id: 1, item_title: "Apple of my eye"}]
-
+        collectionDetails: [],
+        //collection_items: [{item_id: 1, item_title: "You make me smile"}, {item_id: 1, item_title: "Apple of my eye"}]
+        collectionMenuItems: [],
+        collectionTitle: "",
+        collectionDescription: "",
+        selectedItemId: "",
+        selectedItemName: "",
+        selectedItemIngredients: "",
+        selectedItemDescription: ""
     };
 
     //this.loadCart = this.loadCart.bind(this);
@@ -82,9 +89,13 @@ class CollectionMenuItems extends React.Component<any, any> {
 
       //cart items
 
+      console.log("collection details" + JSON.stringify(nextProps.collectionDetails));
+      this.setState({collectionTitle: nextProps.collectionDetails.title})
+      this.setState({collectionDescription: nextProps.collectionDetails.description});
+
       //console.log("menu props");
       console.log("collection menu items cwrp " + JSON.stringify(nextProps.collectionMenuItems));
-      //this.setState({menuItems: this.props.menuItems});
+      this.setState({collectionMenuItems: nextProps.collectionMenuItems});
 
   }
 
@@ -94,26 +105,26 @@ class CollectionMenuItems extends React.Component<any, any> {
     };
   }
 
-  showItem = (menu_item_id: any) => {
+  showItem = (collection_menu_item_id: any) => {
 
-      console.log("menu_item_id " + menu_item_id);
+      console.log("menu_item_id " + collection_menu_item_id);
 
-      /*let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
+      let collection_menu_item = this.state.collectionMenuItems.find((collection_item: any) => {console.log(collection_item); return collection_item.id === collection_menu_item_id});
 
-      console.log(JSON.stringify(menu_item));
+      console.log(JSON.stringify(collection_menu_item));
 
       //let menu_item_description = menu_item["description"].replace(new RegExp('\n','g'), '<br/>');
 
-      let menu_item_description = menu_item["description"].split("\\n").map((item: any) => <p>{item}<br/></p>);
+      let collection_menu_item_description = collection_menu_item["collection_description"].split("\\n").map((item: any) => <p>{item}<br/></p>);
 
-      this.setState({selected_item_id: menu_item_id});
-      this.setState({selected_item_name: menu_item["name"]});
-      this.setState({selected_item_description: menu_item_description});
-      this.setState({selected_item_ingredients:  menu_item["ingredients"]});
-      this.setState({selected_item_assortment:  menu_item["assortment"]});
+      this.setState({selectedItemId: collection_menu_item.id});
+      this.setState({selectedItemName: collection_menu_item["collection_name"]});
+      this.setState({selectedItemDescription: collection_menu_item_description});
+      this.setState({selectedItemIngredients:  collection_menu_item["ingredients"]});
+      //this.setState({selected_item_assortment:  menu_item["assortment"]});
 
 
-      this.setState({selected_item_quantity_selector: 0});*/
+      //this.setState({selected_item_quantity_selector: 0});
     
       $('#myModal').modal('show').css("background", "");;
 
@@ -190,11 +201,13 @@ class CollectionMenuItems extends React.Component<any, any> {
                       <PublicTopNavbar/>
                       <div className="row">
                           <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
-                              <Link to="/collections" className="btn btn-default btn-block" style={{borderRadius: 0}}>BAck to Collections</Link> 
+                              <Link to="/collections" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Collections</Link> 
                               <br/>
-                              Hearts Collection
+                              {this.state.collectionTitle}
                               <br/>
-                              A selection of handcrafted, heart shaped, delicious scones -- all free of refined surags and soy. 
+                              <br/>
+                              {this.state.collectionDescription}
+                              <br/>
                               <br/>
                               Baking and delivery on Valentines Day
                               <br/>
@@ -203,7 +216,7 @@ class CollectionMenuItems extends React.Component<any, any> {
                               </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
                               <br/>
-                              {this.state.collection_items.map(function(collection_item: any, index: any){
+                              {this.state.collectionMenuItems.map(function(collection_item: any, index: any){
 
                                     //console.log(item);
 
@@ -220,9 +233,9 @@ class CollectionMenuItems extends React.Component<any, any> {
                                     return(
                                             <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
                                           
-                                                  <img id="1" className="img-responsive" onClick={() => this.showItem(collection_item.collection_url_name)} src={"/images/collections/Ursaheart2.jpg"} data-target="myModal" alt="..." />
+                                                  <img id="1" className="img-responsive" onClick={() => this.showItem(collection_item.id)} src={"/images/collections/valentines_day/" + collection_item.id + ".jpg"} data-target="myModal" alt="..." />
                                               <br/>
-                                              <b>{collection_item.item_title}</b>
+                                              <b>{collection_item.collection_name}</b>
                                               <br/>
                                               <br/>
                                               <br/>
@@ -231,7 +244,7 @@ class CollectionMenuItems extends React.Component<any, any> {
                                 }.bind(this))}
 
                           </div>
-                          <CollectionItemModal collectionItems={[{item_id: 1, item_title: "test"}]} selectedItemName={"1"}/>
+                          <CollectionItemModal collectionItems={[{item_id: 1, item_title: "test"}]} selectedItemName={this.state.selectedItemName} selectedItemIngredients={this.state.selectedItemIngredients} selectedItemDescription={this.state.selectedItemDescription}/>
                     </div>
                     <PublicBottomNavbar/>
                     <PublicPrivacyTermsNavbar/>
@@ -244,11 +257,11 @@ class CollectionMenuItems extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops collection menu items " + JSON.stringify(state.collectionMenuItems));
+  console.log("mapstatetoprops collection menu items " + JSON.stringify(state.collections.collectionMenuItems));
   return {
 
-      collections: state.collections,
-      collectionMenuItems: state.collectionMenuItems,
+      collectionDetails: state.collections.collectionDetails,
+      collectionMenuItems: state.collections.collectionMenuItems,
   
   }
 };

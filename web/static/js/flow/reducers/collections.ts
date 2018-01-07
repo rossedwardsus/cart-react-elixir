@@ -23,7 +23,7 @@ let inititalState: OrderState = {
 
 }*/
 
-export default (state:any = {collections: [], collectionMenuItems: []}, action: any) => {
+export default (state:any = {collections: [], collectionDetails: [], collectionMenuItems: []}, action: any) => {
   switch (action.type) {
     case COLLECTIONS:
 
@@ -52,7 +52,7 @@ export default (state:any = {collections: [], collectionMenuItems: []}, action: 
       //collections_updated = state.collections;
       //collections_updated.push(action.collections);
 
-      return Object.assign({}, state, {...state, collectionsMenuItems: action.collectionMenuItems});
+      return Object.assign({}, state, {...state, collectionMenuItems: action.collectionMenuItems});
 
     
     default:

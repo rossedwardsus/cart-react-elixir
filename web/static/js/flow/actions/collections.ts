@@ -97,7 +97,7 @@ export function getCollectionDetails(collection_id: any){
 
                   //this.context.router.push('/order/complete');
 
-                  dispatch({ type: COLLECTION_DETAILS, collectionDETAILS: response.data.collection_DETAILS});
+                  dispatch({ type: COLLECTION_DETAILS, collectionDetails: response.data.collection_details});
                     //dispatch(push("/order/url_name/guest/name"));
                   //dispatch(createOrder("pool", "this.props.params.pool_name", "this.props.params.pool_date"))
                   //dispatch(push("/order/menu"));

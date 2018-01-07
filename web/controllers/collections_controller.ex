@@ -32,7 +32,7 @@ defmodule Sconely.CollectionsController do
     #{:ok, Repo.all(from c in Collection, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
     #{:ok, [%{item_id: 1000}]}
 
-    json conn |> put_status(:ok), %{collection_details: Repo.all(from c in Collection, select: %{id: c.id, title: c.title, url_title: c.url_title, description: c.description}, where: c.id == ^"0937b5e1-ae49-4481-972b-818fc8120fe4")}
+    json conn |> put_status(:ok), %{collection_details: Repo.one(from c in Collection, select: %{id: c.id, title: c.title, url_title: c.url_title, description: c.description}, where: c.id == ^"37a4f176-3216-4e3b-9168-1ced5d71fba3")}
 
   end
 
@@ -40,12 +40,12 @@ defmodule Sconely.CollectionsController do
   def get_collection_menu_items(conn, _args) do
     #IO.puts("create graphql")
 
-    IO.inspect(Repo.all(from cmi in CollectionMenuItem, where: cmi.collection_id == ^"0937b5e1-ae49-4481-972b-818fc8120fe4"))
+    IO.inspect(Repo.all(from cmi in CollectionMenuItem, where: cmi.collection_id == ^"37a4f176-3216-4e3b-9168-1ced5d71fba3"))
 
     #IO.inspect(elem(cast("0937b5e1-ae49-4481-972b-818fc8120fe4"), 1))
 
     
-    menu_items = Repo.all(from cmi in CollectionMenuItem, select: cmi.menu_item_id, where: cmi.collection_id == ^"0937b5e1-ae49-4481-972b-818fc8120fe4")
+    menu_items = Repo.all(from cmi in CollectionMenuItem, select: cmi.menu_item_id, where: cmi.collection_id == ^"37a4f176-3216-4e3b-9168-1ced5d71fba3")
 
     IO.inspect(menu_items)
 
