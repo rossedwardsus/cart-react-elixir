@@ -87,6 +87,8 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 14, order:
 
 #Repo.insert!(menu_item_changeset)
 
+#new
+#non collection name is "Fannette"
 menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 15, order: 0, name: "You’re adorable (Vegan)", ingredients: "Unbleached white all-purpose flour*, Semisweet chocolate*, Pecans, Almond milk*, Virgin coconut oil*, Ground Flax seeds*, Lemon juice*, Coconut sugar*, Pure vanilla extract*, Baking powder, Sea salt. *Organic (need to confirm these ingredients)", description: "6, 3-inch heart shaped Fanette scones with chunks of semisweet chocolate rolled in pecan butter, praline pecans and topped with a pecan turtle and salty caramel drizzle.", assortment: false, active: false})
 
 #Repo.insert!(menu_item_changeset)

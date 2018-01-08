@@ -10,8 +10,8 @@ defmodule Sconely.Collection do
 		@primary_key {:id, :binary_id, autogenerate: true}
 
 		schema "collections" do
-			field :title, :string
-			field :url_title, :string
+			field :name, :string
+			field :url_name, :string
 			field :description, :string
 			field :active, :boolean
 			

@@ -38,13 +38,13 @@ import YoursRedirect from './yours_redirect.tsx';
 import SocialRedirect from './social_redirect.tsx';
 import PoolRedirect from './pool_redirect.tsx';
 
-import UserHomePage from './user/user_home_page.tsx';
-import UserProfile from './user/user_profile.tsx';
-import UserDeliveryContactsAddresses from './user/user_delivery_contacts_addresses.tsx';
+//import UserHomePage from './user/user_home_page.tsx';
+//import UserProfile from './user/user_profile.tsx';
+//import UserDeliveryContactsAddresses from './user/user_delivery_contacts_addresses.tsx';
 //import UserDeliveryContacts from './user/user_delivery_contacts.tsx';
-import UserPaymentMethods from './user/user_payment_methods.tsx';
-import UserAboutMe from './user/user_about_me.tsx';
-import UserOrder from './user/user_order.tsx';
+//import UserPaymentMethods from './user/user_payment_methods.tsx';
+//import UserAboutMe from './user/user_about_me.tsx';
+//import UserOrder from './user/user_order.tsx';
 
 import YoursOrderMenu from "./yours_order_menu.tsx";
 
@@ -70,16 +70,16 @@ import checkLogin from './checkLogin.tsx';
 import User from "./user";
 
 //import SconelySocial from "./sconely_social_single_page";*/
-import SconelySignatureGuestMenuItems from "./signature_guest_response/menu_items.tsx";
-import SconelySignatureGuestName from "./signature_guest_response/name.tsx";
-import SconelySignatureGuestOrderCompleted from "./signature_guest_response/order_completed.tsx";
+//import SconelySignatureGuestMenuItems from "./signature_guest_response/menu_items.tsx";
+//import SconelySignatureGuestName from "./signature_guest_response/name.tsx";
+//import SconelySignatureGuestOrderCompleted from "./signature_guest_response/order_completed.tsx";
 //import SconelySignatureGuestEvent from "./sconely_signature_guest_response/event.tsx";
 
 //import SconelySocialEventDetails from "./sconely_social_event_details";
-import Guests from "./user/sconely_signature_guests.tsx";
-import SignatureAdditionalItems from "./user/signature_additional_items.tsx";
-import SignatureOrderHistory from "./user/sconely_signature_order_history.tsx";
-import SignatureOrderPreview from "./user/sconely_signature_preview.tsx";
+//import Guests from "./user/sconely_signature_guests.tsx";
+//import SignatureAdditionalItems from "./user/signature_additional_items.tsx";
+//import SignatureOrderHistory from "./user/sconely_signature_order_history.tsx";
+//import SignatureOrderPreview from "./user/sconely_signature_preview.tsx";
 //import SconelySignature from "./sconely_signature_single_page.tsx";
 //import SconelySignatureSinglePage from "./sconely_signature_single_page.tsx";
 /*import OrderPayment from "./sconely_yours_social_order_payment";
@@ -192,6 +192,23 @@ const history = syncHistoryWithStore(browserHistory, store)
         ///collections/valentines
         ///partners/
 
+/*<Route path="/user" component={UserHomePage} />
+        <Route path="/user/profile" component={UserProfile} />
+        <Route path="/user/delivery_contacts_addresses" component={UserDeliveryContactsAddresses} />
+        <Route path="/user/payment_methods" component={UserPaymentMethods} />
+        <Route path="/user/about_me" component={UserAboutMe} />
+  <Route path="/order/:order_id/details" component={UserOrder} />
+        <Route path="/order/:order_id/guests" component={Guests} />
+        <Route path="/order/:order_id/summary" component={SignatureOrderHistory} />
+        <Route path="/order/:order_id/items" component={SignatureAdditionalItems} />
+        <Route path="/order/:order_id/preview" component={SignatureOrderPreview} />
+        <Route path="/order/:event_name/guest/menu" component={SconelySignatureGuestMenuItems} />
+        <Route path="/order/:event_name/guest/name" component={SconelySignatureGuestName} />
+        <Route path="/order/:event_name/guest/completed" component={SconelySignatureGuestOrderCompleted} />               
+        
+*/
+        
+
 const Root = () => (
   <Provider store={store}>
     <Router history={history}>
@@ -231,19 +248,6 @@ const Root = () => (
           <Route path="/order/payment" component={OrderPayment} />
           <Route path="/order/complete" component={OrderComplete} />
         </Route>
-        <Route path="/user" component={UserHomePage} />
-        <Route path="/user/profile" component={UserProfile} />
-        <Route path="/user/delivery_contacts_addresses" component={UserDeliveryContactsAddresses} />
-        <Route path="/user/payment_methods" component={UserPaymentMethods} />
-        <Route path="/user/about_me" component={UserAboutMe} />
-        <Route path="/order/:order_id/details" component={UserOrder} />
-        <Route path="/order/:order_id/guests" component={Guests} />
-        <Route path="/order/:order_id/summary" component={SignatureOrderHistory} />
-        <Route path="/order/:order_id/items" component={SignatureAdditionalItems} />
-        <Route path="/order/:order_id/preview" component={SignatureOrderPreview} />
-        <Route path="/order/:event_name/guest/menu" component={SconelySignatureGuestMenuItems} />
-        <Route path="/order/:event_name/guest/name" component={SconelySignatureGuestName} />
-        <Route path="/order/:event_name/guest/completed" component={SconelySignatureGuestOrderCompleted} />               
         <Route path="/yours/menu" component={YoursRedirect} />
         <Route path="/social/menu" component={SocialRedirect} /> 
         <Route path="/pool/:pool_name/:pool_date" component={PoolRedirect} />                    

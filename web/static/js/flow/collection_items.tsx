@@ -80,8 +80,10 @@ class CollectionMenuItems extends React.Component<any, any> {
       window.scrollTo(0, 0);
 
       //this.props.createOrder("social", "", "");
-      this.props.getCollectionDetails("");
-      this.props.getCollectionMenuItems("");
+      this.props.getCollectionDetails(this.props.params.collection_name);
+      this.props.getCollectionMenuItems(this.props.params.collection_name);
+
+      console.log(JSON.stringify(this.props.params));
     
   }
 
@@ -90,7 +92,7 @@ class CollectionMenuItems extends React.Component<any, any> {
       //cart items
 
       console.log("collection details" + JSON.stringify(nextProps.collectionDetails));
-      this.setState({collectionTitle: nextProps.collectionDetails.title})
+      this.setState({collectionName: nextProps.collectionDetails.name})
       this.setState({collectionDescription: nextProps.collectionDetails.description});
 
       //console.log("menu props");
@@ -203,7 +205,7 @@ class CollectionMenuItems extends React.Component<any, any> {
                           <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
                               <Link to="/collections" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Collections</Link> 
                               <br/>
-                              {this.state.collectionTitle}
+                              {this.state.collectionName}
                               <br/>
                               <br/>
                               {this.state.collectionDescription}
@@ -270,14 +272,14 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
-    getCollectionDetails: (collection_id: any) => {
+    getCollectionDetails: (collection_name: any) => {
       //console.log("here");
-      dispatch(getCollectionDetails(""));
+      dispatch(getCollectionDetails(collection_name));
     },
 
-    getCollectionMenuItems: (collection_id: any) => {
+    getCollectionMenuItems: (collection_name: any) => {
       //console.log("here");
-      dispatch(getCollectionMenuItems(""));
+      dispatch(getCollectionMenuItems(collection_name));
     },
   }
 }
