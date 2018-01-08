@@ -171,9 +171,9 @@ class Collections extends React.Component<any, any> {
                                     return(
                                             <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
                                           
-                                                  <img id="1" className="img-responsive" onClick={() => this.showCollectionItems(collection.url_title)} src={"/images/collections/" + collection.id + ".jpg"} data-target="myModal" alt="..." />
+                                                  <img id="1" className="img-responsive" onClick={() => this.showCollectionItems(collection.url_name)} src={"/images/collections/" + collection.id + ".jpg"} data-target="myModal" alt="..." />
                                               <br/>
-                                              <b>{collection.collection_title}</b>
+                                              <b>{collection.collection_name}</b>
                                               <br/>
                                               <br/>
                                               <br/>
