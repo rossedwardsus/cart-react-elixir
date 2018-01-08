@@ -93,7 +93,10 @@ class CollectionMenuItems extends React.Component<any, any> {
 
       console.log("collection details" + JSON.stringify(nextProps.collectionDetails));
       this.setState({collectionName: nextProps.collectionDetails.name})
-      this.setState({collectionDescription: nextProps.collectionDetails.description});
+
+      let collectionDescription = nextProps.collectionDetails.description.split("\\n").map((item: any) => <p>{item}<br/></p>);
+
+      this.setState({collectionDescription: collectionDescription});
 
       //console.log("menu props");
       console.log("collection menu items cwrp " + JSON.stringify(nextProps.collectionMenuItems));
