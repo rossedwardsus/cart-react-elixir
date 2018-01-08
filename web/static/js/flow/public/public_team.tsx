@@ -107,7 +107,7 @@ export class PublicTeam extends React.Component<any, any> {
                         </div>
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                           <br/>
-                          <img src="/images/sconely_team.jpg"/>
+                          <img src="/images/Sconelyteam2.jpg"/>
                           <br/>
                           <br/>
                           <b>Julia Friedman, Founder & CEO</b>

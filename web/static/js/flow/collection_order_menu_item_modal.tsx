@@ -46,9 +46,9 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
         selected_item_size: "",
         selected_item_quantity: 0,
         selected_item_quantity_value: 0,
-        selected_item_name: "",
-        selected_item_description: "",
-        selected_item_ingredients: "",
+        selectedItemName: "",
+        selectedItemDescription: "",
+        selectedItemIngredients: "",
         selected_item_assortment: false,
         add_cart_item_button_classname: "btn-block btn btn-default disabled",
         add_cart_item_button_disabled: true,
@@ -113,8 +113,10 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
       //cart items
 
       //console.log("menu props");
-      console.log("social menu modal cwrp " + JSON.stringify(nextProp));
-      this.setState({selected_item_name: nextProp.selected_item_name});
+      console.log("collection menu modal cwrp " + JSON.stringify(nextProp));
+      this.setState({selectedItemName: nextProp.selectedItemName});
+      this.setState({selectedItemDescription: nextProp.selectedItemDescription});
+      this.setState({selectedItemIngredients: nextProp.selectedItemIngredients});
 
   }
 
@@ -123,8 +125,10 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
       //cart items
 
       //console.log("menu props");
-      console.log("social menu modal cdrp " + JSON.stringify(this.props));
-      //this.setState({selected_item_name: this.props.selected_item_name});
+      console.log("collection menu modal cdrp " + JSON.stringify(this.props.selectedItemName));
+      this.setState({selectedItemName: this.props.selectedItemName});
+      this.setState({selectedItemDescription: this.props.selectedItemDescription});
+      this.setState({selectedItemIngredients: this.props.selectedItemIngredients});
 
   }
 
@@ -331,15 +335,13 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                       <div className="modal-content">
                         <div className="modal-header">
                           <button type="button" className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                          <h4 className="modal-title" id="myModalLabel">{this.state.selected_item_name}</h4>
+                          <h4 className="modal-title" id="myModalLabel">{this.state.selectedItemName}</h4>
                         </div>
                         <div className="modal-body">
-                          {this.state.selected_item_name}
-                          <br/>
-                          {this.state.selected_item_description}
+                          {this.state.selectedItemDescription}
                           <br/>
                             <div>
-                                Ingredients: {this.state.selected_item_ingredients}
+                                Ingredients: {this.state.selectedItemIngredients}
                             </div>
                           
                           <br/>

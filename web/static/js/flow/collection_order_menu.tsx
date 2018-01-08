@@ -48,7 +48,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
         selectedItemSize: "",
         selectedItemQuantity: 0,
         selected_item_quantity_selector: 0,
-        selected_item_name: "",
+        selectedItemName: "",
         selectedItemDescription: "",
         selectedItemIngredients: "",
         selected_item_assortment: false,
@@ -128,24 +128,24 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
   showItem = (collection_menu_item_id: any) => {
 
-      console.log("menu_item_id " + collection_menu_item_id);
+      console.log("collection_menu_item_id " + collection_menu_item_id);
 
-      let collectionMenuItem = this.props.collectionMenuItems.find((item: any) => {return item.menu_item_id == collection_menu_item_id});
+      let collectionMenuItem = this.props.collectionMenuItems.find((item: any) => {return item.id == collection_menu_item_id});
 
       console.log(JSON.stringify(collectionMenuItem));
 
       //let menu_item_description = menu_item["description"].replace(new RegExp('\n','g'), '<br/>');
 
-      let collection_menu_item_description = collectionMenuItem["description"].split("\\n").map((item: any) => <p>{item}<br/></p>);
+      let collection_menu_item_description = collectionMenuItem["collection_description"].split("\\n").map((item: any) => <p>{item}<br/></p>);
 
-      this.setState({selected_item_id: collection_menu_item_id});
-      this.setState({selectedItemName: collectionMenuItem["name"]});
+      //this.setState({selected_item_id: collection_menu_item_id});
+      this.setState({selectedItemName: collectionMenuItem["collection_name"]});
       this.setState({selectedItemDescription: collection_menu_item_description});
       this.setState({selectedItemIngredients:  collectionMenuItem["ingredients"]});
-      this.setState({selectedItemAssortment:  collectionMenuItem["assortment"]});
+      //this.setState({selectedItemAssortment:  collectionMenuItem["assortment"]});
 
 
-      this.setState({selected_item_quantity_selector: 0});
+      //this.setState({selected_item_quantity_selector: 0});
     
       $('#myModal').modal('show').css("background", "");;
 
@@ -392,9 +392,9 @@ class CollectionOrderMenu extends React.Component<any, any> {
                                 return(
                                         <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
                                       
-                                              <img id="1" className="img-responsive" onClick={() => this.showItem(item.menu_item_id)} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
+                                              <img id="1" className="img-responsive" onClick={() => this.showItem(item.id)} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
                                           <br/>
-                                          <b>{item.name}</b>
+                                          <b>{item.collection_name}</b>
                                           <br/>
                                           <br/>
                                           <br/>
@@ -405,8 +405,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <CollectionMenuItemModal menu_item_id={this.state.selected_item_id} selected_item_name={this.state.selected_item_name} selectedItemIngredients={this.state.selected_item_ingredients} selectedItemDescription={this.state.selected_item_description} selectedItemQuantity={(e: any) => this.selectedItemQuantity(e)} selectedItemSize={(e: any) => this.selectedItemSize(e)} addCartItem={() => this.addCartItem()}/>
-                        
+                          <CollectionMenuItemModal menu_item_id={this.state.selected_item_id} selectedItemName={this.state.selectedItemName} selectedItemIngredients={this.state.selectedItemIngredients} selectedItemDescription={this.state.selectedItemDescription} selectedItemQuantity={(e: any) => this.selectedItemQuantity(e)} selectedItemSize={(e: any) => this.selectedItemSize(e)} addCartItem={() => this.addCartItem()}/>
                   </div>
                   <PublicBottomNavbar/>
                   <PublicPrivacyTermsNavbar/>
