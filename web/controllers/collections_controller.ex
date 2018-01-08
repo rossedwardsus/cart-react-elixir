@@ -33,7 +33,7 @@ defmodule Sconely.CollectionsController do
     #{:ok, Repo.all(from c in Collection, select: %{id: mi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
     #{:ok, [%{item_id: 1000}]}
 
-    json conn |> put_status(:ok), %{collection_details: Repo.one(from c in Collection, select: %{id: c.id, title: c.title, url_title: c.url_title, description: c.description}, where: c.url_title == ^_args["collection_name"])}
+    json conn |> put_status(:ok), %{collection_details: Repo.one(from c in Collection, select: %{id: c.id, name: c.name, url_name: c.url_name, description: c.description}, where: c.url_name == ^_args["collection_name"])}
 
   end
 

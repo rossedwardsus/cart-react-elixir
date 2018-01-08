@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 //import _ from 'lodash';
 
-import {getMenuItems} from './actions/menu.ts';
+import {getCollectionMenuItems} from './actions/collections.ts';
 import {cartValidated} from './actions/order_validations.ts';
 import {updateOrderSession} from './actions/session.ts';
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
@@ -43,14 +43,14 @@ class CollectionOrderMenu extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
-        menuItems: [],
+        collectionMenuItems: [],
         selected_item_id: "",
-        selected_item_size: "",
-        selected_item_quantity: 0,
+        selectedItemSize: "",
+        selectedItemQuantity: 0,
         selected_item_quantity_selector: 0,
         selected_item_name: "",
-        selected_item_description: "",
-        selected_item_ingredients: "",
+        selectedItemDescription: "",
+        selectedItemIngredients: "",
         selected_item_assortment: false,
         add_cart_item_button_classname: "btn-block btn btn-default disabled",
         add_cart_item_button_disabled: true,
@@ -92,8 +92,8 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     window.scrollTo(0, 0);
 
-    this.props.createOrder("collection", "", "");
-    //this.props.getMenuItems();
+    this.props.getCollectionMenuItems("valentines_day");
+    this.props.createOrder("collection");
     //this.setState({menuItems: this.props.menuItems});
 
 
@@ -115,8 +115,8 @@ class CollectionOrderMenu extends React.Component<any, any> {
       //cart items
 
       //console.log("menu props");
-      console.log("social menu mi cwrp " + JSON.stringify(this.props.menuItems));
-      this.setState({menuItems: this.props.menuItems});
+      console.log("collection menu mi cwrp " + JSON.stringify(nextProp.collectionMenuItems));
+      this.setState({collectionMenuItems: nextProp.collectionMenuItems});
 
   }
 
@@ -126,23 +126,23 @@ class CollectionOrderMenu extends React.Component<any, any> {
     };
   }
 
-  showItem = (menu_item_id: any) => {
+  showItem = (collection_menu_item_id: any) => {
 
-      console.log("menu_item_id " + menu_item_id);
+      console.log("menu_item_id " + collection_menu_item_id);
 
-      let menu_item = this.props.menuItems.find((item: any) => {return item.menu_item_id == menu_item_id});
+      let collectionMenuItem = this.props.collectionMenuItems.find((item: any) => {return item.menu_item_id == collection_menu_item_id});
 
-      console.log(JSON.stringify(menu_item));
+      console.log(JSON.stringify(collectionMenuItem));
 
       //let menu_item_description = menu_item["description"].replace(new RegExp('\n','g'), '<br/>');
 
-      let menu_item_description = menu_item["description"].split("\\n").map((item: any) => <p>{item}<br/></p>);
+      let collection_menu_item_description = collectionMenuItem["description"].split("\\n").map((item: any) => <p>{item}<br/></p>);
 
-      this.setState({selected_item_id: menu_item_id});
-      this.setState({selected_item_name: menu_item["name"]});
-      this.setState({selected_item_description: menu_item_description});
-      this.setState({selected_item_ingredients:  menu_item["ingredients"]});
-      this.setState({selected_item_assortment:  menu_item["assortment"]});
+      this.setState({selected_item_id: collection_menu_item_id});
+      this.setState({selectedItemName: collectionMenuItem["name"]});
+      this.setState({selectedItemDescription: collection_menu_item_description});
+      this.setState({selectedItemIngredients:  collectionMenuItem["ingredients"]});
+      this.setState({selectedItemAssortment:  collectionMenuItem["assortment"]});
 
 
       this.setState({selected_item_quantity_selector: 0});
@@ -157,7 +157,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     console.log("selected_item size " + e.target.value);
 
-    this.setState({selected_item_size: e.target.value});
+    this.setState({selectedItemSize: e.target.value});
   
   }
 
@@ -375,7 +375,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                           </div>
                           <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
                             <br/>
-                            {this.props.collectionItems.map(function(item: any, index: any){
+                            {this.state.collectionMenuItems.map(function(item: any, index: any){
 
                                 //console.log(item);
 
@@ -405,7 +405,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <CollectionMenuItemModal menu_item_id={this.state.selected_item_id} selected_item_name={this.state.selected_item_name} selected_item_ingredients={this.state.selected_item_ingredients} selected_item_description={this.state.selected_item_description} selectedItemQuantity={(e: any) => this.selectedItemQuantity(e)} selectedItemSize={(e: any) => this.selectedItemSize(e)} addCartItem={() => this.addCartItem()}/>
+                          <CollectionMenuItemModal menu_item_id={this.state.selected_item_id} selected_item_name={this.state.selected_item_name} selectedItemIngredients={this.state.selected_item_ingredients} selectedItemDescription={this.state.selected_item_description} selectedItemQuantity={(e: any) => this.selectedItemQuantity(e)} selectedItemSize={(e: any) => this.selectedItemSize(e)} addCartItem={() => this.addCartItem()}/>
                         
                   </div>
                   <PublicBottomNavbar/>
@@ -417,7 +417,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  //console.log("mapstatetoprops order menu " + JSON.stringify(state.routing));
+  console.log("mapstatetoprops order menu " + JSON.stringify(state.collections.collectionMenuItems));
   return {
 
     //started_order: state.User.orders.findIndex((order: any) => order.status == "started"),
@@ -432,11 +432,11 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
-        menuItems: state.menuItems.items,
+        collectionMenuItems: state.collections.collectionMenuItems,
         //guestOrder: state.guestOrder,
         //order: state.User.orders.find((order: any) => order.status == "current"),
         User: state.User,
-        path: state.routing.locationBeforeTransitions.pathname,
+        //path: state.routing.locationBeforeTransitions.pathname,
         
         //cart_total_items //computed
         //cart_total_cost //cost
@@ -453,9 +453,9 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
-    getMenuItems: () => {
+    getCollectionMenuItems: (collection_name: any) => {
       console.log("gmi");
-      dispatch(getMenuItems("social"));
+      dispatch(getCollectionMenuItems(collection_name));
     },
     createOrder: (order_type: any) => {
       dispatch(createOrder(order_type, "", ""));

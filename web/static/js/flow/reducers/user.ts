@@ -169,7 +169,7 @@ export default function user(state:any = {collections: [], collectionMenuItems: 
 
       orders_updated = state.orders;
 
-      if(action.order_type == "yours" || action.order_type == "social"){
+      if(action.order_type == "yours" || action.order_type == "social" || "collection"){
 
           orders_updated[0] = {deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, orderNote: "", giftOrder: false, giftNote: "", cartItems: [], deliveryDatetimeDate: "", deliveryDatetimeSpecificTime: "", paymentSecurityCode: ""};
 
