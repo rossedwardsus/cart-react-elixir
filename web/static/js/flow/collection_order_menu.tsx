@@ -173,23 +173,11 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     //}else{
 
-      if(this.state.selected_item_size == "regular"){
+    this.setState({selectedItemQuantity: (parseInt(e.target.value) * 6)});
         
-        this.setState({selected_item_quantity: (parseInt(e.target.value) * 12)});
-        //this.setState({selected_item_quantity_selector: e.target.value});
-      
-      }else if(this.state.selected_item_size == "mini"){
-        
-        this.setState({selected_item_quantity: (parseInt(e.target.value) * 24)});
-        //this.setState({selected_item_quantity_selector: e.target.value});
-      
-      }//else{ 
+    //this.setState({selected_item_quantity_selector: e.target.value});
 
-       // this.setState({selected_item_quantity: parseInt(e.target.value)});
-
-      //}
-
-    //}
+    // this.setState({selected_item_quantity: parseInt(e.target.value)});
 
     this.setState({add_cart_item_button_classname: "form-control btn-block btn btn-default"});
     this.setState({add_cart_item_button_disabled: false});
