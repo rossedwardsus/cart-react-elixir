@@ -216,13 +216,8 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     //console.log("yours items count" + item_count);
 
-    //if(item_count < 12){
 
-    //if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
-
-    //    this.props.addCartItem(null, this.state.selected_item_id, "regular", this.state.selected_item_quantity);
-
-    //}else{
+    //quantity X 6
 
         this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
 

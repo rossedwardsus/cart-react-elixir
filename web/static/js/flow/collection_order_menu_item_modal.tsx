@@ -334,11 +334,14 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                           
                           <br/>
                           <br/>
-                           <div><p>$20 per half dozen</p></div>
+                           <div><p>$22 per half dozen</p></div>
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="col-xs-12 col-md-12">
+                                  <div className="col-xs-12 col-md-4">
+                                    Half dozen in gift box
+                                  </div>
                                   <div className="col-xs-12 col-md-4">
                                     <select className="form-control" value={this.state.selectedItemQuantity} onChange={(e) => this.selectedItemQuantity(e)} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
                                       <option>1</option>
