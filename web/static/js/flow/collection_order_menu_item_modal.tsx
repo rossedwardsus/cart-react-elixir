@@ -44,7 +44,7 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
         menuItems: [],
         selected_item_id: "",
         selected_item_size: "",
-        selectedItemQuantity: 0,
+        selectedItemQuantity: "",
         selectedItemQuantityValue: 0,
         selectedItemName: "",
         selectedItemDescription: "",
@@ -189,10 +189,12 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
 
   addCartItem = () => {
 
-      this.props.addCartItem();
+      //this.props.addCartItem();
+
+      //this.props.addCartItem(null, this.state.selectedItemId, "regular", this.state.selectedItemQuantity);
 
       this.setState({selected_item_size: ""});
-      this.setState({selected_item_quantity_value: 0});
+      this.setState({selectedItemQuantity: ""});
       this.setState({add_cart_item_button_classname: "btn-block btn btn-default disabled"});
       this.setState({add_cart_item_button_disabled: true});
 
@@ -344,8 +346,8 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                                   </div>
                                   <div className="col-xs-12 col-md-4">
                                     <select className="form-control" value={this.state.selectedItemQuantity} onChange={(e) => this.selectedItemQuantity(e)} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
-                                      <option>Quantity</option>
-                                      <option>1</option>
+                                      <option value="">Quantity</option>
+                                      <option value="1">1</option>
                                       <option>2</option> 
                                       <option>3</option>
                                       <option>4</option>

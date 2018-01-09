@@ -457,7 +457,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
                             <br/>
                             </div>) : cart}
                   <br/>
-                  {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={(index: any) => this.props.increaseCartItemQuantity(index)} descreaseCartItemQuantity={() => this.props.decreaseCartItemQuantity("index")} removeCartItem={() => this.props.increaseCartItemQuantity("index")}/>)}
+                  {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={(index: any) => this.props.increaseCartItemQuantity(index)} descreaseCartItemQuantity={(index: any) => this.props.decreaseCartItemQuantity(index)} removeCartItem={() => this.props.increaseCartItemQuantity("index")}/>)}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 

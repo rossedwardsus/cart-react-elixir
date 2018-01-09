@@ -60,6 +60,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
         selected_item_quantity_options_array: [],
         pool_message_viewed: false,
         cartItems: [],
+        totalItems: 0
 
     };
 
@@ -114,6 +115,10 @@ class CollectionOrderMenu extends React.Component<any, any> {
   componentWillReceiveProps = (nextProp:any) => {
 
       //cart items
+
+      this.setState({totalItems: nextProp.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)});
+   
+      //console.log("total items " + total_items);
 
       //console.log("menu props");
       console.log("collection menu mi cwrp " + JSON.stringify(nextProp.collectionMenuItems));
@@ -345,6 +350,14 @@ class CollectionOrderMenu extends React.Component<any, any> {
         //}
     }
 
+    let message = <div>A selection of sweet Sconely favorites<br/>Packed in gift box, delivered to loved ones<br/>Perfect for Valentine’s Day or any day!</div>
+
+    //let total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0));
+   
+//if the total cart item quantity > 1
+//{this.state.orders[0].cartItems.}*/
+
+
      
           return(<div>
                     <PublicTopNavbar/>
@@ -354,6 +367,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                             <br/>
                             <b>VALENTINES DAY</b>
                             <br/>
+                            {this.state.totalItems < 6 ? "hello" : "there" }
                             <CollectionsSidebarCart User={this.props.User} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>
@@ -376,7 +390,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                                 return(
                                         <div className="col-xs-12 col-md-6 col-lg-6" style={{marginTop: 0, marginBottom: 0}}>
                                       
-                                              <img id="1" height="250" className="" onClick={() => this.showItem(item.id)} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
+                                              <img id="1" height="275" width="275" className="" onClick={() => this.showItem(item.id)} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
                                           <br/>
                                           <b>{item.collection_name}</b>
                                           <br/>

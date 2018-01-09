@@ -67,6 +67,7 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
         street2: "",
         city: "",
         state: "",
+        delivery_zipcodes: [{city: "DTLA", delivery_cost: "Free Delivery", zipcodes: [90012, 90013, 90014, 90017, 90021, 90071, 90074, 90081, 90053, 90055, 90079, 90086]}],
         zipcode: "",
         zipcodes: [90012, 90012, 90013, 90014, 90015, 90017, 90021, 90053, 90055, 90071, 90074, 90079, 90081, 90086, 90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411],
         first_name_border_color: "grey",
@@ -441,6 +442,9 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
       //this.props.deliveryAddressValidated();
       //this.props.deliveryAddressInvalidated();
 
+      //if e.target.value == "santa monica"
+      //delivery_zipcodes = this.state.delivery_zipcodes.filter((zipcode) => zipcode.city == "Santa Monica"));
+      //this.setState({delivery_zipcodes: delivery_zipcodes})
   }
 
 
@@ -465,12 +469,19 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
 
       let sm = [90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411]
 
+      
+      //let delivery_zipcodes: [{city: "DTLA", delivery_cost: "Free Delivery", zipcodes: [90012, 90013, 90014, 90017, 90021, 90071, 90074, 90081, 90053, 90055, 90079, 90086]}];
+
+      //if santa monica is chosen for city then show only santa monica zipcodes
+
+
+
       //console.log("e" + e.target.value);
       //console.log("dtla" + dtla.indexOf(parseInt(e.target.value)));
       //console.log("sm" + sm.indexOf(parseInt(e.target.value)));
 
 
-      /*if(dtla.indexOf(parseInt(e.target.value)) > -1){
+      if(dtla.indexOf(parseInt(e.target.value)) > -1){
 
           this.props.setDeliveryCost(0);
 
@@ -478,7 +489,7 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
 
           this.props.setDeliveryCost(10);
 
-      }*/
+      }
 
       //this.props.setDeliveryAddressZipcode(e);
       //set location for delivery time
