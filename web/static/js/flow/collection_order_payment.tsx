@@ -746,6 +746,16 @@ class CollectionPayment extends React.Component<any, any> {
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
+                                      Delivery Cost
+                                  </div>
+                                  <div className="col-md-2">
+                                      %{this.state.promo_code_discount}
+                                  </div>
+                                </div>
+                            </form>
+                            <form className="form-horizontal">
+                                <div className="form-group">
+                                  <div className="col-md-3">
                                     Total Due: 
                                   </div>
                                   <div className="col-md-3">

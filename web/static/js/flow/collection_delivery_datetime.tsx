@@ -21,6 +21,7 @@ import { connect } from 'react-redux';
 
 var DayPickerInput = require("react-day-picker/DayPickerInput");
 
+var moment = require('moment');
 
 
 function addTodoWithDispatch() {
@@ -55,33 +56,8 @@ class CollectionDeliveryDateTime extends React.Component<any, any> {
 
     this.state = {
 
-        contact_first_name: "",
-        contact_last_name: "",
-        contact_email: "",
-        contact_email_again: "",
-        contact_mobile: "",
-        contact_mobile_displayed: "",
-        
-        delivery_contact_label: "Delivery Contact",
-        delivery_address_label: "Delivery Address",
-
-        street1: "",
-        street2: "",
-        city: "",
-        state: "",
-        zipcode: "",
-        zipcodes: [90012, 90012, 90013, 90014, 90015, 90017, 90021, 90053, 90055, 90071, 90074, 90079, 90081, 90086, 90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411],
-        first_name_border_color: "grey",
-        last_name_border_color: "grey",
-        email_border_color: "grey",
-        mobile_border_color: "grey",
-        company_name_border_color: "grey",
-        street1_border_color: "grey",
-        street2_border_color: "grey",
-        city_border_color: "grey",
-        gift_order_checked: "",
-        gift_note: "",
-        pickupLocation: ""
+        deliveryDate: "",
+        deliveryTime: "",
     };
 
     //user_type=guest
@@ -607,6 +583,35 @@ class CollectionDeliveryDateTime extends React.Component<any, any> {
 
   }
 
+   setDate(date: any){
+
+    //console.log("date " + moment(date).toISOString());
+
+    //moment().format('MMMM Do YYYY")
+
+    this.setState({selectedDate: moment(date).format("MMMM Do, YYYY")});
+    //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+    this.props.setDate(moment(date).format("YYYY-MM-DD"));
+    //this.props.setOrderDeliveryDatetime(moment(date).toISOString());
+    //this.props.setOrderDeliveryDatetimeDate(moment(date).format("YYYY-MM-DD"));    
+
+    //this.props.cartValidated();
+    //this.props.dateValidated();
+
+  }
+
+  setSpecificTime(e: any){
+
+    console.log("time " + moment(e.target.value).toISOString());
+
+    //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
+    //this.props.setSpecificTime();
+
+    this.setState({selectedTime: e.target.value});
+    this.props.setOrderDeliveryDatetimeSpecificTime(e.target.value);
+    
+  }
+
  
   
   render(): JSX.Element{
@@ -625,7 +630,7 @@ class CollectionDeliveryDateTime extends React.Component<any, any> {
                             <form className="form-horizontal" style={{border: 0}}>
                               <div className="form-group show-lg" style={{borderRadius: 0}}>
                                 <div className="col-md-3">
-                                  <DayPickerInput onDayChange={(e: any) => this.props.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+2))}, {daysOfWeek: [0, 1]}]}}/>
+                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+2))}, {daysOfWeek: [0, 1]}]}}/>
                                 </div>
                                 <div className="col-md-3">
                                   <select onChange={(e: any) => this.props.setSpecificTime(e)} className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
@@ -642,7 +647,7 @@ class CollectionDeliveryDateTime extends React.Component<any, any> {
                                 </div>
                                 <div className="col-md-3">
                                     For other times please email eat@sconely.com
-                                </div>}
+                                </div>
                               </div>
                             </form>
                             

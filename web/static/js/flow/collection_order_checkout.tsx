@@ -90,7 +90,7 @@ class CollectionCheckout extends React.Component<any, any> {
         delivery_dates: [],
         delivery_times: "",
         daysOfWeek: [],
-        menuItems: [],
+        collectionMenuItems: [],
         User: [],
         payment_button_classname: "btn btn-default disabled btn-block",
         payment_button_disabled: true,
@@ -124,10 +124,10 @@ class CollectionCheckout extends React.Component<any, any> {
     //window.scrollTo(0, 0);
 
     console.log("checkout User " + JSON.stringify(this.props.User));
-    //console.log("checkout menuItems " + JSON.stringify(this.props.menuItems));
+    console.log("checkout collectionMenuItems " + JSON.stringify(this.props.collectionMenuItems));
 
-    //this.setState({User: this.props.User});
-    //this.setState({menuItems: this.props.menuItems});        
+    this.setState({User: this.props.User});
+    this.setState({collectionMenuItems: this.props.collectionMenuItems});        
 
     //this.props.getMenuItems();
     //this.setState({delivery_times: "1-3am"});
@@ -137,19 +137,23 @@ class CollectionCheckout extends React.Component<any, any> {
     
   }
 
-  componentWillReceiveProps = () => {
+  componentWillReceiveProps = (nextProps: any) => {
 
-      console.log("order checkout cwrp" + JSON.stringify(this.props.User.orderSession.validations["userNameEmailMobileValidated"]))
+      console.log(nextProps);
+      //console.log("order checkout cwrp" + JSON.stringify(this.props.User.orderSession.validations["userNameEmailMobileValidated"]))
+
+      this.setState({User: nextProps.User});
+      this.setState({collectionMenuItems: nextProps.collectionMenuItems});
 
 
-      if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
+      /*if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
 
         console.log("checkout validated");
       
         this.setState({payment_button_classname: "btn btn-default btn-block"});
         this.setState({payment_button_disabled: false})
       
-      }
+      }*/
 
       
 
@@ -231,6 +235,68 @@ class CollectionCheckout extends React.Component<any, any> {
 
   }
 
+
+  setGiftOrder = (e: any) => {
+
+      if(this.state.gift_order_checked == ""){
+
+          console.log("hello");
+
+          this.setState({gift_order_checked: "checked"});
+          this.setState({delivery_contact_label: "Recipient Delivery Contact"});
+          this.setState({delivery_address_label: "Recipient Delivery Address"});
+
+          //this.props.setGiftOrder(true);
+          //this.props.setDeliveryContactAddressFirstName("");
+      
+          //this.setState({contact_first_name: ""});
+          //this.setState({contact_last_name: ""});
+          //this.setState({contact_email: ""});
+          //this.setState({contact_mobile: ""});
+
+          /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+          this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
+          this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
+          this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});*/
+          
+          
+      
+      }else{
+
+          //this.setState({contact_first_name: ""});
+          //this.setState({contact_last_name: ""});
+          //this.setState({contact_email: ""});
+          //this.setState({contact_mobile: ""});
+
+          /*this.setState({contact_first_name: this.props.User.deliveryContactsAddresses[0].contact_first_name});
+          this.setState({contact_last_name: this.props.User.deliveryContactsAddresses[0].contact_last_name});
+          this.setState({contact_email: this.props.User.deliveryContactsAddresses[0].contact_email});
+          this.setState({contact_mobile: this.props.User.deliveryContactsAddresses[0].contact_mobile});*/
+          
+          this.setState({gift_order_checked: ""});
+          this.props.setGiftOrder(false);
+
+      }
+
+      //this.props.setOrderNote(e);
+
+      //if street1 street2 city state
+
+      //this.props.deliveryAddressInvalidated();
+
+  }
+
+   setGiftNote = (e: any) => {
+
+      this.setState({gift_note: e.target.value});
+      this.props.setGiftNote(e);
+
+      //if street1 street2 city state
+
+      //this.props.deliveryAddressValidated();
+      //this.props.deliveryAddressInvalidated();
+
+  }
   
   
   render(): JSX.Element{
@@ -276,6 +342,7 @@ class CollectionCheckout extends React.Component<any, any> {
                         <br/>
                         Sconely Collection
                         <br/>
+                        <CollectionSidebarCart User={this.state.User} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                         <br/>
                         <br/>
                       </div>
@@ -286,6 +353,15 @@ class CollectionCheckout extends React.Component<any, any> {
                             userContactEmailAgainValidated={() => this.props.userContactEmailAgainValidated()}  
                             userContactMobileValidated={() => this.props.userContactMobileValidated()}/>
                             <br/>
+                            <form className="form-horizontal">
+                              <div className="form-group">
+                                <div className="col-xs-12 col-md-9">
+                                    <div className="checkbox">
+                                      <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGiftOrder(e)}/>This is a gift
+                                    </div>
+                                </div>
+                              </div>
+                            </form>
                             <br/>
                             <CollectionDeliveryContactAddressNameContact User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
                             setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
@@ -300,7 +376,7 @@ class CollectionCheckout extends React.Component<any, any> {
                             setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
                             deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
                             <br/>
-                            <CollectionGiftNote/>
+                            {this.state.gift_order_checked == "checked" && <CollectionGiftNote />}
                             <br/>
                             <CollectionDeliveryContactAddressAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
                             setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
@@ -317,27 +393,6 @@ class CollectionCheckout extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <CollectionDeliveryDateTime setDate={(e: any) => this.setDate(e)} setSpecificTime={(e: any) => this.setSpecificTime(e)}/>
-                            <br/>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-sm-12">
-                                      Delivery Date Time
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal" style={{border: 0}}>
-                              <div className="form-group show-lg" style={{borderRadius: 0}}>
-                                <div className="col-md-3">
-                                  <DayPickerInput onDayChange={(e: any) => this.setDate(e)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16, zIndex: -1}} value={this.state.selectedDate} dayPickerProps={{enableOutsideDays: false, fixedWeeks: false, disabledDays: [{before: new Date(new Date().setDate(new Date().getDate()+2))}, {daysOfWeek: [0, 1]}]}}/>
-                                </div>
-                                <div className="col-md-3">
-                                  8:00 am - 12:00 pm
-                                </div>
-                                <div className="col-md-3">
-                                    For other times please email eat@sconely.com
-                                </div>}
-                              </div>
-                            </form>
                             <br/>
                             <br/>
                             <form className="form-horizontal">
@@ -382,7 +437,7 @@ function mapStateToProps(state: any) {
    //menu_items: getPublicMenu
    //menu_items: dispatch()
 
-   menuItems: state.menuItems.items,
+   collectionMenuItems: state.collections.collectionMenuItems,
    //guestOrder: state.guestOrder,
    //cartItems: state.guestOrder.cart_items, //computed
 

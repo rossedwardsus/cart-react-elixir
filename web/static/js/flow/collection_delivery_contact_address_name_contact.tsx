@@ -623,15 +623,6 @@ class DeliveryAddress extends React.Component<any, any> {
                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
-                          <div className="checkbox">
-                            <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGiftOrder(e)}/>This is a gift
-                          </div>
-                      </div>
-                    </div>
-                 </form>
-                 <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-3 col-md-3">
                           <b>{this.state.delivery_contact_label}</b>
                           <br/>
                        </div>

@@ -376,7 +376,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                                 return(
                                         <div className="col-xs-12 col-md-6 col-lg-6" style={{marginTop: 0, marginBottom: 0}}>
                                       
-                                              <img id="1" className="img-responsive" onClick={() => this.showItem(item.id)} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
+                                              <img id="1" height="250" className="" onClick={() => this.showItem(item.id)} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
                                           <br/>
                                           <b>{item.collection_name}</b>
                                           <br/>

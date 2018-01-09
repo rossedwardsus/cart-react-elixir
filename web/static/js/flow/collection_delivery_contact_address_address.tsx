@@ -620,75 +620,10 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
     let delivery_address:any = "";
 
     return ( <div>
-                {this.props.User.orders[0].order_type != "pool_order" && 
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                          <div className="col-sm-3 col-md-3">
-                              <div className="checkbox">
-                                <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGiftOrder(e)}/>This is a gift
-                              </div>
-                          </div>
-                        </div>
-                     </form>}
-                {(this.props.User.orders[0].order_type != "pool_order") &&
-                 <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-3 col-md-3">
-                          <b>{this.state.delivery_contact_label}</b>
-                          <br/>
-                       </div>
-                    </div>
-                 </form>}
-                {(this.props.User.orders[0].order_type != "pool_order") &&
-                 <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-3 col-md-4">
-                        <div className={this.state.first_name_classname}>
-                          <input type="text" value={this.state.contact_first_name}  onChange={this.setDeliveryContactAddressFirstName} onInput={this.setDeliveryContactAddressFirstName} maxLength={20} className="form-control" id="exampleInputName2" placeholder="First Name" style={{borderColor: this.state.first_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                        </div>
-                      </div>
-                      <div className="hidden-lg col-xs-1">
-                        <br/>
-                      </div>
-                      <div className="col-sm-3 col-md-4">
-                        <div className={this.state.last_name_classname}>
-                          <input type="text" value={this.state.contact_last_name} maxLength={20} onChange={this.setDeliveryContactAddressLastName} onInput={this.setDeliveryContactAddressLastName}   className="form-control" id="exampleInputName2" placeholder="Last Name" style={{borderColor: this.state.last_name_border_color, borderRadius: 0, WebkitAppearance: "none"}}/>
-                        </div>
-                      </div>
-                    </div>
-                </form>}
-              {(this.props.User.orders[0].order_type != "pool_order") &&
-                <form className="form-horizontal">
-                  <div className="form-group">
-                    <div className="col-sm-3 col-md-4">
-                        <div className={this.state.contact_email_classname}>
-                          <input type="text" value={this.state.contact_email} onChange={this.setDeliveryContactAddressEmail} onInput={this.setDeliveryContactAddressEmail} className="form-control" id="exampleInputName2" placeholder="Email" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
-                        </div>
-                    </div>
-                    <div className="hidden-lg col-xs-1">
-                      <br/>
-                    </div>
-                    <div className="col-sm-3 col-md-4">
-                        <div className={this.state.contact_email_classname}>
-                          <input type="text" value={this.state.contact_email_again} onChange={this.setDeliveryContactAddressEmailAgain} className="form-control" id="exampleInputName2" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
-                        </div>
-                    </div>
-                  </div>
-                </form>}
-              {(this.props.User.orders[0].order_type != "pool_order") &&
-                <form className="form-horizontal">
-                  <div className="form-group">
-                    <div className="col-sm-3 col-md-3">
-                        <div className={this.state.contact_mobile_classname}>
-                          <input type="text" value={this.state.contact_mobile_displayed} maxLength={12} onChange={this.setDeliveryContactAddressMobile} onInput={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="Mobile" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>
-                        </div>
-                    </div>
-                  </div>
-                </form>}
                 <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
-                          {(this.props.User.orders[0].order_type == "pool_order") ? <b>Delivery Address (all orders in this Pool will be delivered to this location)</b> : <b>Delivery Address</b>}
+                          <b>Delivery Address</b>
                           <br/>
                        </div>
                     </div>
@@ -737,26 +672,7 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
                         <div className="col-sm-3">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>Zip Code</option>
-                            <option>Venice Free Delivery</option>
-                            <option value="90013">90013</option>
-                            <option value="90014">90014</option>
-                            <option value="90015">90015</option>
-                            <option value="90021">90021</option>
-                            <option value="90071">90071</option>
-                            <option>Santa Monica</option>
-                            <option value="90291">90291</option>
-                            <option value="90401">90401</option>
-                            <option value="90402">90402</option>
-                            <option value="90403">90403</option>
-                            <option value="90404">90404</option>
-                            <option value="90405">90405</option>
-                            <option value="90406">90406</option>
-                            <option value="90407">90407</option>
-                            <option value="90408">90408</option>
-                            <option value="90409">90409</option>
-                            <option value="90410">90410</option>
-                            <option value="90411">90411</option>
-                            <option>DTLA</option>
+                            <option>DTLA - Free Delivery</option>
                             <option value="90012">90012</option>
                             <option value="90013">90013</option>
                             <option value="90014">90014</option>
@@ -769,28 +685,47 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
                             <option value="90055">90055</option>
                             <option value="90079">90079</option>
                             <option value="90086">90086</option>
-                            <option>Beverly Hills</option>
+                            <option>Venice - $10 delivery</option>
+                            <option value="90013">90013</option>
+                            <option value="90014">90014</option>
+                            <option value="90015">90015</option>
+                            <option value="90021">90021</option>
+                            <option value="90071">90071</option>
+                            <option>Santa Monica - $10 delivery</option>
+                            <option value="90291">90291</option>
+                            <option value="90401">90401</option>
+                            <option value="90402">90402</option>
+                            <option value="90403">90403</option>
+                            <option value="90404">90404</option>
+                            <option value="90405">90405</option>
+                            <option value="90406">90406</option>
+                            <option value="90407">90407</option>
+                            <option value="90408">90408</option>
+                            <option value="90409">90409</option>
+                            <option value="90410">90410</option>
+                            <option value="90411">90411</option>
+                            <option>Beverly Hills - $10 delivery</option>
                             <option value="90035">90035</option>
                             <option value="90209">90209</option>
                             <option value="90210">90210</option>
                             <option value="90211">90211</option>
                             <option value="90212">90212</option>
                             <option value="90213">90213</option>
-                            <option>Marina Del Rey</option>
+                            <option>Marina Del Rey - $10 delivery</option>
                             <option value="90292">90292</option>
-                            <option>Playa Del Rey</option>
+                            <option>Playa Del Rey - $10 delivery</option>
                             <option value="90094">90094</option>
-                            <option>Brentwood</option>
+                            <option>Brentwood - $10 delivery</option>
                             <option value="90049">90049</option>
-                            <option>Century City</option>
+                            <option>Century City - $10 delivery</option>
                             <option value="90067">90067</option>
-                            <option>West Hollywood</option>
+                            <option>West Hollywood - $10 delivery</option>
                             <option>90046</option>
                             <option>90048</option>
                             <option>90069</option>
-                            <option>Hancock Park</option>
+                            <option>Hancock Park - $10 delivery</option>
                             <option>90004</option>
-                            <option>Westwood</option>
+                            <option>Westwood - $10 delivery</option>
                             <option>90024</option>
                           </select>
                         </div>
@@ -804,14 +739,6 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
                     </div>
                 </form>
                 
-                {this.state.gift_order_checked == "checked" &&
-                  <form className="form-horizontal">
-                      <div className="form-group">
-                        <div className="col-sm-3 col-md-5">
-                          <textarea className="form-control" cols={100} rows={2} maxLength={150} placeholder="Gift note" style={{resize: "none"}} onChange={(e: any) => this.setGiftNote(e)}></textarea>
-                        </div>
-                      </div>
-                  </form>}
               </div>
                   
     )

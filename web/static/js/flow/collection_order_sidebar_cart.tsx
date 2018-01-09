@@ -68,11 +68,10 @@ class CollectionSidebarCart extends React.Component<any, any> {
     //get menu items
     //this.setState({pool_message: "this.props.menuItems"})
 
-    console.log("sbc menu items cwm" + JSON.stringify(this.props.menuItems));
+    console.log("sbc menu items cwm" + JSON.stringify(this.props.collectionMenuItems));
     console.log("sidebarcart user ");
 
-    //this.setState({menuItemNames: this.props.menuItems})
-
+    this.setState({collectionMenuItems: this.props.collectionMenuItems})
     this.setState({cartItems: this.props.User.orders[0].cartItems})
 
     
