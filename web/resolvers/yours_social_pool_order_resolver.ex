@@ -1640,6 +1640,17 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
 
                                     delivery_time_formatted = args[:order_delivery_datetime_time] <> " am"
 
+                                    #case args[:order_delivery_datetime_time] do
+                                    #   "800-830" -> delivery_time_formatter = "8:00 am - 8:30 am"
+                                    #   "830-900" -> delivery_time_formatter = "8:30 am - 9:00 am"
+                                    #   "930-1000" -> delivery_time_formatter = "9:30 am - 10:00 am"
+                                    #   "1030-1100" -> delivery_time_formatter = "10:30 am - 11:00 am"
+                                    #   "1100-1130" -> delivery_time_formatter = "11:00 am - 11:30 am"
+                                    #   "1130-1200" -> delivery_time_formatter = "11:30 am - 12:00 pm"
+                                    #end
+
+
+
                                     admin_email_subject = order_type <> " order " <> delivery_date_formatted 
                         
                                     #IO.inspect(delivery_date_formatted)
