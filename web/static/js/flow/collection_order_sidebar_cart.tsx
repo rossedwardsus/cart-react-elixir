@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import SocialSidebarCartItem from './social_order_sidebar_cart_item.tsx';
+import CollectionOrderSidebarCartItem from './collection_order_sidebar_cart_item.tsx';
 
 //import SconelyYoursDeliveryAddressPayment from './sconely_yours_single_page_menu';
 import { Link } from 'react-router'
@@ -46,7 +46,8 @@ class CollectionSidebarCart extends React.Component<any, any> {
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 3, title: "freedom", description: "let freedom ring!"}, {item_id: 4, title: "freedom", description: "let freedom ring!"}, {item_id: 5, title: "freedom", description: "let freedom ring!"}, {item_id: 6, title: "freedom", description: "let freedom ring!"}, {item_id: 7, title: "freedom", description: "let freedom ring!"}],
         cartItems: [],
         pool_message_viewed: false,
-        cost_text: ""
+        cost_text: "",
+        collectionMenuItems: []
 
     };
 
@@ -77,12 +78,12 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
   componentWillReceiveProps(nextProps: any){
 
-      console.log("sbc menu items cwrp " + JSON.stringify(this.props.menuItems));
-      console.log("sbc user cwrp " + JSON.stringify(this.props.User));
+      console.log("collection sidebar cart collection menu items cwrp " + JSON.stringify(nextProps.collectionMenuItems));
+      console.log("collection sidebar cart user cwrp " + JSON.stringify(nextProps.User));
       //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
 
-      this.setState({menuItem: this.props.menuItems})
-      this.setState({cartItems: this.props.User.orders[0].cartItems})
+      this.setState({collectionMenuItems: nextProps.collectionMenuItems})
+      this.setState({cartItems: nextProps.User.orders[0].cartItems})
 
   }
 
@@ -110,6 +111,8 @@ class CollectionSidebarCart extends React.Component<any, any> {
     let total_items_text = "";
 
     //alert(JSON.stringify(this.props.order.toJS()));
+
+
    
 
 
@@ -257,7 +260,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
         cart = this.state.cartItems.map(function(item: any, index: any){
 
-                      console.log("cart menuitems " + JSON.stringify(item));
+                      console.log("cartitems " + JSON.stringify(item));
 
                       //let menu_item = this.props.menuItems.find((menu_item: any) => {
 
@@ -420,7 +423,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
                             <br/>
                             </div>) : cart}
                   <br/>
-                  {this.state.cartItems.map((item: any, index: any) => <SocialSidebarCartItem index={"index"} item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={() => this.props.increaseCartItemQuantity("index")} descreaseCartItemQuantity={() => this.props.decreaseCartItemQuantity("index")} removeCartItem={() => this.props.increaseCartItemQuantity("index")}/>)}
+                  {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={(index: any) => this.props.increaseCartItemQuantity(index)} descreaseCartItemQuantity={() => this.props.decreaseCartItemQuantity("index")} removeCartItem={() => this.props.increaseCartItemQuantity("index")}/>)}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 

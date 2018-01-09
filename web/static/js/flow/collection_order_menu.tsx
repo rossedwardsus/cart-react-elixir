@@ -44,7 +44,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     this.state = {
         collectionMenuItems: [],
-        selected_item_id: "",
+        selectedItemId: "",
         selectedItemSize: "",
         selectedItemQuantity: 0,
         selected_item_quantity_selector: 0,
@@ -92,6 +92,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     window.scrollTo(0, 0);
 
+    //this.props.getCollectionDetails("valentines_day");
     this.props.getCollectionMenuItems("valentines_day");
     this.props.createOrder("collection");
     //this.setState({menuItems: this.props.menuItems});
@@ -138,7 +139,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
       let collection_menu_item_description = collectionMenuItem["collection_description"].split("\\n").map((item: any) => <p>{item}<br/></p>);
 
-      //this.setState({selected_item_id: collection_menu_item_id});
+      this.setState({selectedItemId: collection_menu_item_id});
       this.setState({selectedItemName: collectionMenuItem["collection_name"]});
       this.setState({selectedItemDescription: collection_menu_item_description});
       this.setState({selectedItemIngredients:  collectionMenuItem["ingredients"]});
@@ -207,7 +208,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     //quantity X 6
 
-        this.props.addCartItem(null, this.state.selected_item_id, this.state.selected_item_size, this.state.selected_item_quantity);
+        this.props.addCartItem(null, this.state.selectedItemId, "regular", this.state.selectedItemQuantity);
 
     //}
     
@@ -348,15 +349,15 @@ class CollectionOrderMenu extends React.Component<any, any> {
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
-                          <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
+                          <div className="hidden-xs col-sm-3 col-md-4" style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
                             <b>VALENTINES DAY</b>
                             <br/>
-                            <CollectionsSidebarCart User={this.props.User} path={this.props.path} menuItems={this.props.menuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
+                            <CollectionsSidebarCart User={this.props.User} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>
-                          <div className="col-xs-12 col-md-8" style={{paddingLeft: 0, paddingRight: 0}}>
+                          <div className="col-xs-12 col-md-6" style={{paddingLeft: 0, paddingRight: 0}}>
                             <br/>
                             {this.state.collectionMenuItems.map(function(item: any, index: any){
 
@@ -389,6 +390,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <CollectionMenuItemModal menu_item_id={this.state.selected_item_id} selectedItemName={this.state.selectedItemName} selectedItemIngredients={this.state.selectedItemIngredients} selectedItemDescription={this.state.selectedItemDescription} selectedItemQuantity={(e: any) => this.selectedItemQuantity(e)} selectedItemSize={(e: any) => this.selectedItemSize(e)} addCartItem={() => this.addCartItem()}/>
+                          <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}></div>
                   </div>
                   <PublicBottomNavbar/>
                   <PublicPrivacyTermsNavbar/>

@@ -30,7 +30,7 @@ interface Order {
   //completed: boolean
 }
 
-class CollectionSidebarCartItem extends React.Component<any, any> {
+class CollectionOrderSidebarCartItem extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -41,8 +41,8 @@ class CollectionSidebarCartItem extends React.Component<any, any> {
 
     this.state = {
 
-        item_name: "",
-        item_quantity_text: ""
+        itemName: "",
+        itemQuantityText: ""
 
     };
 
@@ -73,16 +73,30 @@ class CollectionSidebarCartItem extends React.Component<any, any> {
 
   componentWillMount = (nextProps: any) => {
 
-      console.log("sosci cwm" + JSON.stringify(this.props));
+      console.log("collectiom cart item cwm " + JSON.stringify(this.props));
 
-      this.setState({item_quantity_text: ((this.props.item.quantity/12) + "dz")});
+      let item = this.props.collectionMenuItems.filter((item: any) => item.id === this.props.item.menu_item_id);
+
+      console.log("item " + JSON.stringify(item));
+
+      this.setState({itemName: item[0].collection_name});
+      this.setState({itemQuantityText: this.props.item.quantity});
 
 
   }
 
   componentWillReceiveProps = (nextProps: any) => {
 
-      console.log("sosci cwrp" + JSON.stringify(nextProps));
+      console.log("collectiom cart item cwrp" + JSON.stringify(nextProps.item));
+
+      //let item = nextProps.collectionMenuItems.filter((item: any) => item.id === nextProps.item.menu_item_id);
+
+      //console.log("item " + JSON.stringify(item));
+
+      //this.setState({itemName: item.collection_name});
+
+      this.setState({itemQuantityText: nextProps.item.quantity});
+
 
   }
 
@@ -94,9 +108,9 @@ class CollectionSidebarCartItem extends React.Component<any, any> {
     
     return (<form className="form-horizontal" style={{border: 1, position: "static"}}>
                       <div className="form-group" style={{border: 1}}>
-                      {this.props.item.size == "mini" ? <div className="col-md-5 col-xs-5">{this.props.item_name} mini</div> : <div className="col-md-5 col-xs-5">{"this.props.item_name"}</div>}
-                      <div className="col-xs-1"><a onClick={() => this.props.increaseCartItemQuantity(this.props.index)}>+</a></div>
-                      <div className="col-xs-2">{this.state.item_quantity_text}</div>
+                      <div className="col-md-5 col-xs-5">{this.state.itemName}</div>
+                      <div className="col-xs-1"><a onClick={(index: any) => this.props.increaseCartItemQuantity(this.props.index)}>+</a></div>
+                      <div className="col-xs-2">{this.state.itemQuantityText}</div>
                       <div className="col-xs-1"><a onClick={() => this.props.decreaseCartItemQuantity(this.props.index)}>-</a></div>
                       <div className="col-xs-1"><a onClick={() => this.props.removeCartItem(this.props.index)}>X</a></div>
                       </div>
@@ -109,4 +123,4 @@ class CollectionSidebarCartItem extends React.Component<any, any> {
 
 
 
-export default CollectionSidebarCartItem;
+export default CollectionOrderSidebarCartItem;

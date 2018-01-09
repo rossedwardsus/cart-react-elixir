@@ -261,6 +261,12 @@ export default function user(state:any = {collections: [], collectionMenuItems: 
 
         orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
 
+      }if(state.orders[0].order_type == "collection"){
+
+        console.log("collection reducer");
+
+        orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 6;
+
       }else{
 
         if(orders_updated[0].cartItems[action.item_index].size == "mini"){
