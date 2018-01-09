@@ -402,23 +402,13 @@ class CollectionSidebarCart extends React.Component<any, any> {
     }
 
     return (<div> 
-                  {item_limit}
-                  <br/>
-                  {item_quantity_message}
-                  <br/>
-                  <br/>
                   <br/>
                   {(this.state.cartItems.length == 0) ?
                         (<div>
                             <br/>
                             cart
                             <br/>
-                            Choose a minimum of 1 dozen regular sized scones or 2 dozen mini scones
-                            <br/>
-                            <br/>
-                            $60 per dozen (our baker's dozen includes 13 scones, enjoy 1 extra on us)
-                            <br/>
-                            $54 per 2 dozen mini
+                            Choose between a 1/2 dozen and 6 regular size scones.
                             <br/>
                             <br/>
                             Plan ahead, order at least 48 hours in advance

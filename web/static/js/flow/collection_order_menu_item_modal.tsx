@@ -44,8 +44,8 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
         menuItems: [],
         selected_item_id: "",
         selected_item_size: "",
-        selected_item_quantity: 0,
-        selected_item_quantity_value: 0,
+        selectedItemQuantity: 0,
+        selectedItemQuantityValue: 0,
         selectedItemName: "",
         selectedItemDescription: "",
         selectedItemIngredients: "",
@@ -176,23 +176,11 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
 
       //console.log(e.target.value);
 
-      //this.setState({selected_item_quantity: e.target.value});
+      this.setState({selectedItemQuantity: e.target.value});
       //this.props.selectedItemQuantity(e.target.value);
 
-      if(this.state.selected_item_size == "regular"){
-        
-        //this.setState({selected_item_quantity: (parseInt(e.target.value) * 12)});
-        this.setState({selected_item_quantity_value: e.target.value});
-        this.props.selectedItemQuantity(e);
-
-      
-      }else if(this.state.selected_item_size == "mini"){
-        
-        //this.setState({selected_item_quantity: (parseInt(e.target.value) * 24)});
-        this.setState({selected_item_quantity_value: e.target.value});
-        this.props.selectedItemQuantity(e);
-      
-      }
+      this.setState({selectedItemQuantityValue: e.target.value});
+      this.props.selectedItemQuantity(e);
 
       this.setState({add_cart_item_button_classname: "btn-block btn btn-default"});
       this.setState({add_cart_item_button_disabled: false});  
@@ -346,15 +334,23 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                           
                           <br/>
                           <br/>
-                          {cost_text}
+                           <div><p>$20 per half dozen</p></div>
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="col-xs-12 col-md-12">
                                   <div className="col-xs-12 col-md-4">
-                                    <select className="form-control" value={this.state.selected_item_size} onChange={(e) => this.selectedItemSize(e)} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
-                                      <option>1/2 Dozen</option>
-                                      <option>1 Dozen</option> 
+                                    <select className="form-control" value={this.state.selectedItemQuantity} onChange={(e) => this.selectedItemQuantity(e)} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
+                                      <option>1</option>
+                                      <option>2</option> 
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>6</option> 
+                                      <option>7</option>
+                                      <option>8</option>
+                                      <option>9</option>
+                                      <option>10</option>   
                                     </select>
                                   </div>
                                   <div className="hidden-lg col-xs-1">
