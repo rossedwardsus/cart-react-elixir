@@ -28,15 +28,15 @@ import "react-day-picker/lib/style.css"
 
 require('react-datepicker/dist/react-datepicker.css');
 
-import SidebarCart from './social_order_sidebar_cart.tsx';
-import NameContact from './social_name_contact.tsx';
-import SocialNameContact from './social_name_contact.tsx';
+import CollectionSidebarCart from './collection_order_sidebar_cart.tsx';
+//import NameContact from './collection_name_contact.tsx';
+import CollectionNameContact from './collection_name_contact.tsx';
 import DeliveryContactAddress from './delivery_address.tsx';
-import SocialDeliveryContactAddressNameContact from './social_delivery_contact_address_name_contact.tsx';
-import SocialDeliveryContactAddressAddress from './social_delivery_contact_address_address.tsx';
-import SocialDeliveryContactNote from './social_delivery_address_note.tsx';
-import SocialDeliveryContactGiftNote from './social_delivery_address_gift_note.tsx';
-import DeliveryDateTime from './social_delivery_datetime.tsx'
+import CollectionDeliveryContactAddressNameContact from './collection_delivery_contact_address_name_contact.tsx';
+import CollectionDeliveryContactAddressAddress from './collection_delivery_contact_address_address.tsx';
+import CollectionDeliveryNote from './collection_delivery_note.tsx';
+import CollectionGiftNote from './collection_gift_note.tsx';
+import CollectionDeliveryDateTime from './collection_delivery_datetime.tsx';
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 
@@ -71,7 +71,7 @@ interface Order {
   //completed: boolean
 }
 
-class SocialCheckout extends React.Component<any, any> {
+class CollectionCheckout extends React.Component<any, any> {
   //props: Props;
 
   constructor(props: any) {
@@ -202,9 +202,9 @@ class SocialCheckout extends React.Component<any, any> {
 
   }
 
-  setSpecificTime(date: any){
+  setSpecificTime(e: any){
 
-    console.log("date " + moment(date).toISOString());
+    console.log("time " + moment(e.target.value).toISOString());
 
     //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
     //this.props.setSpecificTime();
@@ -274,21 +274,35 @@ class SocialCheckout extends React.Component<any, any> {
                       <div className="hidden-xs col-md-3" style={{paddingLeft: 50}}>
                         <br/>
                         <br/>
-                        Sconely Social}
+                        Sconely Collection
                         <br/>
                         <br/>
-                        <SocialSidebarCart User={this.props.User} menuItems={this.props.menuItems} increaseCartItemQuantity={(menu_item_id: any) => this.props.increaseCartItemQuantity(menu_item_id)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)}/>
                         <br/>
                       </div>
                       <div className="col-xs-12 col-md-9" style={{paddingLeft: 70}}>
                             <br/>
                             <br/>
-                            <SocialNameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} firstNameValidated={() => this.props.firstNameValidated()} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)} userFirstNameValidated={() => this.props.userFirstNameValidated()} userLastNameValidated={() => this.props.userLastNameValidated()} userContactEmailValidated={() => this.props.userContactEmailValidated()}
+                            <CollectionNameContact User={this.props.User} setUserFirstName={(e:any) => this.props.setUserFirstName(e)} setUserDeliveryContactAddressFirstName={(e:any) => this.props.setUserDeliveryContactAddressFirstName(e)} setUserLastName={(e:any) => this.props.setUserLastName(e)} setUserDeliveryContactAddressLastName={(e:any) => this.props.setUserDeliveryContactAddressLastName(e)} setUserEmail={(e:any) => this.props.setUserEmail(e)} setUserDeliveryContactAddressEmail={(e:any) => this.props.setUserDeliveryContactAddressEmail(e)} setUserMobile={(e:any) => this.props.setUserMobile(e)} setUserDeliveryContactAddressMobile={(e:any) => this.props.setUserDeliveryContactAddressMobile(e)} firstNameValidated={() => this.props.firstNameValidated()} userNameEmailMobileValidated={(e:any) => this.props.userNameEmailMobileValidated(e)} userFirstNameValidated={() => this.props.userFirstNameValidated()} userLastNameValidated={() => this.props.userLastNameValidated()} userContactEmailValidated={() => this.props.userContactEmailValidated()}
                             userContactEmailAgainValidated={() => this.props.userContactEmailAgainValidated()}  
                             userContactMobileValidated={() => this.props.userContactMobileValidated()}/>
                             <br/>
                             <br/>
-                            <SocialDeliveryContactAddressNameContact User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
+                            <CollectionDeliveryContactAddressNameContact User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
+                            setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
+                            setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
+                            setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
+                            setDeliveryContactAddressCompanyName={(e: any) => this.props.setUserDeliveryContactAddressCompanyName(e)}  
+                            setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
+                            setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
+                            setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
+                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} 
+                            setOrderNote={(e: any) => this.props.setOrderNote(e)} 
+                            setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
+                            deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
+                            <br/>
+                            <CollectionGiftNote/>
+                            <br/>
+                            <CollectionDeliveryContactAddressAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
                             setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
                             setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
                             setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
@@ -302,21 +316,7 @@ class SocialCheckout extends React.Component<any, any> {
                             deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
                             <br/>
                             <br/>
-                            <SocialDeliveryContactAddressAddress User={this.props.User} session={this.props.session} order={this.props.order} deliveryAddress={this.props.order_delivery_address} 
-                            setDeliveryContactAddressFirstName={(e: any) => this.props.setUserDeliveryContactAddressFirstName(e)} setDeliveryContactAddressLastName={(e: any) => this.props.setUserDeliveryContactAddressLastName(e)}
-                            setDeliveryContactAddressEmail={(e: any) => this.props.setUserDeliveryContactAddressEmail(e)} 
-                            setDeliveryContactAddressMobile={(e: any) => this.props.setUserDeliveryContactAddressMobile(e)} 
-                            setDeliveryContactAddressCompanyName={(e: any) => this.props.setUserDeliveryContactAddressCompanyName(e)}  
-                            setDeliveryContactAddressStreet1={(e: any) => this.props.setUserDeliveryContactAddressStreet1(e)} setDeliveryContactAddressStreet2={(e: any) => this.props.setUserDeliveryContactAddressStreet2(e)} 
-                            setDeliveryContactAddressCity={(e: any) => this.props.setUserDeliveryContactAddressCity(e)} 
-                            setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
-                            setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} 
-                            setOrderNote={(e: any) => this.props.setOrderNote(e)} 
-                            setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
-                            deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
-                            <br/>
-                            <br/>
-                            <SocialDeliveryDateTime setDate={(e: any) => this.setDate(e)} setSpecificTime={(e: any) => this.setPecificTime(e)}/>
+                            <CollectionDeliveryDateTime setDate={(e: any) => this.setDate(e)} setSpecificTime={(e: any) => this.setSpecificTime(e)}/>
                             <br/>
                             <form className="form-horizontal">
                                 <div className="form-group">
@@ -344,7 +344,7 @@ class SocialCheckout extends React.Component<any, any> {
                                 <div className="form-group">
                                   <div className="col-md-9">
                                     <div className="col-md-3">
-                                      <Link to="/social/order/payment" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>
+                                      <Link to="/collections/order/payment" className="btn btn-default btn-block" style={{borderRadius: 0}}>Payment</Link>
                                     </div>
                                     <div className="col-md-3">
                                       <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
@@ -509,10 +509,10 @@ function mapDispatchToProps(dispatch: any) {
   }
 }
 
-const SocialCheckoutConnected = connect(
+const CollectionCheckoutConnected = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SocialCheckout)
+)(CollectionCheckout)
 
-export default SocialCheckoutConnected;
+export default CollectionCheckoutConnected;
 

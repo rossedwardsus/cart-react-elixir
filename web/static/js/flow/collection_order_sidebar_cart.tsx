@@ -47,7 +47,9 @@ class CollectionSidebarCart extends React.Component<any, any> {
         cartItems: [],
         pool_message_viewed: false,
         cost_text: "",
-        collectionMenuItems: []
+        collectionMenuItems: [],
+        payment_button_classname: "btn btn-default",
+        payment_button_disabled: false,
 
     };
 
@@ -239,19 +241,52 @@ class CollectionSidebarCart extends React.Component<any, any> {
         //if(social_regular_items.length != 0){
 
 
-        total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
+        //total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
 
-        total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
+        //total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
 
         //}
 
 
-        total_items_cost = total_regular_items_cost + total_mini_items_cost;
+        //total_items_cost = total_regular_items_cost;
+
+        //let half_dozens = 0
 
 
         total_items = (regular_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (mini_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
         
-         
+        //half_dozens = total_items/6;
+
+        total_items_cost = (total_items/6 * 22);   
+
+
+        /*if(total_items == 6){
+
+          total_items_cost = 22           
+
+        }else if(total_items == 12){
+
+          total_items_cost = 44           
+
+        }else if(total_items == 18){
+
+          total_items_cost = 66           
+
+        }else if(total_items == 24){
+
+          total_items_cost = 88           
+
+        }else if(total_items == 30){
+
+          total_items_cost = 110           
+
+        }else if(total_items == 36){
+
+          total_items_cost = 132          
+
+        }*/
+
+        //total_items_cost = 6
         
 
  
@@ -384,11 +419,11 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
       
 
-      if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 12, 0) > 11){
-
+      //if(this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 12, 0) > 11){
+      if(total_items >= 6){
           //checkoutButton = <button onClick={() => this.props.updateOrderSession("checkout")} className="btn btn-default" style={{borderRadius: 0}}>Checkout</button>;
 
-           checkoutButton = <Link to="/social/order/checkout" className={this.state.payment_button_classname} disabled={this.state.button_payment_disabled}  style={{borderRadius: 0}}>Checkout</Link> 
+           checkoutButton = <Link to="/collections/order/checkout" className={this.state.payment_button_classname} disabled={this.state.payment_button_disabled}  style={{borderRadius: 0}}>Checkout</Link> 
 
       }
 

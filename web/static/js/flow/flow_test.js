@@ -33,6 +33,8 @@ import PublicPress from './public/public_press.tsx';
 import Collections from './collections.tsx';
 import CollectionItems from './collection_items.tsx';
 import CollectionOrderMenu from './collection_order_menu.tsx';
+import CollectionOrderCheckout from './collection_order_checkout.tsx';
+//import CollectionOrderPayment from './collection_order_payment.tsx';
 
 import YoursRedirect from './yours_redirect.tsx';
 import SocialRedirect from './social_redirect.tsx';
@@ -233,6 +235,7 @@ const Root = () => (
         <Route path="/public/privacy_policy" component={PublicPrivacyPolicy} />
         <Route path="/collections" component={Collections} />
         <Route path="/collections/order/menu" component={CollectionOrderMenu} />
+        <Route path="/collections/order/checkout" component={CollectionOrderCheckout} />
         <Route path="/collections/:collection_name" component={CollectionItems} />
         <Route component={checkLogin}>
           <Route path="/yours/order" component={YoursOrderMenu} />

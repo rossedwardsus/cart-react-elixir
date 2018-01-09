@@ -620,17 +620,15 @@ class DeliveryAddress extends React.Component<any, any> {
     let delivery_address:any = "";
 
     return ( <div>
-                {this.props.User.orders[0].order_type != "pool_order" && 
-                    <form className="form-horizontal">
-                        <div className="form-group">
-                          <div className="col-sm-3 col-md-3">
-                              <div className="checkbox">
-                                <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGiftOrder(e)}/>This is a gift
-                              </div>
+                 <form className="form-horizontal">
+                    <div className="form-group">
+                      <div className="col-sm-3 col-md-3">
+                          <div className="checkbox">
+                            <input type="checkbox" value="" checked={this.state.gift_order_checked} onChange={(e: any) => this.setGiftOrder(e)}/>This is a gift
                           </div>
-                        </div>
-                     </form>}
-                {(this.props.User.orders[0].order_type != "pool_order") &&
+                      </div>
+                    </div>
+                 </form>
                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-3">
@@ -638,8 +636,7 @@ class DeliveryAddress extends React.Component<any, any> {
                           <br/>
                        </div>
                     </div>
-                 </form>}
-                {(this.props.User.orders[0].order_type != "pool_order") &&
+                 </form>
                  <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-4">
@@ -656,8 +653,7 @@ class DeliveryAddress extends React.Component<any, any> {
                         </div>
                       </div>
                     </div>
-                </form>}
-              {(this.props.User.orders[0].order_type != "pool_order") &&
+                </form>
                 <form className="form-horizontal">
                   <div className="form-group">
                     <div className="col-sm-3 col-md-4">
@@ -674,8 +670,7 @@ class DeliveryAddress extends React.Component<any, any> {
                         </div>
                     </div>
                   </div>
-                </form>}
-              {(this.props.User.orders[0].order_type != "pool_order") &&
+                </form>
                 <form className="form-horizontal">
                   <div className="form-group">
                     <div className="col-sm-3 col-md-3">
@@ -684,135 +679,8 @@ class DeliveryAddress extends React.Component<any, any> {
                         </div>
                     </div>
                   </div>
-                </form>}
-                <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-3 col-md-3">
-                          {(this.props.User.orders[0].order_type == "pool_order") ? <b>Delivery Address (all orders in this Pool will be delivered to this location)</b> : <b>Delivery Address</b>}
-                          <br/>
-                       </div>
-                    </div>
                 </form>
-                <form className="form-horizontal">
-                      <div className="form-group">
-                         <div className="col-sm-3 col-md-4">
-                            <input type="text" value={this.state.company_name} maxLength={40} onChange={(e: any) => this.setDeliveryContactAddressCompanyName(e)} onInput={(e: any) => this.setDeliveryContactAddressCompanyName(e)} className="form-control" placeholder="Company Name" style={{borderRadius: 0, borderColor: this.state.company_name_border_color, WebkitAppearance: "none"}}/>
-                         </div>
-                      </div>
-                </form>
-                <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-3 col-md-4">
-                        <input type="text" maxLength={40} className="form-control" placeholder="Street 1" value={this.state.street1} onChange={(e) => this.setDeliveryContactAddressStreet1(e)} onInput={(e) => this.setDeliveryContactAddressStreet1(e)} style={{borderRadius: 0, borderColor: this.state.street1_border_color, fontSize: 16}}/>
-                      </div>
-                      <div className="hidden-lg col-xs-1">
-                        <br/>
-                      </div>
-                      <div className="col-sm-3 col-md-4">
-                        <input type="text" value={this.state.street2} maxLength={30} onChange={(e: any) => this.setDeliveryContactAddressStreet2(e)} onInput={(e: any) => this.setDeliveryContactAddressStreet2(e)} className="form-control" placeholder="Street 2" style={{borderRadius: 0, borderColor: this.state.street2_border_color, fontSize: 16}}/>
-                      </div>
-                    </div>
-                </form>
-                <form className="form-horizontal">
-                      <div className="form-group">
-                        <div className="col-sm-3 col-md-3">
-                          <select className="form-control" onChange={(value) => this.setDeliveryContactAddressCity(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
-                            <option>City</option>
-                            <option value="Los Angeles">Los Angeles</option>
-                            <option value="Santa Monica">Santa Monica</option>
-                          </select>
-                        </div>
-                        <div className="hidden-lg col-xs-1">
-                          <br/>
-                        </div>
-                        <div className="col-sm-3">
-                          <select className="form-control" onChange={(value) => this.setDeliveryContactAddressState(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
-                            <option>State</option>
-                            <option value="CA">CA</option>
-                          </select>
-                        </div>
-                        <div className="hidden-lg col-xs-1">
-                          <br/>
-                        </div>
-                        <div className="col-sm-3">
-                          <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
-                            <option>Zip Code</option>
-                            <option>Venice Free Delivery</option>
-                            <option value="90013">90013</option>
-                            <option value="90014">90014</option>
-                            <option value="90015">90015</option>
-                            <option value="90021">90021</option>
-                            <option value="90071">90071</option>
-                            <option>Santa Monica</option>
-                            <option value="90291">90291</option>
-                            <option value="90401">90401</option>
-                            <option value="90402">90402</option>
-                            <option value="90403">90403</option>
-                            <option value="90404">90404</option>
-                            <option value="90405">90405</option>
-                            <option value="90406">90406</option>
-                            <option value="90407">90407</option>
-                            <option value="90408">90408</option>
-                            <option value="90409">90409</option>
-                            <option value="90410">90410</option>
-                            <option value="90411">90411</option>
-                            <option>DTLA</option>
-                            <option value="90012">90012</option>
-                            <option value="90013">90013</option>
-                            <option value="90014">90014</option>
-                            <option value="90017">90017</option>
-                            <option value="90021">90021</option>
-                            <option value="90071">90071</option>
-                            <option value="90074">90074</option>
-                            <option value="90081">90081</option>
-                            <option value="90053">90053</option>
-                            <option value="90055">90055</option>
-                            <option value="90079">90079</option>
-                            <option value="90086">90086</option>
-                            <option>Beverly Hills</option>
-                            <option value="90035">90035</option>
-                            <option value="90209">90209</option>
-                            <option value="90210">90210</option>
-                            <option value="90211">90211</option>
-                            <option value="90212">90212</option>
-                            <option value="90213">90213</option>
-                            <option>Marina Del Rey</option>
-                            <option value="90292">90292</option>
-                            <option>Playa Del Rey</option>
-                            <option value="90094">90094</option>
-                            <option>Brentwood</option>
-                            <option value="90049">90049</option>
-                            <option>Century City</option>
-                            <option value="90067">90067</option>
-                            <option>West Hollywood</option>
-                            <option>90046</option>
-                            <option>90048</option>
-                            <option>90069</option>
-                            <option>Hancock Park</option>
-                            <option>90004</option>
-                            <option>Westwood</option>
-                            <option>90024</option>
-                          </select>
-                        </div>
-                    </div>
-                </form>
-                <form className="form-horizontal">
-                    <div className="form-group">
-                      <div className="col-sm-3 col-md-5">
-                        <textarea className="form-control" cols={100} rows={5} placeholder="Order Note" style={{resize: "none"}} onChange={(e: any) => this.setOrderNote(e)}></textarea>
-                      </div>
-                    </div>
-                </form>
-                
-                {this.state.gift_order_checked == "checked" &&
-                  <form className="form-horizontal">
-                      <div className="form-group">
-                        <div className="col-sm-3 col-md-5">
-                          <textarea className="form-control" cols={100} rows={2} maxLength={150} placeholder="Gift note" style={{resize: "none"}} onChange={(e: any) => this.setGiftNote(e)}></textarea>
-                        </div>
-                      </div>
-                  </form>}
-              </div>
+               </div>
                   
     )
   }

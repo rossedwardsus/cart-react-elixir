@@ -349,7 +349,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
-                          <div className="hidden-xs col-sm-3 col-md-4" style={{paddingLeft: 55}}>
+                          <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
                             <b>VALENTINES DAY</b>
@@ -357,7 +357,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                             <CollectionsSidebarCart User={this.props.User} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>
-                          <div className="col-xs-12 col-md-6" style={{paddingLeft: 0, paddingRight: 0}}>
+                          <div className="col-xs-12 col-md-7" style={{paddingLeft: 0, paddingRight: 0}}>
                             <br/>
                             {this.state.collectionMenuItems.map(function(item: any, index: any){
 
@@ -374,7 +374,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                                 //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 
                                 return(
-                                        <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
+                                        <div className="col-xs-12 col-md-6 col-lg-6" style={{marginTop: 0, marginBottom: 0}}>
                                       
                                               <img id="1" className="img-responsive" onClick={() => this.showItem(item.id)} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
                                           <br/>
