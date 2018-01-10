@@ -112,6 +112,12 @@ class CollectionOrderMenu extends React.Component<any, any> {
     
   }
 
+  componentDidMount = () => {
+
+    window.scrollTo(0, 0);
+
+  }
+
   componentWillReceiveProps = (nextProp:any) => {
 
       //cart items
@@ -388,7 +394,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                                 //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 
                                 return(
-                                        <div className="col-xs-12 col-md-4 col-lg-4" style={{marginTop: 0, marginBottom: 0}}>
+                                        <div className="col-xs-12 col-md-5 col-lg-5" style={{marginTop: 0, marginBottom: 0}}>
                                       
                                               <img id="1" className="img-responsive" onClick={() => this.showItem(item.id)} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
                                           <br/>

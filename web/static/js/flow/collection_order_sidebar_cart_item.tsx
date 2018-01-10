@@ -80,9 +80,14 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
       console.log("item " + JSON.stringify(item));
 
       this.setState({itemName: item[0].collection_name});
-      this.setState({itemQuantityText: this.props.item.quantity});
+      //this.setState({itemQuantityText: this.props.item.quantity});
+      //this.setState({itemQuantityText: "1 1/2 dz"});
 
-      /*if(this.props.item.quantity == 6){
+      console.log(this.props.item.quantity/12);
+      //if remainder == .5 then remainder_text == "1/2"
+
+
+      if(this.props.item.quantity == 6){
 
           this.setState({itemQuantityText: "1/2 dz"});
 
@@ -94,7 +99,7 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
           this.setState({itemQuantityText: "1 1/2 dz"});
 
-      }*/
+      }
 
 
   }
@@ -135,7 +140,7 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
                       <div className="form-group" style={{border: 1}}>
                       <div className="col-md-5 col-xs-5">{this.state.itemName}</div>
                       <div className="col-xs-1"><a onClick={(index: any) => this.props.increaseCartItemQuantity(this.props.index)}>+</a></div>
-                      <div className="col-xs-2">{this.state.itemQuantityText}</div>
+                      <div className="col-xs-3" style={{fontSize: 11}}>{this.state.itemQuantityText}</div>
                       <div className="col-xs-1"><a onClick={(index: any) => this.props.decreaseCartItemQuantity(this.props.index)}>-</a></div>
                       <div className="col-xs-1"><a onClick={(index: any) => this.props.removeCartItem(this.props.index)}>X</a></div>
                       </div>
