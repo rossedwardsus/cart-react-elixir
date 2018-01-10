@@ -189,7 +189,7 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
 
   addCartItem = () => {
 
-      //this.props.addCartItem();
+      this.props.addCartItem();
 
       //this.props.addCartItem(null, this.state.selectedItemId, "regular", this.state.selectedItemQuantity);
 
@@ -341,7 +341,7 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="col-xs-12 col-md-12">
-                                  <div className="col-xs-12 col-md-4">
+                                  <div className="col-xs-12 col-md-4" style={{paddingTop: 10}}>
                                     Half dozen in gift box
                                   </div>
                                   <div className="col-xs-12 col-md-4">
@@ -363,7 +363,7 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                                     <br/>
                                   </div>
                                   <div className="col-xs-12 col-md-4">
-                                    <button className={this.state.add_cart_item_button_classname} disabled={this.state.add_cart_item_button_disabled} type="button" onClick={() => this.props.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Add</button>
+                                    <button className={this.state.add_cart_item_button_classname} disabled={this.state.add_cart_item_button_disabled} type="button" onClick={() => this.addCartItem()} style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>Add</button>
                                   </div>
                             </div>
                           </form>
