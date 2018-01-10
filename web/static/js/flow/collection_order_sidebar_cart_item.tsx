@@ -80,9 +80,9 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
       console.log("item " + JSON.stringify(item));
 
       this.setState({itemName: item[0].collection_name});
-      //this.setState({itemQuantityText: this.props.item.quantity});
+      this.setState({itemQuantityText: this.props.item.quantity});
 
-      if(this.props.item.quantity == 6){
+      /*if(this.props.item.quantity == 6){
 
           this.setState({itemQuantityText: "1/2 dz"});
 
@@ -94,7 +94,7 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
           this.setState({itemQuantityText: "1 1/2 dz"});
 
-      }
+      }*/
 
 
   }
@@ -109,7 +109,7 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
       //this.setState({itemName: item.collection_name});
 
-      if(nextProps.item.quantity == 6){
+      /*if(nextProps.item.quantity == 6){
 
           this.setState({itemQuantityText: "1/2 dz"});
 
@@ -121,7 +121,7 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
           this.setState({itemQuantityText: "1 1/2 dz"});
 
-      }
+      }*/
 
   }
 

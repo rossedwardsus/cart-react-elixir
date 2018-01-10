@@ -41,7 +41,7 @@ interface Order {
   //completed: boolean
 }
 
-class CollectionPromoCode extends React.Component<any, any> {
+class CollectionSubtotal extends React.Component<any, any> {
   //props: Props;
 
   private cardNumber: HTMLInputElement;
@@ -54,7 +54,7 @@ class CollectionPromoCode extends React.Component<any, any> {
 
     this.state = {
 
-       promoCodeDiscount: 0,
+       
     };
 
     //user_type=guest
@@ -78,7 +78,19 @@ class CollectionPromoCode extends React.Component<any, any> {
       //if user swipes back or uses the back button
       //this.setState({zipcode_border_color: "grey"});
 
-     //this.cardNumber.focus();
+      this.setState({expiry_month_border_color: "grey"});
+      this.setState({expiry_year_border_color: "grey"});
+      this.setState({security_code_border_color: "grey"});
+
+      //expiry_year_border_color
+      //expiry_cvc_border_color
+      //enabe form
+
+
+
+      //ReactDOM.findDOMNode(this.refs.cardNumber).focus();
+
+      //this.cardNumber.focus();
       //this.cardNumber.offsetTop;
       //const cardNumberInput = ReactDOM.findDOMNode(this.cardNumber);
       //window.scrollTo(this.cardNumber.offsetTop, 0);
@@ -101,14 +113,13 @@ class CollectionPromoCode extends React.Component<any, any> {
 
       //network error
 
-      console.log(nextProps.promoCodeDiscount);
-
-      this.setState({promoCodeDiscount: nextProps.promoCodeDiscount});
-
   }
   
   
   render(): JSX.Element{
+
+    let subtotal = 0.00;
+
 
     //if session.user_id != guest
     //then get the users payment methods
@@ -129,28 +140,16 @@ class CollectionPromoCode extends React.Component<any, any> {
    
     return ( <div>
 
-                  <form className="form-horizontal">
+                 <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
-                                      Promo Code
+                                    Subtotal Due: 
                                   </div>
                                   <div className="col-md-3">
-                                      <input type="text" maxLength={30} onChange={this.props.setPromoCode} className="form-control" value={this.state.promo_code} placeholder="Promo Code" style={{borderColor: "grey", borderRadius: 0, WebkitAppearance: "none"}}/>
+                                    ${subtotal.toFixed(2)}
                                   </div>
                                 </div>
                             </form>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-md-3">
-                                      Discount
-                                  </div>
-                                  <div className="col-md-2">
-                                      %{this.state.promoCodeDiscount}
-                                  </div>
-                                </div>
-                            </form>
-                            
-                  
             </div>
     )
   }
@@ -165,5 +164,5 @@ class CollectionPromoCode extends React.Component<any, any> {
 }
 
 
-export default CollectionPromoCode;
+export default CollectionSubtotal;
 

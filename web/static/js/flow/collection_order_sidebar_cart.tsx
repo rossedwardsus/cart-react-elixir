@@ -428,15 +428,15 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
     //}
 
-    if(total_items % 12 == 0){
+    //if(total_items % 12 == 0){
 
-        total_items_text = (total_items/12) + "dz";
+    //    total_items_text = (total_items/12) + "dz";
 
-    }else{
+    //}else{
 
         total_items_text = "" + total_items;
 
-    }
+    //}
 
     return (<div> 
                   <br/>

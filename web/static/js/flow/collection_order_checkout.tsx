@@ -40,7 +40,7 @@ import CollectionDeliveryDateTime from './collection_delivery_datetime.tsx';
 
 import {setUserFirstName, setUserLastName, setUserEmail, setUserMobile} from './actions/user.ts';
 
-import {setPoolName, setOrderDeliveryDatetimeDate, setOrderDeliveryDatetimeSpecificTime, setOrderNote, setGiftOrder, setGiftNote, setPickupLocation} from './actions/order.ts';
+import {setPoolName, setOrderDeliveryDatetimeDate, setOrderDeliveryDatetimeSpecificTime, setOrderNote, setGiftOrder, setGiftNote, setPickupLocation, setDeliveryCost} from './actions/order.ts';
 
 //import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode, setDeliveryContactAddressNote} from './actions/order_delivery_contact_address.ts';
 
@@ -388,7 +388,7 @@ class CollectionCheckout extends React.Component<any, any> {
                             setDeliveryContactAddressState={(e: any) => this.props.setUserDeliveryContactAddressState(e)} 
                             setDeliveryContactAddressZipcode={(e: any) => this.props.setUserDeliveryContactAddressZipcode(e)} 
                             setOrderNote={(e: any) => this.props.setOrderNote(e)} 
-                            setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)}
+                            setGiftOrder={(e: any) => this.props.setGiftOrder(e)} setGiftNote={(e: any) => this.props.setGiftNote(e)} setPickupLocation={(e: any) => this.props.setPickupLocation(e)} setDeliveryCost={(amount: any) => this.props.setDeliveryCost(amount)}
                             deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
                             <br/>
                             <br/>
@@ -402,7 +402,7 @@ class CollectionCheckout extends React.Component<any, any> {
                                       <Link to="/collections/order/payment" className="btn btn-default btn-block" style={{borderRadius: 0}}>Payment</Link>
                                     </div>
                                     <div className="col-md-3">
-                                      <Link to="/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
+                                      <Link to="/collections/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
                                     </div>
                                   </div>
                                 </div>
@@ -521,6 +521,9 @@ function mapDispatchToProps(dispatch: any) {
     },
     setUserDeliveryContactAddressZipcode: (e: any) => {
       dispatch(setUserDeliveryContactAddressZipcode(e.target.value, ""))
+    },
+    setDeliveryCost: (amount: any) => {
+      dispatch(setDeliveryCost(amount));
     },
     setUserDeliveryContactAddressNote: (e: any) => {
       dispatch(setUserDeliveryContactAddressNote(e.target.value, ""))

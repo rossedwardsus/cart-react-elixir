@@ -500,9 +500,7 @@ class CollectionPaymentMethod extends React.Component<any, any> {
                                 <input type="email" value={this.state.security_code} maxLength={4} className="form-control" placeholder="CVC" onChange={this.setPaymentSecurityCode} style={{borderColor: this.state.security_code_border_color, borderRadius: 0, WebkitAppearance: "none"}} disabled={this.state.security_code_disabled}/>
                               </div>
                           </div>
-                          <br/>
-                          <button className={this.state.button_complete_order_classname} disabled={this.state.button_complete_order_disabled} onClick={this.processYoursSocialPoolOrder} style={{borderRadius: 0}}>Complete Order</button>
-                            
+                          <br/>  
                   </div>
                   </form>
             </div>
@@ -517,42 +515,6 @@ class CollectionPaymentMethod extends React.Component<any, any> {
   }*/
 
 }
-
-function mapStateToProps(state: any) {
-  console.log("payment method component/state" + JSON.stringify(state));
-  return {
-   user: state.user,
-   user_payment_methods: state.user_payment_methods
-   //menu_items: dispatch()
-  };
-}
-
-function mapDispatchToProps(dispatch: any) {
-  //return bindActionCreators({ getAllProducts: getAllProducts }, dispatch);
-  return {
-    //setPaymentNameOnCard: (e: any) => {
-      //console.log(e.target.value);
-    //  dispatch(setPaymentNameOnCard(e.target.value));
-    //},
-    //setPaymentCardNumber: (e: any) => {
-      //console.log(e.target.value);
-    //  dispatch(setPaymentCardNumber(e));
-    //},
-    //setPaymentExpiryDate: (e: any) => {
-    //  console.log(e.target.value);
-      //dispatch(setLastName(e.target.value));
-    //},
-    //setPaymentSecurityCode: (e: any) => {
-    //  console.log(e.target.value);
-      //dispatch(setLastName(e.target.value));
-    //}
-  }
-}
-
-const PaymentMethod1 = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PaymentMethod)
 
 export default CollectionPaymentMethod;
 

@@ -15,30 +15,20 @@ import { connect } from 'react-redux';
 
 import {paymentMethodNameOnCardValidated, paymentMethodZipcodeValidated, paymentMethodCardNumberValidated, paymentMethodExpiryMonthValidated, paymentMethodExpiryYearValidated, paymentMethodSecurityCodeValidated} from './actions/order_validations.ts';
 
-/*import {setDeliveryContactAddressFirstName, setDeliveryContactAddressLastName, setDeliveryContactAddressEmail, setDeliveryContactAddressMobile, setDeliveryContactAddressCompanyName, setDeliveryContactAddressStreet1, setDeliveryContactAddressStreet2, setDeliveryContactAddressCity, setDeliveryContactAddressState, setDeliveryContactAddressZipcode} from './actions/order_delivery_contact_address.ts';
-import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode} from './actions/user_delivery_contact_address.ts';
-import {setUserNameFirst, setUserNameLast, setUserContactEmail, setUserContactMobile} from './actions/user_name_contact.ts';
-import {setDate, setTime, setSpecificTime} from './actions/signature_order_delivery_datetime.ts';
-import {increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/guest_cart.ts';*/
-
 import {setOrderStatus, setPromoCode} from './actions/order.ts';
 
 import {setPaymentNameOnCard, setPaymentZipCode, setPaymentMethodCardNumber, setPaymentMethodCardBrand, setPaymentExpiryMonth, setPaymentExpiryYear, setPaymentSecurityCode} from './actions/order_payment_method.ts';
 
 //import {setContactEmail, setContactMobile} from './actions/order_contact.ts';
 
-import {processYoursSocialPoolOrder, processPoolOrder, setDeliveryCost, termsValidated, saveForLater} from './actions/order.ts';
+import {setDeliveryCost, termsValidated, saveForLater} from './actions/order.ts';
+import {processCollectionOrder} from './actions/collections_order.ts';
 
-//import {processYoursSocialOrder1} from './actions/'
-
-import SidebarCart from './order_sidebar_cart.tsx';
-import SocialPromoCode from './social_promo_code.tsx';
-//import Contact from './order_contact.tsx';
-//import Datetime from './order_delivery.tsx';
-//import NameContact from './name.tsx';
-
-import OrderCart from './order_cart.tsx';
-import SocialPaymentMethod from './Social_payment_method.tsx';
+//import SidebarCart from './order_sidebar_cart.tsx';
+import CollectionSubtotal from './collection_subtotal.tsx';
+import CollectionPromoCode from './collection_promo_code.tsx';
+import CollectionDeliveryCost from './collection_delivery_cost.tsx';
+import CollectionPaymentMethod from './collection_payment_method.tsx';
 import CheckoutButton from './checkout_button.tsx';
 
 import PublicTopNavbar from './public/public_top_navbar.tsx';
@@ -82,34 +72,14 @@ class CollectionPayment extends React.Component<any, any> {
 
     this.state = {
 
-        first_name: "",
-        last_name: "",
-        email: "",
-        mobile: "",
-        business_name: "",
-        delivery_addresses: [{street: "santa monica blvd"}],
-        street: "",
-        city: "",
-        state: "",
-        zipcode: "",
-        startDate: moment(),
-        form_inputs_validated: false,
-        first_name_classname: "form-group has-error",
-        first_name_validated: false,
-        last_name_classname: "form-group has-error",
-        last_name_validated: false,
-        contact_email_classname: "form-group has-error", 
-        contact_email_validated: false,
-        contact_mobile_classname: "form-group has-error",
-        comtact_mobile_validated: false,
         name_on_card: "form-group has-error",
         //order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
-        selected_time: "",
-        selected_specific_time: "",
-        button_complete_order_classname: "btn btn-default disabled",
-        button_complete_order_disabled: true,      
+        button_complete_order_classname: "btn btn-default",
+        button_complete_order_disabled: false,
+        cartItems: [],      
         promo_code: "",
-        promo_code_discount: 0,  
+        promo_code_discount: 0,
+        deliveryCost: 0.00  
 
     };
 
@@ -132,43 +102,19 @@ class CollectionPayment extends React.Component<any, any> {
 
   componentDidMount = () => {
 
-      console.log(this.props.User.orderSession.promoCode);
+      window.scrollTo(0, 0);
+
+      console.log("cdm " + JSON.stringify(this.props.User.orders[0].cartItems));
       //promo code needs to be readded here if they entered it and swiped.
       //this.setState({promo_code: this.props.User.orderSession.promoCode})
       //need to apply promo code again
       
       this.applyPromoCode(this.props.User.orderSession.promoCode);
 
+      //this.setState({deliveryCost: this.props.User.orders[0].deliveryCost});
+      this.setState({cartItems: this.props.User.orders[0].cartItems});
+      this.setState({deliveryCost: this.props.User.orderSession.deliveryCost})
 
-      //same with payment method errors.
-      //clear errors in payment method
-      //done in payment_method.tsx
-
-
-
-      ///if(this.props.order.order_type == undefined){
-
-      //    redirect to homepage
-
-      //}
-
-      //componentDidMount = () => {
-
-        //window.scrollTo(0, 0);
-
-        //const node = ReactDOM.findDOMNode(this.cardNumber);
-        //node.scrollIntoView({ behavior: "smooth" });
-
-
-      //}
-
-      //this.setState({name_on_card: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({zipcode: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({card_number: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({expiry_month: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({expiry_year: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({security_card: this.props.deliveryContactsAddresses[0].street2})
-  
   }
 
   //componentWillReceiveProps
@@ -529,7 +475,7 @@ class CollectionPayment extends React.Component<any, any> {
 
 
 
-  processYoursSocialPoolOrder = () => {
+  processCollectionOrder = () => {
 
       this.setState({button_complete_order_classname: "btn btn-default disabled"});
       this.setState({button_complete_order_disabled: "disabled"});
@@ -545,7 +491,7 @@ class CollectionPayment extends React.Component<any, any> {
         
         //this.props.setOrderStatus("process_payment");
         
-        this.props.processYoursSocialPoolOrder();
+        //this.props.processYoursSocialPoolOrder();
 
       }
 
@@ -597,85 +543,35 @@ class CollectionPayment extends React.Component<any, any> {
     let item_count = this.state.item_count;
     let regular_items = [];
     let mini_items = [];
-    let subtotal_cost = 0.00;
+    let subtotal = 0.00;
     let total_due_formatted = null
-    let total_regular_items_cost = null;
-    let total_mini_items_cost = null;
-    let total_cost = null;
-    let total_items = null;
+    let total_items_cost = 0.00;
+    let total_items = 0;
 
 
-    //alert(item_count);
-
-    //body = <DeliveryAddressPayment order={this.state.order} setContactEmail={(contact_name: any) => this.setFirstName(name)} setFirstName={(first_name: any) => this.setFirstName(first_name)} addDeliveryAddress={(street: any, city: any, state: any, zipcode: any) => this.addDeliveryAddress(street, city, state, zipcode)} setDeliveryAddressStreet={(street: any) => this.setDeliveryAddressStreet(street)} setDeliveryAddressCity={(city: any) => this.setDeliveryAddressCity(city)} setDeliveryAddressZipcode={(zipcode: any) => this.setDeliveryAddressZipcode(zipcode)}/>;
-
-    //<SidebarCart order={this.props.order} increaseCartItemQuantity={this.props.increaseCartItemQuantity} decreaseCartItemQuantity={this.props.decreaseCartItemQuantity}/>
-
-    //<OrderCart order={this.props.order} decreaseCartItemQuantity={(e:any) => this.props.decreaseCartItemQuantity(e)} increaseCartItemQuantity={(e:any) => this.props.increaseCartItemQuantity(e)} removeCartItem={(e:any) => this.props.removeCartItem(e)} cart_items={this.props.order_cart_items}/>
-
-  
-    regular_items = this.props.User.orders[0].cartItems.filter((item: any) => {
-
-        //console.log(JSON.stringify(item));
-
-        if(item.size == "regular"){
-
-            return item;
-
-        }
-
-        return
-
-    });
-
-    mini_items = this.props.User.orders[0].cartItems.filter((item: any) => {
-
-        //console.log(JSON.stringify(item));
-
-        if(item.size == "mini"){
-
-            return item;
-
-        }
-
-        return
-
-    });
-
-    if(this.props.User.orders[0].order_type == "yours" || this.props.User.orders[0].order_type == "pool"){
+    //alert(item_count);  
         
-        total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
-
-    }else{
-
-        total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
-
-    }
-
-    total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
-
-    //}
-
-
-    //total_social_mini_items_cost = social_mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.4; }, 0)
-
-    //total_social_mini_items_cost = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity * 6.0, 0);
-
-
-    subtotal_cost = total_regular_items_cost + total_mini_items_cost;
+    //subtotal = this.state.cartItems.reduce((amount: any, item: any) => { return amount + item.quantity * 3.50; }, 0)
 
     //total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+        //half_dozens = total_items/6;
+
+    
+
+    total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
     //total_items = (regular_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (mini_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
+
+    subtotal = (total_items/6 * 22);   
 
 
     if(this.state.promo_code_discount == 0){
 
-        total_cost = subtotal_cost;
+        total_items_cost = subtotal;
 
     }else{
 
-        total_cost = subtotal_cost - (subtotal_cost * (this.state.promo_code_discount/100));
+        total_items_cost = subtotal - (subtotal * (this.state.promo_code_discount/100));
 
     }
 
@@ -718,11 +614,11 @@ class CollectionPayment extends React.Component<any, any> {
                                     Subtotal Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    ${subtotal_cost.toFixed(2)}
+                                    ${subtotal.toFixed(2)}
                                   </div>
                                 </div>
                             </form>
-                            <SocialPromoCode setPromoCode={(e: any) => {this.setPromoCode(e)}/>
+                            <CollectionPromoCode setPromoCode={(e: any) => this.setPromoCode(e)} promoCodeDiscount={this.state.promo_code_discount}/>
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
@@ -743,13 +639,14 @@ class CollectionPayment extends React.Component<any, any> {
                                   </div>
                                 </div>
                             </form>
+                            <CollectionDeliveryCost deliveryCost={this.state.deliveryCost}/>
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
                                       Delivery Cost
                                   </div>
                                   <div className="col-md-2">
-                                      %{this.state.promo_code_discount}
+                                      ${this.state.deliveryCost.toFixed(2)}
                                   </div>
                                 </div>
                             </form>
@@ -759,7 +656,7 @@ class CollectionPayment extends React.Component<any, any> {
                                     Total Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    ${total_cost.toFixed(2)}
+                                    ${total_items_cost.toFixed(2)}
                                   </div>
                                 </div>
                             </form>
@@ -767,9 +664,9 @@ class CollectionPayment extends React.Component<any, any> {
                             {this.state.payment_error_message}
                             <br/>
                             <br/>
-                            <SocialPaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setOrderStatus={(e: any) => this.props.setOrderStatus(e)} paymentMethodValidated={() => this.props.paymentMethodValidated()} paymentMethodCardNumberValidated={() => this.props.paymentMethodCardNumberValidated()} paymentMethodExpiryMonthValidated={() => this.props.paymentMethodExpiryMonthValidated()} paymentMethodExpiryYearValidated={() => this.props.paymentMethodExpiryYearValidated()} paymentMethodSecurityCodeValidated={() => this.props.paymentMethodSecurityCodeValidated()}/>
+                            <CollectionPaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setOrderStatus={(e: any) => this.props.setOrderStatus(e)} paymentMethodValidated={() => this.props.paymentMethodValidated()} paymentMethodCardNumberValidated={() => this.props.paymentMethodCardNumberValidated()} paymentMethodExpiryMonthValidated={() => this.props.paymentMethodExpiryMonthValidated()} paymentMethodExpiryYearValidated={() => this.props.paymentMethodExpiryYearValidated()} paymentMethodSecurityCodeValidated={() => this.props.paymentMethodSecurityCodeValidated()}/>
                             <br/>
-                            <button className={this.state.button_complete_order_classname} disabled={this.state.button_complete_order_disabled} onClick={this.processYoursSocialPoolOrder} style={{borderRadius: 0}}>Complete Order</button>
+                            <button className={this.state.button_complete_order_classname} disabled={this.state.button_complete_order_disabled} onClick={this.processCollectionOrder} style={{borderRadius: 0}}>Complete Order</button>
                             <br/>
                             <br/>
                         </div>
@@ -800,7 +697,8 @@ class CollectionPayment extends React.Component<any, any> {
 
 
 function mapStateToProps(state: any) {
-  console.log("order payment state" + JSON.stringify(state));
+  //console.log("collection order payment state" + JSON.stringify(state));
+
   return {
    /*session: state.session,
    order_validations: state.order_validations,
@@ -887,14 +785,10 @@ function mapDispatchToProps(dispatch: any) {
     //  dispatch(setOrderId(value));
 
     //},
-    processYoursSocialPoolOrder: () => {
+    
+    processCollectionOrder: () => {
 
-      dispatch(processYoursSocialPoolOrder());
-
-    },
-    processPoolOrder: () => {
-
-      dispatch(processPoolOrder());
+      dispatch(processCollectionOrder());
 
     },
     

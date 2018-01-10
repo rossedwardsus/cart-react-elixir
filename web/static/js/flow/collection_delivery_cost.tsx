@@ -41,7 +41,7 @@ interface Order {
   //completed: boolean
 }
 
-class CollectionPromoCode extends React.Component<any, any> {
+class CollectionDeliveryCost extends React.Component<any, any> {
   //props: Props;
 
   private cardNumber: HTMLInputElement;
@@ -54,7 +54,8 @@ class CollectionPromoCode extends React.Component<any, any> {
 
     this.state = {
 
-       promoCodeDiscount: 0,
+       deliveryCost: 0.00
+      
     };
 
     //user_type=guest
@@ -78,21 +79,9 @@ class CollectionPromoCode extends React.Component<any, any> {
       //if user swipes back or uses the back button
       //this.setState({zipcode_border_color: "grey"});
 
-     //this.cardNumber.focus();
-      //this.cardNumber.offsetTop;
-      //const cardNumberInput = ReactDOM.findDOMNode(this.cardNumber);
-      //window.scrollTo(this.cardNumber.offsetTop, 0);
-
-      //const node = ReactDOM.findDOMNode(this.cardNumber);
-      //node.scrollIntoView({ behavior: "smooth" });
-
-      //this.setState({name_on_card: this.props.User.paymentMethods[0].name_on_card});
-      //this.setState({zipcode: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({card_number: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({expiry_month: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({expiry_year: this.props.deliveryContactsAddresses[0].street2})
-      //this.setState({security_card: this.props.deliveryContactsAddresses[0].street2})
-
+      this.setState({deliveryCost: this.props.deliveryCost});
+     
+      
   }
 
   componentWillReceiveProps = (nextProps: any) => {
@@ -100,10 +89,6 @@ class CollectionPromoCode extends React.Component<any, any> {
       //check for payment invalidated error
 
       //network error
-
-      console.log(nextProps.promoCodeDiscount);
-
-      this.setState({promoCodeDiscount: nextProps.promoCodeDiscount});
 
   }
   
@@ -132,20 +117,10 @@ class CollectionPromoCode extends React.Component<any, any> {
                   <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
-                                      Promo Code
-                                  </div>
-                                  <div className="col-md-3">
-                                      <input type="text" maxLength={30} onChange={this.props.setPromoCode} className="form-control" value={this.state.promo_code} placeholder="Promo Code" style={{borderColor: "grey", borderRadius: 0, WebkitAppearance: "none"}}/>
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-md-3">
-                                      Discount
+                                      Delivery Cost
                                   </div>
                                   <div className="col-md-2">
-                                      %{this.state.promoCodeDiscount}
+                                      ${this.state.deliveryCost}
                                   </div>
                                 </div>
                             </form>
@@ -165,5 +140,5 @@ class CollectionPromoCode extends React.Component<any, any> {
 }
 
 
-export default CollectionPromoCode;
+export default CollectionDeliveryCost;
 

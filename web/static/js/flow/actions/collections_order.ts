@@ -73,6 +73,8 @@ export function createOrder(order_type: any, pool_url_name: any, pool_url_date: 
 
 
       }
+
+    }
  }
 
 
@@ -229,12 +231,6 @@ export function mailingList(value: any) {
   }
 }
 
-export function setOrderId(order_id: any) {
-  console.log("order id action " + order_id);
-  return {
-    type: SET_ORDER_ID,
-  }
-}
 
 export function setDeliveryCost(cost: any) {
   console.log("setdeliverycost action " + cost);
@@ -328,9 +324,4 @@ export function setGiftNote(value: any) {
   }
 }
 
-export function setPickupLocation(location: any) {
-  return {
-    type: SET_PICKUP_LOCATION,
-    location: location
-  }
-}
+

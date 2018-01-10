@@ -336,7 +336,7 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                           
                           <br/>
                           <br/>
-                           <div><p>$22 per half dozen</p></div>
+                           <div><p>6 for $22</p></div>
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
