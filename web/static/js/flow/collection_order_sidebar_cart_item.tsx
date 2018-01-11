@@ -109,7 +109,7 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
       }
 
-      this.setState({itemQuantityText: quotient_text + "" + remainder_text + "dz"});
+      this.setState({itemQuantityText: quotient_text + "" + remainder_text + " dz"});
 
 
       /*if(this.props.item.quantity == 6){

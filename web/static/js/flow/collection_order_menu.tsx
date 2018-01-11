@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 
 //import _ from 'lodash';
 
-import {getCollectionMenuItems} from './actions/collections.ts';
+import {getCollectionDetails, getCollectionMenuItems} from './actions/collections.ts';
 import {cartValidated} from './actions/order_validations.ts';
 import {updateOrderSession} from './actions/session.ts';
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
@@ -43,6 +43,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
     //alert("sconely yours1" + this.props.params.order_id);
 
     this.state = {
+        collectionDetails: {},
         collectionMenuItems: [],
         selectedItemId: "",
         selectedItemSize: "",
@@ -93,8 +94,8 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     window.scrollTo(0, 0);
 
-    //this.props.getCollectionDetails("valentines_day");
-    this.props.getCollectionMenuItems("valentines_day");
+    this.props.getCollectionDetails("hearts_collection");
+    this.props.getCollectionMenuItems("hearts_collection");
     this.props.createOrder("collection");
     //this.setState({menuItems: this.props.menuItems});
 
@@ -127,7 +128,10 @@ class CollectionOrderMenu extends React.Component<any, any> {
       //console.log("total items " + total_items);
 
       //console.log("menu props");
+      console.log("collection cwrp " + JSON.stringify(nextProp.collectionDetails));
       console.log("collection menu mi cwrp " + JSON.stringify(nextProp.collectionMenuItems));
+      
+      this.setState({collectionDetails: nextProp.collectionDetails});
       this.setState({collectionMenuItems: nextProp.collectionMenuItems});
 
   }
@@ -371,6 +375,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                           <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
+                            <b>{this.state.collectionDetails.name}</b>
                             <b>VALENTINES DAY</b>
                             <br/>
                             {this.state.totalItems < 6 ? "hello" : "there" }
@@ -421,7 +426,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops order menu " + JSON.stringify(state.collections.collectionMenuItems));
+  console.log("mapstatetoprops collection order menu " + JSON.stringify(state.collections));
   return {
 
     //started_order: state.User.orders.findIndex((order: any) => order.status == "started"),
@@ -436,7 +441,9 @@ const mapStateToProps = (state: any, ownProps: any) => {
 
     //if(state.default.order.cart_items != undefined){
         
+        collectionDetails: state.collections.collectionDetails,
         collectionMenuItems: state.collections.collectionMenuItems,
+
         //guestOrder: state.guestOrder,
         //order: state.User.orders.find((order: any) => order.status == "current"),
         User: state.User,
@@ -457,6 +464,10 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     //viewmenuthunk
 
+    getCollectionDetails: (collection_name: any) => {
+      console.log("gmi");
+      dispatch(getCollectionDetails(collection_name));
+    },
     getCollectionMenuItems: (collection_name: any) => {
       console.log("gmi");
       dispatch(getCollectionMenuItems(collection_name));

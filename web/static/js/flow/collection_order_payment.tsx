@@ -547,6 +547,7 @@ class CollectionPayment extends React.Component<any, any> {
     let total_due_formatted = null
     let total_items_cost = 0.00;
     let total_items = 0;
+    let total_cost = 0.00;
 
 
     //alert(item_count);  
@@ -574,6 +575,8 @@ class CollectionPayment extends React.Component<any, any> {
         total_items_cost = subtotal - (subtotal * (this.state.promo_code_discount/100));
 
     }
+
+    total_cost = total_items_cost + this.state.deliveryCost;
 
     //total_due_formatted = total_due.toFixed(2);
 
@@ -656,7 +659,7 @@ class CollectionPayment extends React.Component<any, any> {
                                     Total Due: 
                                   </div>
                                   <div className="col-md-3">
-                                    ${total_items_cost.toFixed(2)}
+                                    ${total_cost.toFixed(2)}
                                   </div>
                                 </div>
                             </form>
