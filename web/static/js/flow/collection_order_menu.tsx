@@ -376,7 +376,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <b>{this.state.collectionDetails.name}</b>
-                            <b>VALENTINES DAY</b>
+                            <b>VALENTINES DAY1</b>
                             <br/>
                             {this.state.totalItems < 6 ? "hello" : "there" }
                             <CollectionsSidebarCart User={this.props.User} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
