@@ -134,6 +134,10 @@ class CollectionCheckout extends React.Component<any, any> {
 
     //if(this.props.User.orders[0].order_type == "social"){
 
+    console.log(moment().daysInMonth());
+    console.log(moment().day(31));
+    //if today is the last of the month and tomorrow is not wednesday then move to the next month
+    //or if two days from now arent tuesday
     
   }
 
