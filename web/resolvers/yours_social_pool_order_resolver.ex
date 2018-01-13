@@ -845,6 +845,8 @@ defmodule Sconely.YoursSocialPoolOrderResolver do
     IO.puts("total")
     IO.puts(total*100)
     IO.puts(trunc(total*100))
+    IO.puts("delivery cost")
+    IO.inspect(args[:order_delivery_cost])
 
     total_formatted = :erlang.float_to_binary(total, [decimals: 2])
     delivery_cost_formatted = delivery_cost = "$" <> args[:order_delivery_cost] <> ".00"
