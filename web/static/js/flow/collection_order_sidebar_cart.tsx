@@ -258,6 +258,39 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
         total_items_cost = (total_items/6 * 22);   
 
+        //move to a lib
+
+        let totalItemsText = "";
+
+        if(total_items > 0){
+
+            let quotient = Math.floor(total_items/12);
+            let remainder = total_items % 12;
+            let quotient_text = "";
+            let remainder_text = "";
+
+            console.log(quotient + " " + remainder);
+
+            if(quotient === 0){
+
+                quotient_text = "";
+
+            }else{
+
+                quotient_text = "" + quotient;
+
+            }
+
+            if(remainder === 6){
+
+                remainder_text = "1/2";
+
+            }
+
+            total_items_text = quotient_text + "" + remainder_text + " dz";
+        }
+
+
 
         /*if(total_items == 6){
 
@@ -434,7 +467,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
     //}else{
 
-        total_items_text = "" + total_items;
+     //   total_items_text = "" + total_items;
 
     //}
 
@@ -466,7 +499,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
                           <div className="form-group" style={{border: 1}}>
                             <div className="col-md-5 col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
                             <div className="col-md-1 col-xs-1"></div>
-                            <div className="col-md-1 col-xs-3" style={{fontType: "helvetica", fontSize: "14"}}>{total_items_text}</div>
+                            <div className="col-md-3 col-xs-1" style={{fontType: "helvetica", fontSize: "14"}}>{total_items_text}</div>
                           </div>
                         </form>
                         <br/>
