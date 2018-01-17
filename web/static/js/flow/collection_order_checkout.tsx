@@ -229,10 +229,10 @@ class CollectionCheckout extends React.Component<any, any> {
       let santa_monica_zipcodes = ["90401", "90402", "90403", "90404", "90405", "90406", "90407", "90408", "90409", "90410", "90411", "90291", "90292", "90293", "90294", "90295", "90296"]
       let venice_zipcodes = ["90291", "90292", "90293"];
 
-      let order_type = this.props.User.orders[0].order_type;
+      //let order_type = this.props.User.orders[0].order_type;
 
-      console.log(order_type === "social");
-      console.log(dtla_zipcodes.includes(parseInt(e.target.value)));
+      //console.log(order_type === "social");
+      console.log("dtla zipcode" + dtla_zipcodes.includes(parseInt(e.target.value)));
 
       //this.props.setDeliveryAddressZipcode(e.target.value)
 

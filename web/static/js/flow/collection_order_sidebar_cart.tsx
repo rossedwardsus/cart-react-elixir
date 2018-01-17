@@ -50,6 +50,9 @@ class CollectionSidebarCart extends React.Component<any, any> {
         collectionMenuItems: [],
         payment_button_classname: "btn btn-default",
         payment_button_disabled: false,
+        User: {},
+        deliveryCost: 0.00,
+        deliveryCostFormatted: ""
 
     };
 
@@ -74,6 +77,20 @@ class CollectionSidebarCart extends React.Component<any, any> {
     this.setState({collectionMenuItems: this.props.collectionMenuItems})
     this.setState({cartItems: this.props.User.orders[0].cartItems})
 
+    //let delivery_cost_formatted = "";
+
+    if(this.props.User.orders[0].deliveryCost === ""){
+
+        this.setState({deliveryCost : 0.00});
+        this.setState({deliveryCostFormatted : "$0.00"});
+
+    }else{
+
+        this.setState({deliveryCost : parseInt(this.props.User.orders[0].deliveryCost).toFixed(2)});
+        this.setState({deliveryCostFormatted : "" + parseInt(this.props.User.orders[0].deliveryCost).toFixed(2)});
+
+    }
+
     
   }
 
@@ -83,8 +100,26 @@ class CollectionSidebarCart extends React.Component<any, any> {
       console.log("collection sidebar cart user cwrp " + JSON.stringify(nextProps.User));
       //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
 
+      this.setState({User: nextProps.User})
       this.setState({collectionMenuItems: nextProps.collectionMenuItems})
       this.setState({cartItems: nextProps.User.orders[0].cartItems})
+
+    if(nextProps.User.orders[0].deliveryCost === ""){
+
+        this.setState({deliveryCost : 0.00});
+        this.setState({deliveryCostFormatted : "$0.00"});
+
+    //}if(nextProps.User.orders[0].deliveryCost === 0){
+
+     //   this.setState({deliveryCost : 0.00});
+     //   this.setState({deliveryCostFormatted : "$0.00"});
+
+    }else{
+
+        this.setState({deliveryCost : parseInt(nextProps.User.orders[0].deliveryCost).toFixed(2)});
+        this.setState({deliveryCostFormatted : "$" + parseInt(nextProps.User.orders[0].deliveryCost).toFixed(2)});
+
+    }
 
   }
 
@@ -100,6 +135,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
     let order_type = this.props.User.orders[0].order_type;
     let regular_items = [];
     let mini_items = [];
+    let subtotal_items_cost = 0;
     let total_items_cost = 0;
     let total_regular_items = 0;
     let total_regular_items_cost = 0;
@@ -256,7 +292,8 @@ class CollectionSidebarCart extends React.Component<any, any> {
         
         //half_dozens = total_items/6;
 
-        total_items_cost = (total_items/6 * 22);   
+        subtotal_items_cost = (total_items/6 * 22);   
+        total_items_cost = subtotal_items_cost + parseInt(this.state.deliveryCost);
 
         //move to a lib
 
@@ -471,6 +508,8 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
     //}
 
+    
+
     return (<div> 
                   <br/>
                   {(this.state.cartItems.length == 0) ?
@@ -503,18 +542,26 @@ class CollectionSidebarCart extends React.Component<any, any> {
                           </div>
                         </form>
                         <br/>
+                        
                         <form className="form-horizontal" style={{border: 1}}>
                           <div className="form-group" style={{border: 1}}>
-                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Delivery</div>
+                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Subtotal</div>
                             <div className="col-md-1"></div>
-                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>$0.00</div>
+                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${subtotal_items_cost.toFixed(2)}</div>
+                          </div>
+                        </form>
+                        <form className="form-horizontal" style={{border: 1}}>
+                          <div className="form-group" style={{border: 1}}>
+                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Delivery Cost</div>
+                            <div className="col-md-1"></div>
+                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>{this.state.deliveryCostFormatted}</div>
                           </div>
                         </form>
                         <form className="form-horizontal" style={{border: 1}}>
                           <div className="form-group" style={{border: 1}}>
                             <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Cost</div>
                             <div className="col-md-1"></div>
-                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
+                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost}</div>
                           </div>
                         </form>
                       </div>)

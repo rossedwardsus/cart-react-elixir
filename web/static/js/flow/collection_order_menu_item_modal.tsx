@@ -341,8 +341,12 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                         <div className="modal-footer">
                           <form className="form-horizontal">
                             <div className="col-xs-12 col-md-12">
-                                  <div className="col-xs-12 col-md-4" style={{paddingTop: 10}}>
-                                    Half dozen in gift box
+                                  <div className="col-xs-12 col-md-4">
+                                    <select className="form-control" value={this.state.selectedItemSize} onChange={(e) => this.selectedItemSize(e)} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
+                                      <option value="">Size</option>
+                                      <option value="4">4</option>
+                                      <option value="6">6</option>
+                                    </select>
                                   </div>
                                   <div className="col-xs-12 col-md-4">
                                     <select className="form-control" value={this.state.selectedItemQuantity} onChange={(e) => this.selectedItemQuantity(e)} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>

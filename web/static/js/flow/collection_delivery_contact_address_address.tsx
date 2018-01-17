@@ -465,9 +465,9 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
       this.setState({zipcode: e.target.value});
       this.props.setDeliveryContactAddressZipcode(e);
 
-      let dtla = [90012, 90014, 90017, 90074, 90071, 90081, 90012, 90013, 90017, 90012, 90053, 90014, 90015, 90021, 90079, 90055, 90012, 90014, 90071, 90012, 90015, 90017, 90021, 90086]
+      let dtla = [90012, 90013, 90014, 90015, 90017, 90021, 90053, 90055, 90071, 90074, 90079, 90081, 90086]
 
-      let sm = [90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411]
+      //let sm = [90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411]
 
       
       //let delivery_zipcodes: [{city: "DTLA", delivery_cost: "Free Delivery", zipcodes: [90012, 90013, 90014, 90017, 90021, 90071, 90074, 90081, 90053, 90055, 90079, 90086]}];
@@ -485,7 +485,7 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
 
           this.props.setDeliveryCost(0);
 
-      }else if(sm.indexOf(parseInt(e.target.value)) > -1){
+      }else{
 
           this.props.setDeliveryCost(10);
 
@@ -697,11 +697,8 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
                             <option value="90079">90079</option>
                             <option value="90086">90086</option>
                             <option>Venice - $10 delivery</option>
-                            <option value="90013">90013</option>
-                            <option value="90014">90014</option>
-                            <option value="90015">90015</option>
-                            <option value="90021">90021</option>
-                            <option value="90071">90071</option>
+                            <option value="90291">90291</option>
+                            <option value="90292">90292</option>
                             <option>Santa Monica - $10 delivery</option>
                             <option value="90291">90291</option>
                             <option value="90401">90401</option>
