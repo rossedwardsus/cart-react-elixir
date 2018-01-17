@@ -1,4 +1,4 @@
-defmodule Sconely.YoursSocialPoolOrderResolver do
+defmodule Sconely.CollectionOrderResolver do
   alias SconeHomeElixir.Repo
   alias Sconely.SconelySignatureOrder
   alias Sconely.SconelySignatureOrderAdditionalItem
