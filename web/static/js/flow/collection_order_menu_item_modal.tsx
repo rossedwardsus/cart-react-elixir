@@ -189,9 +189,9 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
 
   addCartItem = () => {
 
-      this.props.addCartItem();
+      //this.props.addCartItem();
 
-      //this.props.addCartItem(null, this.state.selectedItemId, "regular", this.state.selectedItemQuantity);
+      this.props.addCartItem(null, this.state.selectedItemId, this.state.selectedItemSize, this.state.selectedItemQuantity);
 
       this.setState({selected_item_size: ""});
       this.setState({selectedItemQuantity: ""});
@@ -252,7 +252,7 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
 
     //let social_item_quantity_options = null;
 
-    if(this.state.selected_item_size == "regular"){
+    if(this.state.selected_item_size == "four"){
         
     //    for (let i = 1; i <= 20; i++){
 
@@ -344,18 +344,18 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                                   <div className="col-xs-12 col-md-4">
                                     <select className="form-control" value={this.state.selectedItemSize} onChange={(e) => this.selectedItemSize(e)} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
                                       <option value="">Size</option>
-                                      <option value="4">4</option>
-                                      <option value="6">6</option>
+                                      <option value="four">4</option>
+                                      <option value="six">6</option>
                                     </select>
                                   </div>
                                   <div className="col-xs-12 col-md-4">
                                     <select className="form-control" value={this.state.selectedItemQuantity} onChange={(e) => this.selectedItemQuantity(e)} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
                                       <option value="">Quantity</option>
                                       <option value="1">1</option>
-                                      <option>2</option> 
-                                      <option>3</option>
-                                      <option>4</option>
-                                      <option>5</option>
+                                      <option value="2">2</option> 
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
                                       <option>6</option> 
                                       <option>7</option>
                                       <option>8</option>

@@ -86,6 +86,8 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
       //console.log(this.props.item.quantity/12);
       //if remainder == .5 then remainder_text == "1/2"
 
+      //if this.props.item.size == "four" else size == "six"
+
       let quotient = Math.floor(this.props.item.quantity/12);
       let remainder = this.props.item.quantity % 12;
       let quotient_text = "";

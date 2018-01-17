@@ -133,13 +133,16 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
     
     let order_type = this.props.User.orders[0].order_type;
-    let regular_items = [];
-    let mini_items = [];
+    let four_items = [];
+    let six_items = [];
+    let subtotal = 0;
     let subtotal_items_cost = 0;
     let total_items_cost = 0;
-    let total_regular_items = 0;
+    let total_four_items = 0;
+    let subtotal_four_items = 0;
     let total_regular_items_cost = 0;
-    let total_mini_items = 0;
+    let total_six_items = 0;
+    let subtotal_six_items = 0;
     let total_mini_items_cost = 0;
     let total_items = 0;
     let item_limit = "";
@@ -174,11 +177,11 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
         //turn this into a function
 
-        regular_items = this.state.cartItems.filter((item: any) => {
+        four_items = this.state.cartItems.filter((item: any) => {
 
             //console.log(JSON.stringify(item));
 
-            if(item.size == "regular"){
+            if(item.size == "four"){
 
                 return item;
 
@@ -188,11 +191,13 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
         });
 
-        mini_items = this.state.cartItems.filter((item: any) => {
+        console.log("four items" + JSON.stringify(four_items));
+
+        six_items = this.state.cartItems.filter((item: any) => {
 
             //console.log(JSON.stringify(item));
 
-            if(item.size == "mini"){
+            if(item.size == "six"){
 
                 return item;
 
@@ -202,98 +207,45 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
         });
 
-        console.log("regular items " + JSON.stringify(regular_items));
+        console.log("four items" + JSON.stringify(four_items));
+
+
+        //console.log("regular items " + JSON.stringify(four_items));
         
         //1 doz/12 - 5/60 doz regular sized scones, $5 each
         //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
         //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
 
-        /*if(regular_items.length > 0){
-
-            //console.log("regular items " + JSON.stringify(regular_items));
         
-            total_regular_items = regular_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.00}, 0);
+        //total_items = (four_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (four_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
+        total_four_items = four_items.reduce((amount: any, item: any) => amount + item.quantity, 0);
+        total_six_items = six_items.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
-            //if((total_social_regular_items >= 12) && (total_social_regular_items <= 60)){
+        console.log("total four items" + total_four_items);
+        console.log("total six items" + total_six_items);
 
-            if(this.props.User.orders[0].order_type == "social"){
+        total_items = total_four_items + total_six_items;
 
-                item_cost = 5.00;
-
-            }else{
-
-                item_cost = 5.00;
-
-            }
-
-            //}else if(total_social_regular_items >= 72 && total_social_regular_items <= 174){
-
-            //    item_cost = 4.75;
-
-            //}else if(total_social_regular_items >= 186 && total_social_regular_items <= 200){
-
-            //    item_cost = 4.50;
-
-            //}
-            
-        }*/
-
-        //if(mini_items.length > 0){
-
-            //console.log("mini items " + JSON.stringify(mini_items));
-        
-            //total_mini_items = mini_items.reduce((amount: any, item: any) => {console.log(JSON.stringify(item));amount + item.quantity * 6.0}, 0);
-
-            //if((total_social_mini_items >= 12) && (total_social_regular_items <= 60)){
-
-            //    item_cost = 2.25;
-
-            //}else if(total_social_mini_items >= 72 && total_social_regular_items <= 174){
-
-            //    item_cost = 4.75;
-
-            //}else if(total_social_mini_items >= 186 && total_social_regular_items <= 200){
-
-            //    item_cost = 4.50;
-
-            //}
-            
-        //}
-        
-
-
-
-        //social_mini_items = this.state.cartItems.map((item: any) => {
-
-            //if(item.twelveortwentyfourminis == "24_minis"){
-
-            //    return item;
-
-            //}
-
-        //});
-
-        //if(social_regular_items.length != 0){
-
-
-        //total_regular_items_cost = regular_items.reduce((amount: any, item: any) => { return amount + item.quantity * 5.00; }, 0)
-
-        //total_mini_items_cost = mini_items.reduce((amount: any, item: any) => { return amount + item.quantity * 2.25; }, 0)
-
-        //}
-
-
-        //total_items_cost = total_regular_items_cost;
-
-        //let half_dozens = 0
-
-
-        total_items = (regular_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (mini_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
-        
         //half_dozens = total_items/6;
 
-        subtotal_items_cost = (total_items/6 * 22);   
-        total_items_cost = subtotal_items_cost + parseInt(this.state.deliveryCost);
+        //size == "six"
+
+        //how many of "four" and "six" items did you order.  take that number and multiply it by the price for those.
+
+        subtotal_four_items = (total_four_items * 14); 
+        subtotal_six_items = (total_six_items * 22);     
+        
+        subtotal_items_cost = (total_items/6 * 22);  
+
+        
+        subtotal = subtotal_four_items + subtotal_six_items;
+
+        console.log("subtotal" + subtotal);
+
+        //subtotal = subtotal_four_items + subtotal_six_items
+
+
+        total_items_cost = subtotal + parseInt(this.state.deliveryCost);
         console.log(subtotal_items_cost + this.state.deliveryCost);
 
         //move to a lib
@@ -548,7 +500,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
                           <div className="form-group" style={{border: 1}}>
                             <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Subtotal</div>
                             <div className="col-md-1"></div>
-                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${subtotal_items_cost.toFixed(2)}</div>
+                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${subtotal.toFixed(2)}</div>
                           </div>
                         </form>
                         <form className="form-horizontal" style={{border: 1}}>

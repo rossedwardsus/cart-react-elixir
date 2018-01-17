@@ -189,7 +189,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     //}else{
 
-    this.setState({selectedItemQuantity: (parseInt(e.target.value) * 6)});
+    this.setState({selectedItemQuantity: (parseInt(e.target.value))});
         
     //this.setState({selected_item_quantity_selector: e.target.value});
 
@@ -223,7 +223,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     //quantity X 6
 
-        this.props.addCartItem(null, this.state.selectedItemId, "regular", this.state.selectedItemQuantity);
+        this.props.addCartItem(null, this.state.selectedItemId, this.state.selectedItemSize, this.state.selectedItemQuantity);
 
     //}
     
@@ -396,12 +396,22 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
                                 //console.log("image id " + this.state["image_src_" + item.item_id]);
 
+                                let image_name = "";
+                                image_name = item.collection_name.toLowerCase().replace(/ /g, "");
+                                image_name = image_name.replace("'", "");
+                                image_name = image_name.replace(/\+/g, "");
+                                image_name = image_name.replace(/,/g, "");
+
+                                //console.log("image " + item.collection_name.toLowerCase().replace(/ /g, "").replace(/,/g, "").replace(/\'/g, "").replace(/\+/g, "") + ".jpg");
+
+                                console.log("image " + image_name);
+
                                 //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 
                                 return(
                                         <div className="col-xs-12 col-md-5 col-lg-5" style={{marginTop: 0, marginBottom: 0}}>
                                       
-                                              <img id="1" className="img-responsive" onClick={() => this.showItem(item.id)} src={"/images/menu/" + item.name.toLowerCase().replace(/ /g, "") + ".jpg"} data-target="myModal" alt="..." />
+                                              <img id="1" className="img-responsive" onClick={() => this.showItem(item.id)} src={"/images/collections/hearts/" + image_name + ".jpg"} data-target="myModal" alt="..." />
                                           <br/>
                                           <b>{item.collection_name}</b>
                                           <br/>
