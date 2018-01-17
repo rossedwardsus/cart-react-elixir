@@ -116,7 +116,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
     }else{
 
-        this.setState({deliveryCost : parseInt(nextProps.User.orders[0].deliveryCost).toFixed(2)});
+        this.setState({deliveryCost: nextProps.User.orders[0].deliveryCost});
         this.setState({deliveryCostFormatted : "$" + parseInt(nextProps.User.orders[0].deliveryCost).toFixed(2)});
 
     }
@@ -294,6 +294,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
         subtotal_items_cost = (total_items/6 * 22);   
         total_items_cost = subtotal_items_cost + parseInt(this.state.deliveryCost);
+        console.log(subtotal_items_cost + this.state.deliveryCost);
 
         //move to a lib
 
@@ -561,7 +562,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
                           <div className="form-group" style={{border: 1}}>
                             <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Cost</div>
                             <div className="col-md-1"></div>
-                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost}</div>
+                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
                           </div>
                         </form>
                       </div>)
