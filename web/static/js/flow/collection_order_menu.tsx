@@ -132,7 +132,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
       let total_four_items = 0;
       let total_six_items = 0;
 
-      /*four_items = this.state.cartItems.filter((item: any) => {
+      four_items = nextProp.User.orders[0].cartItems.filter((item: any) => {
 
             //console.log(JSON.stringify(item));
 
@@ -144,11 +144,11 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
             return
 
-        });
+      });
 
         console.log("four items" + JSON.stringify(four_items));
 
-        six_items = this.state.cartItems.filter((item: any) => {
+        six_items = nextProp.User.orders[0].cartItems.filter((item: any) => {
 
             //console.log(JSON.stringify(item));
 
@@ -174,7 +174,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
         
         //total_items = (four_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (four_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
         total_four_items = four_items.reduce((amount: any, item: any) => amount + item.quantity, 0);
-        total_six_items = six_items.reduce((amount: any, item: any) => amount + item.quantity, 0);*/
+        total_six_items = six_items.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
       
 
