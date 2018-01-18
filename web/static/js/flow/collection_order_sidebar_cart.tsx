@@ -225,6 +225,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
         console.log("total six items" + total_six_items);
 
         total_items = total_four_items + total_six_items;
+        total_items_text = "" + ((total_four_items * 4) + (total_six_items * 6));
 
         //half_dozens = total_items/6;
 
@@ -277,7 +278,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
             }
 
-            total_items_text = quotient_text + "" + remainder_text + " dz";
+            //total_items_text = quotient_text + "" + remainder_text + " dz";
         }
 
 
@@ -315,7 +316,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
     //alert(total_cost);
 
-        cart = this.state.cartItems.map(function(item: any, index: any){
+        /*cart = this.state.cartItems.map(function(item: any, index: any){
 
                       console.log("cartitems " + JSON.stringify(item));
 
@@ -388,7 +389,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
 
                   
-                }.bind(this))
+                }.bind(this))*/
 
     }
 
@@ -465,7 +466,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
     return (<div> 
                   <br/>
-                  {(this.state.cartItems.length == 0) ?
+                  {(this.state.cartItems.length == 0) &&
                         (<div>
                             <br/>
                             cart
@@ -480,7 +481,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            </div>) : cart}
+                            </div>)}
                   <br/>
                   {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={(index: any) => this.props.increaseCartItemQuantity(index)} descreaseCartItemQuantity={(index: any) => this.props.decreaseCartItemQuantity(index)} removeCartItem={() => this.props.increaseCartItemQuantity("index")}/>)}
                   <br/>

@@ -414,6 +414,19 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                             <br/>
                             Perfect for a meal or a snack!
+                            <br/>
+                            <br/>
+                            <br/>
+                            THE HEARTS COLLECTION
+                            <br/>
+                            Spread the love on Valentine's Day!
+                            <br/>
+                            <br/>
+                            Handrcrafted Artisanal Scones
+                            <br/>
+                            Free of refined sugars and soy
+                            <br/>
+                            <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
                           </div>
                           <br/>
                         <br/>   

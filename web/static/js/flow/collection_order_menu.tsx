@@ -44,6 +44,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     this.state = {
         collectionDetails: {},
+        collectionDescription: "",
         collectionMenuItems: [],
         selectedItemId: "",
         selectedItemSize: "",
@@ -125,13 +126,68 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
       this.setState({totalItems: nextProp.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)});
    
+
+      let four_items = [];
+      let six_items = [];
+      let total_four_items = 0;
+      let total_six_items = 0;
+
+      /*four_items = this.state.cartItems.filter((item: any) => {
+
+            //console.log(JSON.stringify(item));
+
+            if(item.size == "four"){
+
+                return item;
+
+            }
+
+            return
+
+        });
+
+        console.log("four items" + JSON.stringify(four_items));
+
+        six_items = this.state.cartItems.filter((item: any) => {
+
+            //console.log(JSON.stringify(item));
+
+            if(item.size == "six"){
+
+                return item;
+
+            }
+
+            return
+
+        });
+
+        console.log("four items" + JSON.stringify(four_items));
+
+
+        //console.log("regular items " + JSON.stringify(four_items));
+        
+        //1 doz/12 - 5/60 doz regular sized scones, $5 each
+        //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
+        //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
+
+        
+        //total_items = (four_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (four_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
+        total_four_items = four_items.reduce((amount: any, item: any) => amount + item.quantity, 0);
+        total_six_items = six_items.reduce((amount: any, item: any) => amount + item.quantity, 0);*/
+
+      
+
       //console.log("total items " + total_items);
 
       //console.log("menu props");
       console.log("collection cwrp " + JSON.stringify(nextProp.collectionDetails));
       console.log("collection menu mi cwrp " + JSON.stringify(nextProp.collectionMenuItems));
+
+      let collectionDescription = nextProp.collectionDetails.description.split("\\n").map((item: any) => <p>{item}<br/></p>);
       
       this.setState({collectionDetails: nextProp.collectionDetails});
+      this.setState({collectionDescription: collectionDescription});
       this.setState({collectionMenuItems: nextProp.collectionMenuItems});
 
   }
@@ -376,9 +432,9 @@ class CollectionOrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <b>{this.state.collectionDetails.name}</b>
-                            <b>VALENTINES DAY</b>
                             <br/>
-                            {this.state.totalItems < 6 ? "hello" : "there" }
+                            <br/>
+                            {this.state.totalItems < 6 ? this.state.collectionDescription : "there" }
                             <CollectionsSidebarCart User={this.props.User} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>
