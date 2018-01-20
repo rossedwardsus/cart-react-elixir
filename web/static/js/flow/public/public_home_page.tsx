@@ -403,28 +403,17 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <div style={{fontSize: "16px", fontFamily: "Helvetica-Bold"}}>
-                            EPIC SCONES FOR EPIC HOLIDAYS
-                          </div>
                           <br/>
                           <div style={{fontSize: "15px"}}>
-                            Many locally sourced organic ingredients
-                            <br/>
-                            Free of refined sugars and soy
-                            <br/>
-                            <br/>
-                            Perfect for a meal or a snack!
                             <br/>
                             <br/>
                             <br/>
                             THE HEARTS COLLECTION
                             <br/>
-                            Spread the love on Valentine's Day!
                             <br/>
+                            Handcrafted heart-shaped scones 
                             <br/>
-                            Handrcrafted Artisanal Scones
-                            <br/>
-                            Free of refined sugars and soy
+                            Freshly baked, ready to be gifted
                             <br/>
                             <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
                           </div>
