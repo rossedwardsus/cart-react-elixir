@@ -82,7 +82,7 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
       this.setState({itemName: item[0].collection_name});
       
-      this.setState({itemNameText: item[0].collection_name + " (Pack of " + this.props.item.size + ")"});
+      this.setState({itemNameText: item[0].collection_name + " (Box of " + this.props.item.size + ")"});
       //this.setState({itemQuantityText: "1 1/2 dz"});
 
       //console.log(this.props.item.quantity/12);
@@ -119,16 +119,14 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
       if(this.props.item.size === "four"){
 
           item_size = 4;
+          this.setState({itemQuantityText: "" + this.props.item.quantity})
 
       }else{
 
           item_size = 6;
+          this.setState({itemQuantityText: "" + this.props.item.quantity})
 
       }
-
-
-      this.setState({itemQuantityText: "" + this.props.item.quantity * item_size})
-
 
       /*if(this.props.item.quantity == 6){
 
@@ -149,9 +147,9 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
   componentWillReceiveProps = (nextProps: any) => {
 
-      console.log("collectiom cart item cwrp" + JSON.stringify(nextProps.item));
+      console.log("collectiom cart item cwrp" + JSON.stringify(nextProps));
 
-      let quotient = Math.floor(this.props.item.quantity/12);
+      /*let quotient = Math.floor(this.props.item.quantity/12);
       let remainder = this.props.item.quantity % 12;
       let quotient_text = "";
       let remainder_text = "";
@@ -172,7 +170,7 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
           remainder_text = "1/2";
 
-      }
+      }*/
 
       //this.setState({itemQuantityText: quotient_text + "" + remainder_text + " dz"});
 
@@ -181,14 +179,18 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
       if(this.props.item.size === "four"){
 
           item_size = 4;
+          this.setState({itemQuantityText: "" + nextProps.item.quantity})
 
       }else{
 
           item_size = 6;
+          this.setState({itemQuantityText: "" + nextProps.item.quantity})
 
       }
 
-      this.setState({itemQuantityText: "" + this.props.item.quantity * item_size})
+      //this.setState({itemQuantityText: "" + this.props.item.quantity * item_size})
+      this.setState({itemQuantityText: "" + nextProps.item.quantity})
+
 
 
 
@@ -224,8 +226,8 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
     return (<form className="form-horizontal" style={{border: 1, position: "static"}}>
                       <div className="form-group" style={{border: 1}}>
                       <div className="col-md-8 col-xs-5">{this.state.itemNameText}</div>
-                      <div className="col-xs-1"><a onClick={(index: any) => this.props.increaseCartItemQuantity(this.props.index)}>+</a></div>
-                      <div className="col-xs-1" style={{fontSize: 12}}>{this.state.itemQuantityText}</div>
+                      <div className="col-xs-1"><a onClick={() => this.props.increaseCartItemQuantity(this.props.index)}>+</a></div>
+                      <div className="col-xs-1" style={{fontSize: 14}}>{this.state.itemQuantityText}</div>
                       <div className="col-xs-1"><a onClick={(index: any) => this.props.decreaseCartItemQuantity(this.props.index)}>-</a></div>
                       <div className="col-xs-1"><a onClick={(index: any) => this.props.removeCartItem(this.props.index)}>X</a></div>
                       </div>

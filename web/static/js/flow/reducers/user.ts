@@ -265,7 +265,17 @@ export default function user(state:any = {collections: [], collectionMenuItems: 
 
         console.log("collection reducer");
 
-        orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 6;
+        if(orders_updated[0].cartItems[action.item_index].size == "four"){
+
+            orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 4;
+
+        }else{
+
+            orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 6;
+
+        }
+
+        //orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 6;
 
       }else{
 

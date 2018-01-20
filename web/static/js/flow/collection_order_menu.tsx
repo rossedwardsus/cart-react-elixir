@@ -10,7 +10,7 @@ import {connect} from 'react-redux';
 import {getCollectionDetails, getCollectionMenuItems} from './actions/collections.ts';
 import {cartValidated} from './actions/order_validations.ts';
 import {updateOrderSession} from './actions/session.ts';
-import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
+import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/collections_order.ts';
 
 import CollectionsSidebarCart from './collection_order_sidebar_cart.tsx';
 //import MobileCheckoutButton from './mobile_checkout_button.tsx';
@@ -416,7 +416,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
         //}
     }
 
-    let message = <div>A selection of sweet Sconely favorites<br/>Packed in gift box, delivered to loved ones<br/>Perfect for Valentine’s Day or any day!</div>
+    //let message = <div>A selection of sweet Sconely favorites<br/>Packed in gift box, delivered to loved ones<br/>Perfect for Valentine’s Day or any day!</div>
 
     //let total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0));
    
@@ -434,7 +434,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                             <b>{this.state.collectionDetails.name}</b>
                             <br/>
                             <br/>
-                            {this.state.totalItems < 6 ? this.state.collectionDescription : "there" }
+                            {this.state.totalItems < 4 ? this.state.collectionDescription : "there" }
                             <CollectionsSidebarCart User={this.props.User} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>
@@ -460,7 +460,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
                                 //console.log("image " + item.collection_name.toLowerCase().replace(/ /g, "").replace(/,/g, "").replace(/\'/g, "").replace(/\+/g, "") + ".jpg");
 
-                                console.log("image " + image_name);
+                                //console.log("image " + image_name);
 
                                 //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 
@@ -492,7 +492,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 }
 
 const mapStateToProps = (state: any, ownProps: any) => {
-  console.log("mapstatetoprops collection order menu " + JSON.stringify(state.collections));
+  console.log("mapstatetoprops collection order menu " + JSON.stringify(state.User));
   return {
 
     //started_order: state.User.orders.findIndex((order: any) => order.status == "started"),
@@ -542,12 +542,17 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       dispatch(createOrder(order_type, "", ""));
     },
     addCartItem: (order_id: any, item_id: any, size: any, quantity: any) => {
+      console.log("increasecartitemquantity");
+      
       dispatch(addCartItem(order_id, item_id, size, quantity));
     },
     increaseCartItemQuantity: (item_index: any) => {
+      console.log("increasecartitemquantity");
       dispatch(increaseCartItemQuantity(item_index));
     },
     decreaseCartItemQuantity: (item_index: any) => {
+      console.log("increasecartitemquantity");
+      
       dispatch(decreaseCartItemQuantity(item_index));
     },
     removeCartItem: (item_index: any) => {

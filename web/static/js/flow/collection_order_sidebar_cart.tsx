@@ -96,7 +96,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
   componentWillReceiveProps(nextProps: any){
 
-      console.log("collection sidebar cart collection menu items cwrp " + JSON.stringify(nextProps.collectionMenuItems));
+      //console.log("collection sidebar cart collection menu items cwrp " + JSON.stringify(nextProps.collectionMenuItems));
       console.log("collection sidebar cart user cwrp " + JSON.stringify(nextProps.User));
       //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
 
@@ -481,7 +481,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
                             <br/>
                             </div>)}
                   <br/>
-                  {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={(index: any) => this.props.increaseCartItemQuantity(index)} descreaseCartItemQuantity={(index: any) => this.props.decreaseCartItemQuantity(index)} removeCartItem={() => this.props.increaseCartItemQuantity("index")}/>)}
+                  {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={() => this.props.increaseCartItemQuantity(index)} descreaseCartItemQuantity={(index: any) => this.props.decreaseCartItemQuantity(index)} removeCartItem={() => this.props.removeCartItemQuantity(index)}/>)}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 
