@@ -344,8 +344,8 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                                   <div className="col-xs-12 col-md-4">
                                     <select className="form-control" value={this.state.selectedItemSize} onChange={(e) => this.selectedItemSize(e)} style={{borderRadius: 0, height: 35, width: 150, WebkitAppearance: "none", fontSize: 16}}>
                                       <option value="">Box Size</option>
-                                      <option value="four">4</option>
-                                      <option value="six">6</option>
+                                      <option value="four">4 scones</option>
+                                      <option value="six">6 scones</option>
                                     </select>
                                   </div>
                                   <div className="col-xs-12 col-md-4">

@@ -244,6 +244,95 @@ defmodule Sconely.Schema do
         resolve &Sconely.OrderSessionResolver.update_order_session/2
     end
 
+    field :process_collection_order_refactor, type: :process_collection_order do
+        arg :order_type, :string
+        arg :pool_name, :string
+        arg :pool_admin_receipt_order_id, :string
+        arg :save_for_later, :boolean
+        arg :user_first_name, :string
+        arg :user_last_name, :string
+        arg :user_contact_email, :string
+        arg :user_contact_mobile, :string
+        #arg :pool_admin_order_receipt_id, :string
+        #arg :pool_url_name, :string
+        #arg :pool_url_date, :string
+        arg :user_delivery_contact_address_contact_first_name, :string
+        arg :user_delivery_contact_address_contact_last_name, :string
+        arg :user_delivery_contact_address_contact_email, :string
+        arg :user_delivery_contact_address_contact_mobile, :string
+        arg :user_delivery_contact_address_company_name, :string
+        arg :user_delivery_contact_address_street1, :string
+        arg :user_delivery_contact_address_street2, :string
+        arg :user_delivery_contact_address_city, :string
+        arg :user_delivery_contact_address_state, :string
+        arg :user_delivery_contact_address_zipcode, :string
+        arg :order_delivery_cost, :string
+        arg :order_delivery_datetime_date, :string
+        arg :order_delivery_datetime_time, :string
+        arg :payment_method_name_on_card, :string
+        arg :payment_method_card_number, :string
+        arg :payment_method_expiry_month, :string
+        arg :payment_method_expiry_year, :string
+        arg :payment_method_security_code, :string
+        arg :payment_method_card_brand, :string
+        arg :payment_method_zipcode, :string
+        arg :cart_items, list_of(:cart_item)
+        arg :promo_code, :string
+        arg :order_note, :string
+        arg :gift_order, :boolean
+        arg :gift_note, :string
+        #arg :terms
+        #arg :mailing_list
+
+        resolve &Sconely.CollectionOrderRefactorResolver.complete_collection_order/2
+  end
+
+
+
+    field :process_collection_order, type: :process_collection_order do
+        arg :order_type, :string
+        arg :pool_name, :string
+        arg :pool_admin_receipt_order_id, :string
+        arg :save_for_later, :boolean
+        arg :user_first_name, :string
+        arg :user_last_name, :string
+        arg :user_contact_email, :string
+        arg :user_contact_mobile, :string
+        #arg :pool_admin_order_receipt_id, :string
+        #arg :pool_url_name, :string
+        #arg :pool_url_date, :string
+        arg :user_delivery_contact_address_contact_first_name, :string
+        arg :user_delivery_contact_address_contact_last_name, :string
+        arg :user_delivery_contact_address_contact_email, :string
+        arg :user_delivery_contact_address_contact_mobile, :string
+        arg :user_delivery_contact_address_company_name, :string
+        arg :user_delivery_contact_address_street1, :string
+        arg :user_delivery_contact_address_street2, :string
+        arg :user_delivery_contact_address_city, :string
+        arg :user_delivery_contact_address_state, :string
+        arg :user_delivery_contact_address_zipcode, :string
+        arg :order_delivery_cost, :string
+        arg :order_delivery_datetime_date, :string
+        arg :order_delivery_datetime_time, :string
+        arg :payment_method_name_on_card, :string
+        arg :payment_method_card_number, :string
+        arg :payment_method_expiry_month, :string
+        arg :payment_method_expiry_year, :string
+        arg :payment_method_security_code, :string
+        arg :payment_method_card_brand, :string
+        arg :payment_method_zipcode, :string
+        arg :cart_items, list_of(:cart_item)
+        arg :promo_code, :string
+        arg :order_note, :string
+        arg :gift_order, :boolean
+        arg :gift_note, :string
+        #arg :terms
+        #arg :mailing_list
+
+        resolve &Sconely.CollectionOrderResolver.complete_collection_order/2
+  end
+
+
 
   field :process_yours_social_pool_order, type: :process_yours_social_pool_order_response do
         arg :order_type, :string

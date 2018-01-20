@@ -327,7 +327,7 @@ class CollectionOrderMenuItems extends React.Component<any, any> {
     let cost_text = <div><p>$60 per dozen</p><p>$54 per 2 dozen mini</p></div>;
 
     
-    if(cartItemsQuantity < 11){
+    /*if(cartItemsQuantity < 11){
 
         
           social_quantity_selector =  <div>
@@ -360,7 +360,7 @@ class CollectionOrderMenuItems extends React.Component<any, any> {
 
           //}
         //}
-    }
+    }*/
 
      
           return(<div>

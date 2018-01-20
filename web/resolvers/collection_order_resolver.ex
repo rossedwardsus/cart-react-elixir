@@ -856,7 +856,7 @@ defmodule Sconely.CollectionOrderResolver do
 
                     #order_type == "social/yours"
 
-                    else args[:order_type] in ["yours", "social"]
+                    else args[:order_type] in ["collection"]
 
                         admin_receipt_order_id = :rand.uniform(999999999)
                         order_datetime = Ecto.DateTime.utc
