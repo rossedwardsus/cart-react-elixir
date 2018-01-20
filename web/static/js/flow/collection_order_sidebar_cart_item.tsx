@@ -82,7 +82,7 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
       this.setState({itemName: item[0].collection_name});
       
-      this.setState({itemNameText: item[0].collection_name + "(Pack of " + this.props.item.size + ")"});
+      this.setState({itemNameText: item[0].collection_name + " (Pack of " + this.props.item.size + ")"});
       //this.setState({itemQuantityText: "1 1/2 dz"});
 
       //console.log(this.props.item.quantity/12);
@@ -223,9 +223,9 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
     
     return (<form className="form-horizontal" style={{border: 1, position: "static"}}>
                       <div className="form-group" style={{border: 1}}>
-                      <div className="col-md-5 col-xs-5">{this.state.itemNameText}</div>
+                      <div className="col-md-8 col-xs-5">{this.state.itemNameText}</div>
                       <div className="col-xs-1"><a onClick={(index: any) => this.props.increaseCartItemQuantity(this.props.index)}>+</a></div>
-                      <div className="col-xs-3" style={{fontSize: 12}}>{this.state.itemQuantityText}</div>
+                      <div className="col-xs-1" style={{fontSize: 12}}>{this.state.itemQuantityText}</div>
                       <div className="col-xs-1"><a onClick={(index: any) => this.props.decreaseCartItemQuantity(this.props.index)}>-</a></div>
                       <div className="col-xs-1"><a onClick={(index: any) => this.props.removeCartItem(this.props.index)}>X</a></div>
                       </div>
