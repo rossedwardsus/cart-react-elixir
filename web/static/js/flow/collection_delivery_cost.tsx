@@ -120,7 +120,7 @@ class CollectionDeliveryCost extends React.Component<any, any> {
                                       Delivery Cost
                                   </div>
                                   <div className="col-md-2">
-                                      ${this.state.deliveryCost}
+                                      ${this.state.deliveryCost.toFixed(2)}
                                   </div>
                                 </div>
                             </form>

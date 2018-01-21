@@ -99,6 +99,8 @@ export function processCollectionOrder() {
 
 
             //user string interpolation
+            //add collection id
+            console.log("collections" + JSON.stringify(getState().Collections));
 
             axios.post('/api/graphql',
                      {query: 'mutation {process_collection_order (order_type: "' + getState().User.orders[0].order_type + '", pool_name: "' + getState().User.orders[0].poolName + '", order_delivery_cost: "' + getState().User.orders[0].deliveryCost + '", order_note: "' + getState().User.orders[0].orderNote + '", gift_order: ' + getState().User.orders[0].giftOrder + ', gift_note: "' + getState().User.orders[0].giftNote + '", pool_admin_receipt_order_id: "' + getState().User.orders[0].pool_admin_receipt_order_id + '", promo_code: "' + getState().User.orderSession.promoCode + '", cart_items: ' + JSON.stringify(getState().User.orders[0].cartItems).replace(/\"([^(\")"]+)\":/g,"$1:") + ', cart_items1: [{menu_item_id: 1, quantity: 100, size: "regular"}, {menu_item_id: 2, quantity: 2, size: "mini"}], save_for_later: "' + getState().User.saveForLater + '", user_first_name: "' + getState().User.user_first_name + '", user_last_name: "' + getState().User.user_last_name + '", user_contact_email: "' + getState().User.user_contact_email + '", user_contact_mobile: "' + getState().User.user_contact_mobile + '", user_delivery_contact_address_contact_first_name: "' + getState().User.deliveryContactsAddresses[0].contact_first_name + '", user_delivery_contact_address_contact_last_name: "' + getState().User.deliveryContactsAddresses[0].contact_last_name + '", user_delivery_contact_address_contact_email: "' + getState().User.deliveryContactsAddresses[0].contact_email + '", user_delivery_contact_address_contact_mobile: "' + getState().User.deliveryContactsAddresses[0].contact_mobile + '", user_delivery_contact_address_company_name: "' + getState().User.deliveryContactsAddresses[0].company_name + '", user_delivery_contact_address_street1: "' + getState().User.deliveryContactsAddresses[0].street1 + '", user_delivery_contact_address_street2: "' + getState().User.deliveryContactsAddresses[0].street2 + '",  user_delivery_contact_address_city: "' + getState().User.deliveryContactsAddresses[0].city + '",   user_delivery_contact_address_state: "' + getState().User.deliveryContactsAddresses[0].state + '",  user_delivery_contact_address_zipcode: "' + getState().User.deliveryContactsAddresses[0].zipcode + '", order_delivery_datetime_date: "' + getState().User.orders[0].deliveryDatetimeDate + '", order_delivery_datetime_time: "' + getState().User.orders[0].deliveryDatetimeSpecificTime + '", payment_method_name_on_card: "' + getState().User.paymentMethods[0].name_on_card + '", payment_method_zipcode: "' + getState().User.paymentMethods[0].zipcode + '", payment_method_card_number: "' + getState().User.paymentMethods[0].card_number + '", payment_method_expiry_month: "' + getState().User.paymentMethods[0].expiry_month + '", payment_method_expiry_year: "' + getState().User.paymentMethods[0].expiry_year + '", payment_method_security_code: "' + getState().User.paymentMethods[0].security_code + '", payment_method_card_brand: "' + getState().User.paymentMethods[0].card_brand + '") {status error_code}}'}, {headers: {'authorization': "bearer"}}
@@ -109,7 +111,7 @@ export function processCollectionOrder() {
 
                   let error_message = "";
 
-                  if(response.data.data.processYoursSocialPoolOrder.status == "success"){
+                  if(response.data.data.processCollectionOrder.status === "success"){
                     //response.data.data.processYoursSocialPoolOrder.errorCode == "cvc code"
                     //if response.data.data.processYoursSocialPoolOrder.errorReason == "cvc code"
                     ////error_message = "There was an error in your CVC code."
@@ -263,7 +265,9 @@ export function clearUser() {
 //}
 
 export function increaseCartItemQuantity(item_index: any) {
-  console.log("increase cart item quantity action " + item_index);
+  //alert("increase cart item quantity action.        " + item_index);
+  console.log("increase cart item quantity action.        " + item_index);
+  
   return {
     type: INCREASE_CART_ITEM_QUANTITY,
     item_index

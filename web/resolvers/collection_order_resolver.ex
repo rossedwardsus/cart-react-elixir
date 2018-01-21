@@ -94,7 +94,7 @@ defmodule Sconely.CollectionOrderResolver do
 
   #complete_yours_social_pool_order
 
-  def complete_yours_social_pool_order(args, %{context: context}) do
+  def complete_collection_order(args, %{context: context}) do
 
     #IO.inspect(args[:user_contact_email])
     #IO.inspect(context)
@@ -177,7 +177,7 @@ defmodule Sconely.CollectionOrderResolver do
     order_type = args[:order_type]
 
 
-    calculate_subtotal_cost(order_type, cart_items)
+    #calculate_subtotal_cost(order_type, cart_items)
 
 
     case order_type do
@@ -1476,7 +1476,7 @@ defmodule Sconely.CollectionOrderResolver do
                           #IO.inspect(Enum.at(menu_items, 0).name)
                           IO.inspect(cart_item[:size])
 
-                          if cart_item[:size] == "regular" do
+                          if cart_item[:size] == "four" do
 
                             #menu_item_index = cart_item[:menu_item_id]-1
 
@@ -1503,7 +1503,7 @@ defmodule Sconely.CollectionOrderResolver do
                             
 
                             Map.merge(cart_item, %{
-                              :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name],
+                              :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name] <> " Box of four",
                               :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name],
                               :quantity => quantity})
 
@@ -1516,7 +1516,7 @@ defmodule Sconely.CollectionOrderResolver do
 
                             #IO.inspect(cart_item[:menu_item_id]-1)
 
-                            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name <> " mini"
+                            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name <> " Box of 6"
 
                             menu_item_index = cart_item[:menu_item_id]-1
 
@@ -1536,7 +1536,7 @@ defmodule Sconely.CollectionOrderResolver do
                             end
 
                             Map.merge(cart_item, %{
-                              :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name] <> " mini",
+                              :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name] <> " Box of six",
                               :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name],
                               :quantity => quantity
                             })

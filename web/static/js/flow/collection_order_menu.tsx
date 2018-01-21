@@ -124,10 +124,28 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
       //cart items
 
-      this.setState({totalItems: nextProp.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)});
+      console.log("collection order menu cwrp " + JSON.stringify(nextProp.collectionDetails));
+      console.log("collection order menu mi cwrp " + JSON.stringify(nextProp.collectionMenuItems));
+
+      let collectionDescription = "";
+
+      console.log("typeof " + Object.keys(nextProp.collectionDetails).length);
+
+      if(Object.keys(nextProp.collectionDetails).length > 0){
+
+          //collectionDescription = nextProp.collectionDetails.description.split("\\n").map((item: any) => <p>{item}<br/></p>);
+          
+          this.setState({collectionDetails: nextProp.collectionDetails});
+          this.setState({collectionDescription: nextProp.collectionDetails.description});
+          this.setState({collectionMenuItems: nextProp.collectionMenuItems});
+
+      }
+
+      
+      //this.setState({totalItems: nextProp.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)});
    
 
-      let four_items = [];
+      /*let four_items = [];
       let six_items = [];
       let total_four_items = 0;
       let total_six_items = 0;
@@ -174,22 +192,14 @@ class CollectionOrderMenu extends React.Component<any, any> {
         
         //total_items = (four_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (four_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
         total_four_items = four_items.reduce((amount: any, item: any) => amount + item.quantity, 0);
-        total_six_items = six_items.reduce((amount: any, item: any) => amount + item.quantity, 0);
+        total_six_items = six_items.reduce((amount: any, item: any) => amount + item.quantity, 0);*/
 
       
 
       //console.log("total items " + total_items);
 
       //console.log("menu props");
-      console.log("collection cwrp " + JSON.stringify(nextProp.collectionDetails));
-      console.log("collection menu mi cwrp " + JSON.stringify(nextProp.collectionMenuItems));
-
-      let collectionDescription = nextProp.collectionDetails.description.split("\\n").map((item: any) => <p>{item}<br/></p>);
       
-      this.setState({collectionDetails: nextProp.collectionDetails});
-      this.setState({collectionDescription: collectionDescription});
-      this.setState({collectionMenuItems: nextProp.collectionMenuItems});
-
   }
 
   static get contextTypes() {
@@ -434,7 +444,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                             <b>{this.state.collectionDetails.name}</b>
                             <br/>
                             <br/>
-                            {this.state.totalItems < 4 ? this.state.collectionDescription : "there" }
+                            {this.state.totalItems < 1 && this.state.collectionDescription}
                             <CollectionsSidebarCart User={this.props.User} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>
@@ -460,7 +470,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
                                 //console.log("image " + item.collection_name.toLowerCase().replace(/ /g, "").replace(/,/g, "").replace(/\'/g, "").replace(/\+/g, "") + ".jpg");
 
-                                //console.log("image " + image_name);
+                                console.log("image " + image_name);
 
                                 //let image_src = "/images/menu/" + this.state["image_src_" + item.item_id] + ".jpg";
 

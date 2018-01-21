@@ -126,8 +126,8 @@ class CollectionPayment extends React.Component<any, any> {
 
     if(paymentValidations.paymentMethodCardNumberValidated == true && paymentValidations.paymentMethodExpiryMonthValidated == true && paymentValidations.paymentMethodExpiryYearValidated == true && paymentValidations.paymentMethodSecurityCodeValidated == true){
     
-      this.setState({button_complete_order_classname: "btn btn-default"});
-      this.setState({button_complete_order_disabled: false});
+      //this.setState({button_complete_order_classname: "btn btn-default"});
+      //this.setState({button_complete_order_disabled: false});
     
     }
 
@@ -165,8 +165,8 @@ class CollectionPayment extends React.Component<any, any> {
 
     if(this.props.User.orderSession.orderStatus == "processing"){
 
-          this.setState({button_complete_order_classname: "btn btn-default disabled"});
-          this.setState({button_complete_order_disabled: "disabled"});
+          //this.setState({button_complete_order_classname: "btn btn-default disabled"});
+          //this.setState({button_complete_order_disabled: "disabled"});
           
     }
 
@@ -477,23 +477,23 @@ class CollectionPayment extends React.Component<any, any> {
 
   processCollectionOrder = () => {
 
-      this.setState({button_complete_order_classname: "btn btn-default disabled"});
-      this.setState({button_complete_order_disabled: "disabled"});
+      //this.setState({button_complete_order_classname: "btn btn-default disabled"});
+      //this.setState({button_complete_order_disabled: "disabled"});
 
       console.log("order type " + this.props.User.orders[0].order_type);
 
       //if order type == yours social pool_response
-      if(this.props.User.orders[0].order_type == "pool_order"){
+      //if(this.props.User.orders[0].order_type == "pool_order"){
       
-        this.props.processPoolOrder();
+        this.props.processCollectionOrder();
 
-      }else{
+      //}else{
         
         //this.props.setOrderStatus("process_payment");
         
         //this.props.processYoursSocialPoolOrder();
 
-      }
+      //}
 
       
 
@@ -541,12 +541,16 @@ class CollectionPayment extends React.Component<any, any> {
 
     let body: any = "";
     let item_count = this.state.item_count;
-    let regular_items = [];
-    let mini_items = [];
+    let four_items = [];
+    let six_items = [];
     let subtotal = 0.00;
+    let subtotal_four_items = 0.00;
+    let subtotal_six_items = 0.00;
     let total_due_formatted = null
     let total_items_cost = 0.00;
     let total_items = 0;
+    let total_four_items = 0;
+    let total_six_items = 0;
     let total_cost = 0.00;
 
 
@@ -559,11 +563,63 @@ class CollectionPayment extends React.Component<any, any> {
 
     
 
-    total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
+    //total_items = this.state.cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0);
 
     //total_items = (regular_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (mini_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
 
-    subtotal = (total_items/6 * 22);   
+    //subtotal = (total_items/6 * 22);   
+
+
+    four_items = this.state.cartItems.filter((item: any) => {
+
+            //console.log(JSON.stringify(item));
+
+        if(item.size == "four"){
+
+            return item;
+
+        }
+
+        return
+
+    });
+
+    console.log("four items" + JSON.stringify(four_items));
+
+    six_items = this.state.cartItems.filter((item: any) => {
+
+        //console.log(JSON.stringify(item));
+
+        if(item.size == "six"){
+
+            return item;
+
+        }
+
+        return
+
+    });
+
+    console.log("four items" + JSON.stringify(four_items));
+
+
+    //console.log("regular items " + JSON.stringify(four_items));
+    
+    //1 doz/12 - 5/60 doz regular sized scones, $5 each
+    //6 doz/72 - 15/174 doz regular sized scones, $4.75 each
+    //16 doz/192 - 20/240 doz regular sized scones, $4.50 each
+
+    
+    //total_items = (four_items.reduce((amount: any, item: any) => amount + item.quantity, 0)) + (four_items.reduce((amount: any, item: any) => amount + item.quantity, 0));
+    total_four_items = four_items.reduce((amount: any, item: any) => amount + item.quantity, 0);
+    total_six_items = six_items.reduce((amount: any, item: any) => amount + item.quantity, 0);
+
+    console.log("total four items" + total_four_items);
+    console.log("total six items" + total_six_items);
+
+    //total_items = total_four_items + total_six_items;
+
+    subtotal = ((total_four_items * 14) + (total_six_items * 6));
 
 
     if(this.state.promo_code_discount == 0){
@@ -622,37 +678,9 @@ class CollectionPayment extends React.Component<any, any> {
                                 </div>
                             </form>
                             <CollectionPromoCode setPromoCode={(e: any) => this.setPromoCode(e)} promoCodeDiscount={this.state.promo_code_discount}/>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-md-3">
-                                      Promo Code
-                                  </div>
-                                  <div className="col-md-3">
-                                      <input type="text" maxLength={30} onChange={this.setPromoCode} className="form-control" value={this.state.promo_code} id="exampleInputName2" placeholder="Promo Code" style={{borderColor: "grey", borderRadius: 0, WebkitAppearance: "none"}}/>
-                                  </div>
-                                </div>
-                            </form>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-md-3">
-                                      Discount
-                                  </div>
-                                  <div className="col-md-2">
-                                      %{this.state.promo_code_discount}
-                                  </div>
-                                </div>
-                            </form>
+                 
                             <CollectionDeliveryCost deliveryCost={this.state.deliveryCost}/>
-                            <form className="form-horizontal">
-                                <div className="form-group">
-                                  <div className="col-md-3">
-                                      Delivery Cost
-                                  </div>
-                                  <div className="col-md-2">
-                                      ${this.state.deliveryCost.toFixed(2)}
-                                  </div>
-                                </div>
-                            </form>
+                            
                             <form className="form-horizontal">
                                 <div className="form-group">
                                   <div className="col-md-3">
@@ -669,7 +697,7 @@ class CollectionPayment extends React.Component<any, any> {
                             <br/>
                             <CollectionPaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setOrderStatus={(e: any) => this.props.setOrderStatus(e)} paymentMethodValidated={() => this.props.paymentMethodValidated()} paymentMethodCardNumberValidated={() => this.props.paymentMethodCardNumberValidated()} paymentMethodExpiryMonthValidated={() => this.props.paymentMethodExpiryMonthValidated()} paymentMethodExpiryYearValidated={() => this.props.paymentMethodExpiryYearValidated()} paymentMethodSecurityCodeValidated={() => this.props.paymentMethodSecurityCodeValidated()}/>
                             <br/>
-                            <button className={this.state.button_complete_order_classname} disabled={this.state.button_complete_order_disabled} onClick={this.processCollectionOrder} style={{borderRadius: 0}}>Complete Order</button>
+                            <button className={this.state.button_complete_order_classname} disabled={this.state.button_complete_order_disabled} onClick={this.processCollectionOrder} style={{borderRadius: 0}}>Complete Order1</button>
                             <br/>
                             <br/>
                         </div>
@@ -790,7 +818,7 @@ function mapDispatchToProps(dispatch: any) {
     //},
     
     processCollectionOrder: () => {
-
+      console.log("process collection order");
       dispatch(processCollectionOrder());
 
     },

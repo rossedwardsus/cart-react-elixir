@@ -259,13 +259,15 @@ export default function user(state:any = {collections: [], collectionMenuItems: 
 
       if(state.orders[0].order_type == "yours" || state.orders[0].order_type == "pool"){
 
+        console.log("collection reduc");
+
         orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
 
-      }if(state.orders[0].order_type == "collection"){
+      }else if(state.orders[0].order_type == "collection"){
 
-        console.log("collection reducer");
+        console.log("collection reduc");
 
-        if(orders_updated[0].cartItems[action.item_index].size == "four"){
+        /*if(orders_updated[0].cartItems[action.item_index].size == "four"){
 
             orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 4;
 
@@ -273,11 +275,13 @@ export default function user(state:any = {collections: [], collectionMenuItems: 
 
             orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 6;
 
-        }
+        }*/
 
-        //orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 6;
+        orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity + 1;
 
       }else{
+
+        console.log("collection reduc");
 
         if(orders_updated[0].cartItems[action.item_index].size == "mini"){
 
@@ -339,11 +343,12 @@ export default function user(state:any = {collections: [], collectionMenuItems: 
 
             orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
 
-        }if(state.orders[0].order_type == "collection"){
+        }else if(state.orders[0].order_type === "collection"){
 
             console.log("collection reducer");
 
-            orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 6;
+            orders_updated[0].cartItems[action.item_index].quantity = orders_updated[0].cartItems[action.item_index].quantity - 1;
+        
         }else{
 
             if(orders_updated[0].cartItems[action.item_index].size == "mini"){

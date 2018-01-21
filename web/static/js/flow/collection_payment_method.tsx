@@ -121,14 +121,14 @@ class CollectionPaymentMethod extends React.Component<any, any> {
 
       if(this.props.User.orderSession.orderStatus == "processing"){
 
-          this.setState({name_on_card_disabled: "disabled"});
+          /*this.setState({name_on_card_disabled: "disabled"});
           this.setState({zipcode_disabled: "disabled"});
           this.setState({card_number_disabled: "disabled"});
           this.setState({expiry_date_month_disabled: "disabled"});
           this.setState({expiry_date_year_disabled: "disabled"});
           this.setState({security_code_disabled: "disabled"});
           this.setState({button_complete_order_classname: "btn btn-default disabled"});
-          this.setState({button_complete_order_disabled: true});
+          this.setState({button_complete_order_disabled: true});*/
       
       }
 

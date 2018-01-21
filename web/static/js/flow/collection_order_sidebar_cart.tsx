@@ -225,7 +225,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
         console.log("total six items" + total_six_items);
 
         total_items = total_four_items + total_six_items;
-        total_items_text = "" + ((total_four_items * 4) + (total_six_items * 6));
+        total_items_text = "" + (total_four_items + total_six_items);
 
         //half_dozens = total_items/6;
 
@@ -481,7 +481,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
                             <br/>
                             </div>)}
                   <br/>
-                  {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={() => this.props.increaseCartItemQuantity(index)} descreaseCartItemQuantity={(index: any) => this.props.decreaseCartItemQuantity(index)} removeCartItem={() => this.props.removeCartItemQuantity(index)}/>)}
+                  {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={() => this.props.increaseCartItemQuantity(index)} decreaseCartItemQuantity={(index: any) => this.props.decreaseCartItemQuantity(index)} removeCartItem={() => this.props.removeCartItemQuantity(index)}/>)}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 
@@ -516,9 +516,11 @@ class CollectionSidebarCart extends React.Component<any, any> {
                             <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
                           </div>
                         </form>
+                        <br/>
+                        <br/>
+                        <Link to="/collections/order/checkout" className={this.state.payment_button_classname} disabled={this.state.payment_button_disabled}  style={{borderRadius: 0}}>Checkout</Link> 
                       </div>)
                   }
-                  {checkoutButton}
                   <br/>
                   <br/>
             </div>
