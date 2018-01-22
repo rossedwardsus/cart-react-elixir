@@ -133,10 +133,10 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
       if(Object.keys(nextProp.collectionDetails).length > 0){
 
-          //collectionDescription = nextProp.collectionDetails.description.split("\\n").map((item: any) => <p>{item}<br/></p>);
+          collectionDescription = nextProp.collectionDetails.description.split("\\n").map((item: any) => <p>{item}<br/></p>);
           
           this.setState({collectionDetails: nextProp.collectionDetails});
-          this.setState({collectionDescription: nextProp.collectionDetails.description});
+          this.setState({collectionDescription: collectionDescription});
           this.setState({collectionMenuItems: nextProp.collectionMenuItems});
 
       }

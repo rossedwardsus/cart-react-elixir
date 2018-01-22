@@ -171,11 +171,11 @@ export default function user(state:any = {collections: [], collectionMenuItems: 
 
       if(action.order_type == "yours" || action.order_type == "social" || "collection"){
 
-          orders_updated[0] = {deliveryCost: "", orderStartedDateTime: "", order_type: action.order_type, orderNote: "", giftOrder: false, giftNote: "", cartItems: [], deliveryDatetimeDate: "", deliveryDatetimeSpecificTime: "", paymentSecurityCode: ""};
+          orders_updated[0] = {deliveryCost: 0.00, orderStartedDateTime: "", order_type: action.order_type, orderNote: "", giftOrder: false, giftNote: "", cartItems: [], deliveryDatetimeDate: "", deliveryDatetimeSpecificTime: "", paymentSecurityCode: ""};
 
       }else{
 
-          orders_updated[0] = {deliveryCost: "", deliveryDatetimeDate: "", orderStartedDateTime: "", userPoolId: action.user_pool_id, order_type: action.order_type, orderNote: "", poolName: action.pool_name, pickupLocation: "", pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_delivery_time_range: action.pool_delivery_time_range, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address_street1: action.pool_address_street1, pool_address_city: action.pool_address_city, pool_address_state: action.pool_address_state, pool_address_zipcode: action.pool_address_zipcode, pickup_location: action.pickup_location, cartItems: []};
+          orders_updated[0] = {deliveryCost: 0.00, deliveryDatetimeDate: "", orderStartedDateTime: "", userPoolId: action.user_pool_id, order_type: action.order_type, orderNote: "", poolName: action.pool_name, pickupLocation: "", pool_admin_receipt_order_id: action.pool_admin_receipt_order_id, pool_delivery_date_formatted: action.pool_delivery_date_formatted, pool_delivery_time_range: action.pool_delivery_time_range, pool_order_by_date_formatted: action.pool_order_by_date_formatted, pool_address_street1: action.pool_address_street1, pool_address_city: action.pool_address_city, pool_address_state: action.pool_address_state, pool_address_zipcode: action.pool_address_zipcode, pickup_location: action.pickup_location, cartItems: []};
 
       }
 

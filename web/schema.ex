@@ -246,6 +246,7 @@ defmodule Sconely.Schema do
 
     field :process_collection_order_refactor, type: :process_collection_order do
         arg :order_type, :string
+        arg :collection_id, :string
         arg :pool_name, :string
         arg :pool_admin_receipt_order_id, :string
         arg :save_for_later, :boolean
@@ -291,6 +292,7 @@ defmodule Sconely.Schema do
 
     field :process_collection_order, type: :process_collection_order do
         arg :order_type, :string
+        arg :collection_id, :string
         arg :pool_name, :string
         arg :pool_admin_receipt_order_id, :string
         arg :save_for_later, :boolean
