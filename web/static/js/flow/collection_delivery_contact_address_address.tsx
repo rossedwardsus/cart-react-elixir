@@ -67,7 +67,7 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
         street2: "",
         city: "",
         state: "",
-        delivery_zipcodes: [{city: "DTLA", delivery_cost: "Free Delivery", zipcodes: [90012, 90013, 90014, 90017, 90021, 90071, 90074, 90081, 90053, 90055, 90079, 90086]}],
+        delivery_zipcodes: [{city: "DTLA", delivery_cost: "0", zipcodes: [90012, 90013, 90014, 90017, 90021, 90071, 90074, 90081, 90053, 90055, 90079, 90086]}],
         zipcode: "",
         zipcodes: [90012, 90012, 90013, 90014, 90015, 90017, 90021, 90053, 90055, 90071, 90074, 90079, 90081, 90086, 90291, 90401, 90402, 90403, 90404, 90405, 90406, 90407, 90408, 90409, 90410, 90411],
         first_name_border_color: "grey",
@@ -679,6 +679,11 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
                         </div>
                         <div className="hidden-lg col-xs-1">
                           <br/>
+                        </div>
+                        <div className="col-sm-3">
+                          <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
+                            {this.state.delivery_zipcodes.map((city: any) => <option value="">{city.city}</option>)}
+                          </select>
                         </div>
                         <div className="col-sm-3">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>

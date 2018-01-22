@@ -120,10 +120,6 @@ export class PublicTeam extends React.Component<any, any> {
                           Ross has a passion for startups, technology, innovation and food. Ross has eaten far too much pizza at events and is excited for the potential of another option. He has a degree in computer science and is currently learning snowboarding. He also enjoys hiking, scuba diving and is a perpetual learner.​
                           <br/>
                           <br/>
-                          <b>Carrie Baker, Head Baker</b>
-                          <br/>
-                          Not just a Baker by name, Chef Carrie has been baking since she could reach the oven. After studying at Baltimore International College, Carrie trained under French Chef James Walsh, taking her first Sous position in a traditional Italian scratch kitchen. She has since held positions as chef, baker, and manager; gaining invaluable cultural culinary experience, following trends, and perfecting techniques. Carrie has a passion for small business, organics, plant-based diets and enjoys creating comfort foods for everyone! ​<br/>
-                          <br/>
                           <b>Dadi Revivo, Recipe Consultant</b>
                           <br/>
                           With two decades of culinary experience, Chef Dadi Revivo is known for his unique flavor combinations and dynamic cooking style. He was the pastry chef for some of the finest restaurants in the US. His focus is to develop recipes that are honest, delicious and preserve the simplicity and perfection of each ingredient.

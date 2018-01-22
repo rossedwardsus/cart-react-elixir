@@ -467,6 +467,8 @@ class CollectionOrderMenu extends React.Component<any, any> {
                                 image_name = image_name.replace("'", "");
                                 image_name = image_name.replace(/\+/g, "");
                                 image_name = image_name.replace(/,/g, "");
+                                image_name = image_name.replace("(", "");
+                                image_name = image_name.replace(")", "");
 
                                 //console.log("image " + item.collection_name.toLowerCase().replace(/ /g, "").replace(/,/g, "").replace(/\'/g, "").replace(/\+/g, "") + ".jpg");
 
