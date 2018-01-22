@@ -399,23 +399,20 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
-                          <br/>
                           <div style={{fontSize: "15px"}}>
                             <br/>
                             <br/>
                             <br/>
-                            THE HEARTS COLLECTION
+                            <div style={{fontSize: "16px", fontFamily: "Helvetica-Bold"}}>HEARTS COLLECTION</div>
                             <br/>
                             <br/>
                             Handcrafted heart-shaped scones 
                             <br/>
                             Freshly baked, ready to be gifted
                             <br/>
-                            <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
+                            <div style={{textAlign: "center"}}>
+                                <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
+                            </div>
                           </div>
                           <br/>
                         <br/>   
