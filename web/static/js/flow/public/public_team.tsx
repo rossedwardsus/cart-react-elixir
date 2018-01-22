@@ -120,6 +120,9 @@ export class PublicTeam extends React.Component<any, any> {
                           Ross has a passion for startups, technology, innovation and food. Ross has eaten far too much pizza at events and is excited for the potential of another option. He has a degree in computer science and is currently learning snowboarding. He also enjoys hiking, scuba diving and is a perpetual learner.​
                           <br/>
                           <br/>
+                          <b>Culinary Team</b>
+                          Sconely's talented culinary team prepares and bakes our homemade scones. Our bakers come from reputable culinary schools and have worked at some of the top restaurants, catering companies and bakeries.
+                          <br/>
                           <b>Dadi Revivo, Recipe Consultant</b>
                           <br/>
                           With two decades of culinary experience, Chef Dadi Revivo is known for his unique flavor combinations and dynamic cooking style. He was the pastry chef for some of the finest restaurants in the US. His focus is to develop recipes that are honest, delicious and preserve the simplicity and perfection of each ingredient.

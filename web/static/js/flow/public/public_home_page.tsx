@@ -410,8 +410,8 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                             Freshly baked, ready to be gifted
                             <br/>
-                            <div style={{textAlign: "center"}}>
-                                <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
+                            <div className="col-lg-1"></div>
+                            <div className="hidden-xs col-lg-3"><a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
                             </div>
                           </div>
                           <br/>
