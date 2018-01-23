@@ -288,6 +288,8 @@ export function decreaseCartItemQuantity(item_index: any) {
 }
 
 export function removeCartItem(item_index: any) {
+  console.log("remove cart item action " + item_index);
+  
   return {
     type: REMOVE_CART_ITEM,
     item_index

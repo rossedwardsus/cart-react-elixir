@@ -569,6 +569,8 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       dispatch(decreaseCartItemQuantity(item_index));
     },
     removeCartItem: (item_index: any) => {
+      console.log("removecartitem");
+
       dispatch(removeCartItem(item_index));
     },
     cartValidated: () => {

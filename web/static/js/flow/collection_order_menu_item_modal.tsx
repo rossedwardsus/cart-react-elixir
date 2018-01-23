@@ -43,7 +43,7 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
     this.state = {
         menuItems: [],
         selected_item_id: "",
-        selected_item_size: "",
+        selectedItemSize: "",
         selectedItemQuantity: "",
         selectedItemQuantityValue: 0,
         selectedItemName: "",
@@ -167,7 +167,7 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
 
       //console.log(e.target.value);
 
-      this.setState({selected_item_size: e.currentTarget.value});
+      this.setState({selectedItemSize: e.currentTarget.value});
       this.props.selectedItemSize(e);
 
   }
@@ -193,7 +193,7 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
 
       this.props.addCartItem(null, this.state.selectedItemId, this.state.selectedItemSize, this.state.selectedItemQuantity);
 
-      this.setState({selected_item_size: ""});
+      this.setState({selectedItemSize: ""});
       this.setState({selectedItemQuantity: ""});
       this.setState({add_cart_item_button_classname: "btn-block btn btn-default disabled"});
       this.setState({add_cart_item_button_disabled: true});

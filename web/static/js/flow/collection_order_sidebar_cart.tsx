@@ -481,16 +481,16 @@ class CollectionSidebarCart extends React.Component<any, any> {
                             <br/>
                             </div>)}
                   <br/>
-                  {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={() => this.props.increaseCartItemQuantity(index)} decreaseCartItemQuantity={(index: any) => this.props.decreaseCartItemQuantity(index)} removeCartItem={() => this.props.removeCartItemQuantity(index)}/>)}
+                  {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={() => this.props.increaseCartItemQuantity(index)} decreaseCartItemQuantity={(index: any) => this.props.decreaseCartItemQuantity(index)} removeCartItem={() => this.props.removeCartItem(index)}/>)}
                   <br/>
                   {this.state.cartItems.length == 0 ? 'cart is empty' :
 
                     (<div>
-                        <form className="form-horizontal" style={{border: 1}}>
-                          <div className="form-group" style={{border: 1}}>
-                            <div className="col-md-5 col-xs-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
+                        <form className="form-horizontal">
+                          <div className="form-group">
+                            <div className="col-md-7 col-xs-7" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
                             <div className="col-md-1 col-xs-1"></div>
-                            <div className="col-md-3 col-xs-1" style={{fontType: "helvetica", fontSize: "14"}}>{total_items_text}</div>
+                            <div className="col-md-1 col-xs-1" style={{fontType: "helvetica", fontSize: "14"}}>{total_items_text}</div>
                           </div>
                         </form>
                         <br/>
