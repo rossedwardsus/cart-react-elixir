@@ -71,9 +71,11 @@ class CollectionSidebarCart extends React.Component<any, any> {
     //get menu items
     //this.setState({pool_message: "this.props.menuItems"})
 
+    console.log("sbc collectiondetails cwm" + JSON.stringify(this.props.collectionDetails));
     console.log("sbc menu items cwm" + JSON.stringify(this.props.collectionMenuItems));
     console.log("sidebarcart user ");
 
+    this.setState({collectionDetails: this.props.collectionDetails});
     this.setState({collectionMenuItems: this.props.collectionMenuItems})
     this.setState({cartItems: this.props.User.orders[0].cartItems})
 
@@ -99,7 +101,9 @@ class CollectionSidebarCart extends React.Component<any, any> {
       //console.log("collection sidebar cart collection menu items cwrp " + JSON.stringify(nextProps.collectionMenuItems));
       console.log("collection sidebar cart user cwrp " + JSON.stringify(nextProps.User));
       //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
+      console.log("sbc collectiondetails cwrp" + JSON.stringify(this.props.collectionDetails));
 
+      this.setState({collectionDetails: this.props.collectionDetails});
       this.setState({User: nextProps.User})
       this.setState({collectionMenuItems: nextProps.collectionMenuItems})
       this.setState({cartItems: nextProps.User.orders[0].cartItems})
@@ -468,6 +472,8 @@ class CollectionSidebarCart extends React.Component<any, any> {
                   <br/>
                   {(this.state.cartItems.length == 0) &&
                         (<div>
+                            <br/>
+                            <img src={"/images/collections/hearts/" + this.state.collectionDetails.url_name + ".jpg"} />
                             <br/>
                             Box of 4 for $14
                             <br/>

@@ -133,7 +133,8 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
       if(Object.keys(nextProp.collectionDetails).length > 0){
 
-          collectionDescription = nextProp.collectionDetails.description.split("\\n").map((item: any) => <p>{item}<br/></p>);
+          collectionDescription = nextProp.collectionDetails.description.split("\\n").map((item: any) => <p>{item}</p>);
+          //collectionDescription = collectionDescription.split("<b>").map((item: any) => <b>{item}</b>);
           
           this.setState({collectionDetails: nextProp.collectionDetails});
           this.setState({collectionDescription: collectionDescription});
@@ -445,7 +446,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                             <br/>
                             <br/>
                             {this.state.totalItems < 1 && this.state.collectionDescription}
-                            <CollectionsSidebarCart User={this.props.User} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
+                            <CollectionsSidebarCart User={this.props.User} collectionDetails={this.props.collectionDetails} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>
                           <div className="col-xs-12 col-md-7" style={{paddingLeft: 0, paddingRight: 0}}>
