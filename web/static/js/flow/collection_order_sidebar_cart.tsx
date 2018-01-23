@@ -469,15 +469,9 @@ class CollectionSidebarCart extends React.Component<any, any> {
                   {(this.state.cartItems.length == 0) &&
                         (<div>
                             <br/>
-                            Choose between a 1/2 dozen and 6 regular size scones.
+                            Box of 4 for $14
                             <br/>
-                            <br/>
-                            Plan ahead, order at least 48 hours in advance
-                            <br/>
-                            <br/>
-                            <b>Perfect for a meal or a snack!</b>
-                            <br/>
-                            <br/>
+                            Box of 6 for $22
                             <br/>
                             </div>)}
                   <br/>
