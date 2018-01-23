@@ -403,15 +403,17 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <div style={{fontSize: "16px", fontFamily: "Helvetica-Bold"}}>HEARTS COLLECTION</div>
-                            <br/>
+                            <div style={{fontSize: "16px", fontFamily: "Helvetica-Bold"}}>
+                              HEARTS COLLECTION
+                            </div>
                             <br/>
                             Handcrafted heart-shaped scones 
                             <br/>
                             Freshly baked, ready to be gifted
                             <br/>
                             <div className="col-lg-1"></div>
-                            <div className="hidden-xs col-lg-3"><a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
+                            <div className="hidden-xs col-lg-3">
+                                <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
                             </div>
                           </div>
                           <br/>
@@ -428,18 +430,17 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
-                                    <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>
-                                    EPIC SCONES FOR EPIC HOLIDAYS
+                                    <div style={{fontSize: "16px", fontFamily: "Helvetica-Bold"}}>  
+                                      HEARTS COLLECTION
                                     </div>
                                     <br/>
+                                    Handcrafted heart-shaped scones 
                                     <br/>
-                                    <div style={{fontSize: this.state.fontSizeSmall}}>
-                                        Many locally sourced organic ingredients
-                                        <br/>
-                                        Free of refined sugars and soy
-                                        <br/>
-                                        <br/>
-                                        Perfect for a meal or a snack!
+                                    Freshly baked, ready to be gifted
+                                    <br/>
+                                    <div className="col-lg-1"></div>
+                                    <div className="hidden-xs col-lg-3">
+                                        <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
                                     </div>
                                     <br/>
                                     <br/>

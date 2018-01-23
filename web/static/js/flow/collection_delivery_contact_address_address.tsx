@@ -626,15 +626,12 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
                     </form>}*/
 
 
-  /*<div className="col-sm-3">
-                          <select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
-                            {this.state.delivery_zipcodes.map((city: any) => <option value="">{city.city}</option>)}
-                          </select>
-                        </div>*/
   
   
   render(): JSX.Element{
 
+
+    //let zipcodes = <div className="col-sm-3"><select className="form-control" onChange={(value) => this.setDeliveryContactAddressZipcode(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>{this.state.delivery_zipcodes.map((city: any) => <option value="">{city.city}</option> {city.zipcodes.map((zipcode: any) => <option value="">{zipcode}</option>})}</select></div>
     let delivery_address:any = "";
 
     return ( <div>
