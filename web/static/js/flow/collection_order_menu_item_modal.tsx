@@ -330,13 +330,17 @@ class CollectionOrderMenuModal extends React.Component<any, any> {
                         <div className="modal-body">
                           {this.state.selectedItemDescription}
                           <br/>
-                            <div>
-                                Ingredients: {this.state.selectedItemIngredients}
-                            </div>
-                          
+                          <div>
+                              Ingredients: {this.state.selectedItemIngredients}
+                          </div>
                           <br/>
+                          <div>
+                              <p>4 for $14</p>
+                          </div>
                           <br/>
-                           <div><p>6 for $22</p></div>
+                          <div>
+                              <p>6 for $22</p>
+                          </div>
                         </div>
                         <div className="modal-footer">
                           <form className="form-horizontal">
