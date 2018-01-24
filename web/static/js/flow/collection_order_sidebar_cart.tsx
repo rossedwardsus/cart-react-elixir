@@ -73,7 +73,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
     console.log("sbc collectiondetails cwm" + JSON.stringify(this.props.collectionDetails));
     console.log("sbc menu items cwm" + JSON.stringify(this.props.collectionMenuItems));
-    console.log("sidebarcart user ");
+    console.log("sidebarcart user " + this.props.User.orders[0].cartItems);
 
     this.setState({collectionDetails: this.props.collectionDetails});
     this.setState({collectionMenuItems: this.props.collectionMenuItems})
@@ -94,6 +94,19 @@ class CollectionSidebarCart extends React.Component<any, any> {
     }
 
     
+  }
+
+  componentDidMount(){
+
+      console.log("cdm");
+      console.log("sbc collectiondetails cwm" + JSON.stringify(this.props.collectionDetails));
+      console.log("sbc menu items cwm" + JSON.stringify(this.props.collectionMenuItems));
+      console.log("sidebarcart user " + this.props.User.orders[0].cartItems);
+
+      this.setState({collectionDetails: this.props.collectionDetails});
+      this.setState({collectionMenuItems: this.props.collectionMenuItems})
+      this.setState({cartItems: this.props.User.orders[0].cartItems})
+
   }
 
   componentWillReceiveProps(nextProps: any){
@@ -488,18 +501,18 @@ class CollectionSidebarCart extends React.Component<any, any> {
                     (<div>
                         <form className="form-horizontal">
                           <div className="form-group">
-                            <div className="col-md-7 col-xs-7" style={{fontType: "helvetica", fontSize: "14"}}>Total Items</div>
+                            <div className="col-md-6 col-xs-6" style={{textAlign: "right", fontType: "helvetica", fontSize: "12"}}>Total Items</div>
                             <div className="col-md-1 col-xs-1"></div>
-                            <div className="col-md-1 col-xs-1" style={{fontType: "helvetica", fontSize: "14"}}>{total_items_text}</div>
+                            <div className="col-md-1 col-xs-1" style={{fontType: "helvetica", fontSize: "12"}}>{total_items_text}</div>
                           </div>
                         </form>
                         <br/>
                         
                         <form className="form-horizontal" style={{border: 1}}>
                           <div className="form-group" style={{border: 1}}>
-                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Subtotal</div>
+                            <div className="col-md-6" style={{textAlign: "right", fontType: "helvetica", fontSize: "12"}}>Subtotal</div>
                             <div className="col-md-1"></div>
-                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${subtotal.toFixed(2)}</div>
+                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "12"}}>${subtotal.toFixed(2)}</div>
                           </div>
                         </form>
                         <form className="form-horizontal" style={{border: 1}}>

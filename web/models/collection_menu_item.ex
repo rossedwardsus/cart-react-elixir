@@ -12,6 +12,10 @@ defmodule Sconely.CollectionMenuItem do
 		schema "collection_menu_items" do
 			field :collection_id, Ecto.UUID
 			field :menu_item_id, Ecto.UUID
+			field :collection_name, :string
+			field :collection_description, :string
+			field :ingredients, :string
+			field :order, :integer
 			
 			#timestamps()
 		end

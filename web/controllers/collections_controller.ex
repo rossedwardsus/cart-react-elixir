@@ -53,16 +53,17 @@ defmodule Sconely.CollectionsController do
 
     #collection_id = collection
     
-    menu_items = Repo.all(from cmi in CollectionMenuItem, select: cmi.menu_item_id, where: cmi.collection_id == ^collection_id)
+    menu_items = Repo.all(from cmi in CollectionMenuItem, select: cmi.menu_item_id, where: cmi.collection_id == ^collection_id, order_by: cmi.order)
 
-    IO.inspect(menu_items)
+    collection_menu_items = Repo.all(from cmi in CollectionMenuItem, select: %{id: cmi.id, menu_item_id: cmi.menu_item_id, collection_name: cmi.collection_name, collection_description: cmi.collection_description, ingredients: cmi.ingredients}, where: cmi.collection_id == ^collection_id, order_by: cmi.order)
+
+    IO.inspect(collection_menu_items)
+
+    #Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, collection_name: mi.collection_name, description: mi.description, collection_description: mi.collection_description, ingredients: mi.ingredients, assortment: mi.assortment}, where: mi.id in ^menu_items, order_by: fragment("POSITION(id::uuid in ("8e9f01a2-01fe-4657-b7a4-ba877d929c45", "0937b5e1-ae49-4481-972b-818fc8120fe4", "1d08881a-6285-419b-9b7e-028941d551b7"))"))
 
 
     #{collection_menu_items, Repo.all(from cmi in CollectionMenuItems, select: %{id: cmi.id, name: mi.name, description: mi.description, ingredients: mi.ingredients}, order_by: mi.id)}
     #{:ok, [%{item_id: 1000}]}
-
-    #if _args.order_type == "pool"
-    #where: mi.assortment == false, mi.active: true
 
     json conn |> put_status(:ok), %{collection_menu_items: Repo.all(from mi in MenuItem, select: %{id: mi.id, menu_item_id: mi.menu_item_id, name: mi.name, collection_name: mi.collection_name, description: mi.description, collection_description: mi.collection_description, ingredients: mi.ingredients, assortment: mi.assortment}, where: mi.id in ^menu_items)}
 

@@ -439,7 +439,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
           return(<div>
                     <PublicTopNavbar/>
                     <div className="row">
-                          <div className="hidden-xs col-sm-3 col-md-4" style={{paddingLeft: 55}}>
+                          <div className="hidden-xs col-sm-3 col-md-3" style={{paddingLeft: 55}}>
                             <br/>
                             <br/>
                             <b>{this.state.collectionDetails.name}</b>

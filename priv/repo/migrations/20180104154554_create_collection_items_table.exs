@@ -7,6 +7,7 @@ defmodule SconeHomeElixir.Repo.Migrations.CreateCollectionItemsTable do
   	      add :id, :uuid, primary_key: true
 	      add :collection_id, :uuid
 	      add :menu_item_id, :uuid
+	      add :order, :smallint
 	  	  
 	      #create index(:posts, [:slug], concurrently: true)
 	    end
