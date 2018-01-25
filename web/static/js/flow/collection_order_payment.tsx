@@ -126,8 +126,8 @@ class CollectionPayment extends React.Component<any, any> {
 
     if(paymentValidations.paymentMethodCardNumberValidated == true && paymentValidations.paymentMethodExpiryMonthValidated == true && paymentValidations.paymentMethodExpiryYearValidated == true && paymentValidations.paymentMethodSecurityCodeValidated == true){
     
-      //this.setState({button_complete_order_classname: "btn btn-default"});
-      //this.setState({button_complete_order_disabled: false});
+      this.setState({button_complete_order_classname: "btn btn-default"});
+      this.setState({button_complete_order_disabled: false});
     
     }
 
