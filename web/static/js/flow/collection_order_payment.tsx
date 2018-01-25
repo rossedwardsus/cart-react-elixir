@@ -697,7 +697,7 @@ class CollectionPayment extends React.Component<any, any> {
                             <br/>
                             <CollectionPaymentMethod User={this.props.User} setPaymentNameOnCard={(e: any) => this.props.setPaymentNameOnCard(e)} setPaymentZipCode={(e: any) => this.props.setPaymentZipCode(e)} setPaymentCardNumber={(e: any) => this.props.setPaymentCardNumber(e)} setPaymentMethodCardBrand={(e: any) => this.props.setPaymentMethodCardBrand(e)} setPaymentExpiryMonth={(e: any) => this.props.setPaymentExpiryMonth(e)} setPaymentExpiryYear={(e: any) => this.props.setPaymentExpiryYear(e)} setPaymentSecurityCode={(e: any) => this.props.setPaymentSecurityCode(e)} setOrderStatus={(e: any) => this.props.setOrderStatus(e)} paymentMethodValidated={() => this.props.paymentMethodValidated()} paymentMethodCardNumberValidated={() => this.props.paymentMethodCardNumberValidated()} paymentMethodExpiryMonthValidated={() => this.props.paymentMethodExpiryMonthValidated()} paymentMethodExpiryYearValidated={() => this.props.paymentMethodExpiryYearValidated()} paymentMethodSecurityCodeValidated={() => this.props.paymentMethodSecurityCodeValidated()}/>
                             <br/>
-                            <button className={this.state.button_complete_order_classname} disabled={this.state.button_complete_order_disabled} onClick={this.processCollectionOrder} style={{borderRadius: 0}}>Complete Order1</button>
+                            <button className={this.state.button_complete_order_classname} disabled={this.state.button_complete_order_disabled} onClick={this.processCollectionOrder} style={{borderRadius: 0}}>Complete Order</button>
                             <br/>
                             <br/>
                         </div>

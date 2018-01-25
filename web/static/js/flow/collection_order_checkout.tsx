@@ -349,7 +349,7 @@ class CollectionCheckout extends React.Component<any, any> {
                         <br/>
                         Sconely Collection
                         <br/>
-                        <CollectionSidebarCart User={this.state.User} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
+                        <CollectionSidebarCart User={this.state.User} collectionDetails={this.props.collectionDetails} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                         <br/>
                         <br/>
                       </div>
@@ -445,6 +445,7 @@ function mapStateToProps(state: any) {
    //menu_items: dispatch()
 
    collectionMenuItems: state.collections.collectionMenuItems,
+   collectionDetails: state.collections.collectionDetails,
    //guestOrder: state.guestOrder,
    //cartItems: state.guestOrder.cart_items, //computed
 
