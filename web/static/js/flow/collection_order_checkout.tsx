@@ -46,7 +46,7 @@ import {setPoolName, setOrderDeliveryDatetimeDate, setOrderDeliveryDatetimeSpeci
 
 import {setUserDeliveryContactAddressFirstName, setUserDeliveryContactAddressLastName, setUserDeliveryContactAddressEmail, setUserDeliveryContactAddressMobile, setUserDeliveryContactAddressCompanyName, setUserDeliveryContactAddressStreet1, setUserDeliveryContactAddressStreet2, setUserDeliveryContactAddressCity, setUserDeliveryContactAddressState, setUserDeliveryContactAddressZipcode, setUserDeliveryContactAddressNote} from './actions/user_delivery_contact_address.ts';
 
-import {userNameEmailMobileValidated, userFirstNameValidated, userFirstNameInvalidated, userLastNameValidated, userContactEmailValidated, userContactEmailAgainValidated, userContactMobileValidated, deliveryContactAddressValidated, dateValidated} from './actions/order_validations.ts';
+import {userNameEmailMobileValidated, userFirstNameValidated, userFirstNameInvalidated, userLastNameValidated, userContactEmailValidated, userContactEmailAgainValidated, userContactMobileValidated, deliveryContactAddressValidated, dateValidated, timeValidated} from './actions/order_validations.ts';
 //import {contactValidated} from './actions/order_validations.ts';
 
 import {createOrder, addCartItem, increaseCartItemQuantity, decreaseCartItemQuantity, removeCartItem} from './actions/order.ts';
@@ -150,14 +150,14 @@ class CollectionCheckout extends React.Component<any, any> {
       this.setState({collectionMenuItems: nextProps.collectionMenuItems});
 
 
-      /*if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
+      if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
 
         console.log("checkout validated");
       
         this.setState({payment_button_classname: "btn btn-default btn-block"});
         this.setState({payment_button_disabled: false})
       
-      }*/
+      }
 
       
 
@@ -396,7 +396,7 @@ class CollectionCheckout extends React.Component<any, any> {
                             deliveryContactAddressValidated={() => this.props.deliveryContactAddressValidated()} deliveryContactAddressInvalidated={() => this.props.deliveryContactAddressInvalidated()}/>
                             <br/>
                             <br/>
-                            <CollectionDeliveryDateTime setDate={(e: any) => this.setDate(e)} setSpecificTime={(e: any) => this.setSpecificTime(e)}/>
+                            <CollectionDeliveryDateTime setDate={(e: any) => this.setDate(e)} setSpecificTime={(e: any) => this.setSpecificTime(e)} timeValidated={(e: any) => this.props.timeValidated(e)}/>
                             <br/>
                             <br/>
                             <form className="form-horizontal">
@@ -461,6 +461,10 @@ function mapDispatchToProps(dispatch: any) {
     dateValidated: () => {
       //console.log(e.target.value);
       dispatch(dateValidated());
+    },
+    timeValidated: () => {
+      //console.log(e.target.value);
+      dispatch(timeValidated());
     },
     getMenuItems: () => {
       dispatch(getMenuItems(""));

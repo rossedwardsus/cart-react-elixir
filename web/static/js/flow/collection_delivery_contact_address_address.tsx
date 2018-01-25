@@ -746,7 +746,7 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
                 <form className="form-horizontal">
                     <div className="form-group">
                       <div className="col-sm-3 col-md-5">
-                        <textarea className="form-control" cols={100} rows={5} placeholder="Order Note" style={{resize: "none"}} onChange={(e: any) => this.setOrderNote(e)}></textarea>
+                        <textarea className="form-control" cols={100} rows={5} maxLength={200} placeholder="Order Note" style={{resize: "none"}} onChange={(e: any) => this.setOrderNote(e)}></textarea>
                       </div>
                     </div>
                 </form>

@@ -609,6 +609,8 @@ class CollectionDeliveryDateTime extends React.Component<any, any> {
 
     this.setState({selectedTime: e.target.value});
     this.props.setOrderDeliveryDatetimeSpecificTime(e.target.value);
+
+     this.props.timeValidated();
     
   }
 

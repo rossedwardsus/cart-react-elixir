@@ -44,7 +44,7 @@ config :scone_home_elixir, SconeHomeElixir.Endpoint,
 #database-local
 config :scone_home_elixir, SconeHomeElixir.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: "postgres://postgres@localhost/sconely_dev"
+  #url: "postgres://postgres@localhost/sconely_dev"
   #url: "postgres://postgres@localhost/migration_test"
 
   #heroku-sconely-test
@@ -52,8 +52,8 @@ config :scone_home_elixir, SconeHomeElixir.Repo,
   #ssl: true
 
   #heroku-sconely-prod
-  #url: "postgres://tisbfgptmbcsua:021ce0c0c137bd1f8d3e08749daedaa59845b9bc4bf5825cae9f3ac11178b720@ec2-184-73-189-221.compute-1.amazonaws.com:5432/d3n1ikvdskts5t",
-  #ssl: true
+  url: "postgres://tisbfgptmbcsua:021ce0c0c137bd1f8d3e08749daedaa59845b9bc4bf5825cae9f3ac11178b720@ec2-184-73-189-221.compute-1.amazonaws.com:5432/d3n1ikvdskts5t",
+  ssl: true
 
 #if STRIPE_ENV == test/production
 IO.puts("mix_env")

@@ -45,14 +45,14 @@ class CollectionSidebarCart extends React.Component<any, any> {
         menuItemNames: [],
         menu_items: [{item_id: 1, title: "freedom", description: "let freedom ring!"}, {item_id: 2, title: "suzy sunshine", description: "let freedom ring!"}, {item_id: 3, title: "freedom", description: "let freedom ring!"}, {item_id: 4, title: "freedom", description: "let freedom ring!"}, {item_id: 5, title: "freedom", description: "let freedom ring!"}, {item_id: 6, title: "freedom", description: "let freedom ring!"}, {item_id: 7, title: "freedom", description: "let freedom ring!"}],
         cartItems: [],
-        pool_message_viewed: false,
         cost_text: "",
         collectionMenuItems: [],
         payment_button_classname: "btn btn-default",
         payment_button_disabled: false,
         User: {},
         deliveryCost: 0.00,
-        deliveryCostFormatted: ""
+        deliveryCostFormatted: "",
+        collectionImage: "",
 
     };
 
@@ -120,6 +120,12 @@ class CollectionSidebarCart extends React.Component<any, any> {
       this.setState({User: nextProps.User})
       this.setState({collectionMenuItems: nextProps.collectionMenuItems})
       this.setState({cartItems: nextProps.User.orders[0].cartItems})
+
+      //let collectionImage = <img src={"/images/collections/hearts/" + nextProps.collectionDetails.url_name + ".jpg"} />;
+
+      //if not undefined
+
+      this.setState({collectionImage: nextProps.collectionDetails.url_name});
 
     if(nextProps.User.orders[0].deliveryCost === ""){
 
@@ -486,7 +492,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
                   {(this.state.cartItems.length == 0) &&
                         (<div>
                             <br/>
-                            <img src={"/images/collections/hearts/" + this.state.collectionDetails.url_name + ".jpg"} />
+                            {(this.state.collectionImage.length !== 0) && <img src={"/images/collections/hearts/" + this.state.collectionImage + ".jpg"} />}
                             <br/>
                             Box of 4 for $14
                             <br/>
@@ -496,7 +502,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
                   <br/>
                   {this.state.cartItems.map((item: any, index: any) => <CollectionOrderSidebarCartItem index={index} collectionMenuItems={this.state.collectionMenuItems}  item={item} item_quantity_text={""} item_name={""} increaseCartItemQuantity={() => this.props.increaseCartItemQuantity(index)} decreaseCartItemQuantity={(index: any) => this.props.decreaseCartItemQuantity(index)} removeCartItem={() => this.props.removeCartItem(index)}/>)}
                   <br/>
-                  {this.state.cartItems.length == 0 ? 'cart is empty' :
+                  {this.state.cartItems.length !== 0 &&
 
                     (<div>
                         <form className="form-horizontal">

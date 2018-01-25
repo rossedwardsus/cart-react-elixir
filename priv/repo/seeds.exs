@@ -79,13 +79,13 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 12, order:
 
 
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 13, order: 0, name: "Sweet + simple, you’re the best", ingredients: "Unbleached white all-purpose flour*, Fresh cherries*, Semisweet chocolate*, Unsalted butter*, Eggs*, Heavy cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascan vanilla bean*, Sea salt. *Organic", description: "6, 3-inch heart shaped Ruby Q scones, with fresh cherries, semisweet chocolate chunks and Madagascan vanilla bean.", assortment: false, active: false})
+collection_menu_item_changeset = CollectionMenuItem.changeset(%CollectionMenuItem{}, %{menu_item_id: 13, order: 0, collection_name: "Sweet + simple, you’re the best", ingredients: "Unbleached white all-purpose flour*, Fresh cherries*, Semisweet chocolate*, Unsalted butter*, Eggs*, Heavy cream*, Raw cane sugar*, Baking powder, Pure vanilla extract*, Madagascan vanilla bean*, Sea salt. *Organic", collection_description: "6, 3-inch heart shaped Ruby Q scones, with fresh cherries, semisweet chocolate chunks and Madagascan vanilla bean."})
 
-#Repo.insert!(menu_item_changeset)
+#Repo.insert!(collection_menu_item_changeset)
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 14, order: 0, name: "You make me smile", ingredients: "Unbleached white all-purpose flour*, Dark chocolate*, Hazelnuts, Cocoa powder*, Heavy cream*, Eggs*, Coconut sugar*, Unsalted butter*, Pure vanilla extract*, Baking powder, Sea salt. *Organic", description: "6, 3-inch heart shaped double dark chocolate chunk, hazelnut praline scones, affectionately named Snorker after a laughing Sconely cousin.", assortment: false, active: false})
+collection_menu_item_changeset = CollectionMenuItem.changeset(%CollectionMenuItem{}, %{menu_item_id: 14, order: 0, collection_name: "You make me smile", ingredients: "Unbleached white all-purpose flour*, Dark chocolate*, Hazelnuts, Cocoa powder*, Heavy cream*, Eggs*, Coconut sugar*, Unsalted butter*, Pure vanilla extract*, Baking powder, Sea salt. *Organic", collection_description: "6, 3-inch heart shaped double dark chocolate chunk, hazelnut praline scones, affectionately named Snorker after a laughing Sconely cousin."})
 
-#Repo.insert!(menu_item_changeset)
+#Repo.insert!(collectionmenu_item_changeset)
 
 #new
 #non collection name is "Fannette"
@@ -93,9 +93,13 @@ menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 15, order:
 
 #Repo.insert!(menu_item_changeset)
 
-menu_item_changeset = MenuItem.changeset(%MenuItem{}, %{menu_item_id: 16, order: 0, name: "Apple of my eye (Vegan)", ingredients: "Spelt flour*, Kamut flour*, Granny smith apples*, Golden raisins*, Virgin coconut oil*, Almond milk*, Flax seeds*, Coconut sugar*, Pure vanilla extract*, Baking powder, Cinnamon, Sea salt. *Organic", description: "6, 3-inch heart shaped Ursa Major scones made with hearty ancient grains, granny smith apples, golden raisins and crunchy cinnamon topping.", assortment: false, active: false})
+collecton_menu_item_changeset = CollectionMenuItem.changeset(%CollectionMenuItem{}, %{menu_item_id: 15, order: 0, collection_name: "You’re adorable (Vegan)", ingredients: "Unbleached white all-purpose flour*, Semisweet chocolate*, Pecans, Almond milk*, Virgin coconut oil*, Ground Flax seeds*, Lemon juice*, Coconut sugar*, Pure vanilla extract*, Baking powder, Sea salt. *Organic (need to confirm these ingredients)", collection_description: "6, 3-inch heart shaped Fanette scones with chunks of semisweet chocolate rolled in pecan butter, praline pecans and topped with a pecan turtle and salty caramel drizzle.", assortment: false, active: false})
 
-#Repo.insert!(menu_item_changeset)
+#Repo.insert!(collection_menu_item_changeset)
+
+collection_menu_item_changeset = CollectionMenuItem.changeset(%CollectionMenuItem{}, %{menu_item_id: 16, order: 0, collection_name: "Apple of my eye (Vegan)", ingredients: "Spelt flour*, Kamut flour*, Granny smith apples*, Golden raisins*, Virgin coconut oil*, Almond milk*, Flax seeds*, Coconut sugar*, Pure vanilla extract*, Baking powder, Cinnamon, Sea salt. *Organic", collection_description: "6, 3-inch heart shaped Ursa Major scones made with hearty ancient grains, granny smith apples, golden raisins and crunchy cinnamon topping."})
+
+#Repo.insert!(collection_menu_item_changeset)
 
 #collections_changeset
 #collection_items_changeset
