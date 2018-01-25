@@ -212,13 +212,16 @@ class CollectionCheckout extends React.Component<any, any> {
 
   setSpecificTime(e: any){
 
-    console.log("time " + moment(e.target.value).toISOString());
+    //console.log("time " + moment(e.target.value).toISOString());
+    console.log("time " + e.target.value);
 
     //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
     //this.props.setSpecificTime();
 
     this.setState({selected_specific_time: e.target.value});
     this.props.setOrderDeliveryDatetimeSpecificTime(e.target.value);
+
+    this.props.timeValidated();
     
   }
 
@@ -403,7 +406,7 @@ class CollectionCheckout extends React.Component<any, any> {
                                 <div className="form-group">
                                   <div className="col-md-9">
                                     <div className="col-md-3">
-                                      <Link to="/collections/order/payment" className="btn btn-default btn-block" style={{borderRadius: 0}}>Payment</Link>
+                                      <Link to="/collections/order/payment" className={this.state.payment_button_classname} disabled={this.state.payment_button_disabled} style={{borderRadius: 0}}>Payment</Link>
                                     </div>
                                     <div className="col-md-3">
                                       <Link to="/collections/order/menu" className="btn btn-default btn-block" style={{borderRadius: 0}}>Back to Menu</Link>  
@@ -463,7 +466,7 @@ function mapDispatchToProps(dispatch: any) {
       dispatch(dateValidated());
     },
     timeValidated: () => {
-      //console.log(e.target.value);
+      console.log("e.target.value");
       dispatch(timeValidated());
     },
     getMenuItems: () => {

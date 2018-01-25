@@ -114,7 +114,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
       //console.log("collection sidebar cart collection menu items cwrp " + JSON.stringify(nextProps.collectionMenuItems));
       console.log("collection sidebar cart user cwrp " + JSON.stringify(nextProps.User));
       //console.log("<b>sidebar cart props</b> " + JSON.stringify(nextProps));
-      console.log("sbc collectiondetails cwrp" + JSON.stringify(this.props.collectionDetails));
+      console.log("sbc collectiondetails cwrp" + JSON.stringify(nextProps.collectionDetails));
 
       this.setState({collectionDetails: this.props.collectionDetails});
       this.setState({User: nextProps.User})
@@ -125,7 +125,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
 
       //if not undefined
 
-      this.setState({collectionImage: nextProps.collectionDetails.url_name});
+      //this.setState({collectionImage: nextProps.collectionDetails.url_name});
 
     if(nextProps.User.orders[0].deliveryCost === ""){
 

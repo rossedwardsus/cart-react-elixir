@@ -17,7 +17,7 @@ export function cartInvalidated() {
 }
 
 export function dateValidated() {
-  console.log("cart validated ");
+  console.log("date validated action");
   return {
     type: DATE_VALIDATED,
     
@@ -26,7 +26,7 @@ export function dateValidated() {
 
 
 export function timeValidated() {
-  console.log("cart validated ");
+  console.log("time validated action");
   return {
     type: TIME_VALIDATED,
     

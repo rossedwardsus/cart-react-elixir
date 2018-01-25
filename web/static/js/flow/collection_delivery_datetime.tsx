@@ -602,7 +602,8 @@ class CollectionDeliveryDateTime extends React.Component<any, any> {
 
   setSpecificTime(e: any){
 
-    console.log("time " + moment(e.target.value).toISOString());
+    //console.log("time " + moment(e.target.value).toISOString());
+    console.log("time " + e.target.value);
 
     //this.setState({selectedDate: moment(date).format("YYYY/MM/DD")});
     //this.props.setSpecificTime();
@@ -610,7 +611,7 @@ class CollectionDeliveryDateTime extends React.Component<any, any> {
     this.setState({selectedTime: e.target.value});
     this.props.setOrderDeliveryDatetimeSpecificTime(e.target.value);
 
-     this.props.timeValidated();
+    this.props.timeValidated();
     
   }
 
