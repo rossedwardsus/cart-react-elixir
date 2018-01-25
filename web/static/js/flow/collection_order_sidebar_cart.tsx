@@ -526,16 +526,16 @@ class CollectionSidebarCart extends React.Component<any, any> {
                         </form>
                         <form className="form-horizontal" style={{border: 1}}>
                           <div className="form-group" style={{border: 1}}>
-                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Delivery Cost</div>
+                            <div className="col-md-6" style={{textAlign: "right", fontType: "helvetica", fontSize: "12"}}>Delivery Cost</div>
                             <div className="col-md-1"></div>
-                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>{this.state.deliveryCostFormatted}</div>
+                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "12"}}>{this.state.deliveryCostFormatted}</div>
                           </div>
                         </form>
                         <form className="form-horizontal" style={{border: 1}}>
                           <div className="form-group" style={{border: 1}}>
-                            <div className="col-md-5" style={{fontType: "helvetica", fontSize: "14"}}>Total Cost</div>
+                            <div className="col-md-6" style={{textAlign: "right", fontType: "helvetica", fontSize: "12"}}>Total Cost</div>
                             <div className="col-md-1"></div>
-                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "14"}}>${total_items_cost.toFixed(2)}</div>
+                            <div className="col-md-1" style={{fontType: "helvetica", fontSize: "12"}}>${total_items_cost.toFixed(2)}</div>
                           </div>
                         </form>
                         <br/>
