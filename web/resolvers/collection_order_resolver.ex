@@ -2,7 +2,7 @@ defmodule Sconely.CollectionOrderResolver do
   alias SconeHomeElixir.Repo
   alias Sconely.SconelySignatureOrder
   alias Sconely.SconelySignatureOrderAdditionalItem
-  alias Sconely.MenuItem
+  alias Sconely.CollectionMenuItem
   alias Sconely.Registration
   alias Sconely.MailingListGuestRegistration
   alias Sconely.User
@@ -562,9 +562,11 @@ defmodule Sconely.CollectionOrderResolver do
             #does payment method have to be stored for a guest?  
 
 
-            query = from mi in MenuItem,
-                     select: %{"menu_item_id": mi.menu_item_id, "name": mi.name}
-            menu_items = Repo.all(query)
+            query = from cmi in CollectionMenuItem,
+                     select: %{"menu_item_id": cmi.menu_item_id, "collection_name": cmi.collection_name}
+            collection_menu_items = Repo.all(query)
+
+            IO.inspect(collection_menu_items)
 
             user = Repo.get_by(MailingListGuestRegistration, %{email: args[:user_contact_email]})
             IO.inspect(user)
@@ -1157,7 +1159,7 @@ defmodule Sconely.CollectionOrderResolver do
 
                             #pool_order_item_changeset = OrderItem.changeset(%OrderItem{}, %{order_id: 1, menu_item_id: 1, user_id: user_id, order_id: order_id, quantity: 1, size: "regular"})
 
-                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{parent_order_id: parent_order_id, user_id: user_id, menu_item_id: item.menu_item_id, quantity: item.quantity, size: item.size})
+                            order_item_changeset = OrderItem.changeset(%OrderItem{}, %{parent_order_id: parent_order_id, user_id: user_id, menu_item_id: 0, quantity: item.quantity, size: item.size})
 
                             case Repo.insert(order_item_changeset) do
 
@@ -1474,7 +1476,7 @@ defmodule Sconely.CollectionOrderResolver do
 
                         #IO.inspect(order_date_formatted)
                         
-                        #IO.inspect(args[:cart_items])
+                        IO.inspect(args[:cart_items])
 
                         #menu_items = [%{"item_id": 1, "name": "Ruby Q"}, %{"item_id": 2, "name": "juliefreedom(veganandgluten-free)"}]
 
@@ -1482,7 +1484,7 @@ defmodule Sconely.CollectionOrderResolver do
                         cart_items_with_name = Enum.map(cart_items, fn(cart_item) ->
                           #Map.put(cart_item, :name, "name")
                           #IO.inspect(Enum.at(menu_items, 0).name)
-                          IO.inspect(cart_item[:size])
+                          IO.inspect(cart_item)
 
                           if cart_item[:size] == "four" do
 
@@ -1495,8 +1497,7 @@ defmodule Sconely.CollectionOrderResolver do
 
                             #IO.inspect(List.first(Enum.filter(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end))[:name])
 
-                            IO.inspect(Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name])
-
+                            
                             quantity = nil
 
                             if order_type == "social" do 
@@ -1508,11 +1509,18 @@ defmodule Sconely.CollectionOrderResolver do
                                 quantity = cart_item.quantity 
 
                             end
+
+                            IO.inspect("menu item")
+                            IO.inspect(collection_menu_items)
+
+                            IO.inspect(Enum.find(collection_menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end))
+
+                            #IO.inspect(Enum.find(collection_menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name])
                             
 
                             Map.merge(cart_item, %{
-                              :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name] <> " Box of four",
-                              :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name],
+                              :name => Enum.find(collection_menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:collection_name] <> " Box of four",
+                              :menu_image_name => Enum.find(collection_menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:collection_name],
                               :quantity => quantity})
 
                             #cart items
@@ -1524,9 +1532,9 @@ defmodule Sconely.CollectionOrderResolver do
 
                             #IO.inspect(cart_item[:menu_item_id]-1)
 
-                            item_name = Enum.at(menu_items, cart_item[:menu_item_id]-1).name <> " Box of 6"
+                            #item_name = Enum.at(collection_menu_items, cart_item[:menu_item_id]-1).name <> " Box of 6"
 
-                            menu_item_index = cart_item[:menu_item_id]-1
+                            #menu_item_index = cart_item[:menu_item_id]-1
 
                             #Map.put(cart_item, :name, item_name)
                             #Map.put(cart_item, :menu_image_name, Enum.at(menu_items, menu_item_index).name)
@@ -1543,11 +1551,11 @@ defmodule Sconely.CollectionOrderResolver do
 
                             end
 
-                            Map.merge(cart_item, %{
-                              :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name] <> " Box of six",
-                              :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name],
-                              :quantity => quantity
-                            })
+                            #Map.merge(cart_item, %{
+                            #  :name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name] <> " Box of six",
+                            #  :menu_image_name => Enum.find(menu_items, fn (menu_item) -> menu_item.menu_item_id == cart_item.menu_item_id end)[:name],
+                            #  :quantity => quantity
+                            #})
 
                             #Map.merge(cart_item, %{
                             #  :quantity => "dozens"
@@ -1615,11 +1623,11 @@ defmodule Sconely.CollectionOrderResolver do
 
                           #IO.inspect(delivery_address)
 
-                          response = Sconely.CollectionOrderEmail.yours_social_pool_complete_order_admin_email(%{order_id: order_id, collection_name: collection_name, admin_email_subject: admin_email_subject, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time_formatted: delivery_time_formatted, delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: delivery_cost, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          response = Sconely.CollectionOrderEmail.collection_order_admin_email(%{order_id: order_id, collection_name: collection_name, admin_email_subject: admin_email_subject, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time_formatted: delivery_time_formatted, delivery_address: delivery_address, args: args, subtotal_formatted: subtotal_formatted, delivery_cost: delivery_cost, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                           IO.inspect(response)
                   
-                          Sconely.CollectionOrderEmail.yours_social_pool_complete_order_email(%{order_id: "order_id", collection_name: collection_name, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time_formatted: delivery_time_formatted, delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: delivery_cost, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
+                          Sconely.CollectionOrderEmail.collection_order_email(%{order_id: "order_id", collection_name: collection_name, admin_receipt_order_id: admin_receipt_order_id, order_datetime_formatted: order_datetime_formatted, delivery_date_formatted: delivery_date_formatted, delivery_time_formatted: delivery_time_formatted, delivery_address: delivery_address, args: args, subtotal: "", total_items: 0, subtotal_formatted: subtotal_formatted, delivery_cost: delivery_cost, promo_code_discount: promo_code_discount, total_formatted: total_formatted, cart_items: cart_items_with_name}) |> SconeHomeElixir.Mailer.deliver_later
 
                           
                         #end

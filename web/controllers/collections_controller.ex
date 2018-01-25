@@ -55,7 +55,7 @@ defmodule Sconely.CollectionsController do
     
     menu_items = Repo.all(from cmi in CollectionMenuItem, select: cmi.menu_item_id, where: cmi.collection_id == ^collection_id, order_by: cmi.order)
 
-    collection_menu_items = Repo.all(from cmi in CollectionMenuItem, select: %{id: cmi.id, menu_item_id: cmi.menu_item_id, collection_name: cmi.collection_name, collection_description: cmi.collection_description, ingredients: cmi.ingredients}, where: cmi.collection_id == ^collection_id, order_by: cmi.order)
+    collection_menu_items = Repo.all(from cmi in CollectionMenuItem, select: %{menu_item_id: cmi.menu_item_id, collection_name: cmi.collection_name, collection_description: cmi.collection_description, ingredients: cmi.ingredients}, where: cmi.collection_id == ^collection_id, order_by: cmi.order)
 
     IO.inspect(collection_menu_items)
 

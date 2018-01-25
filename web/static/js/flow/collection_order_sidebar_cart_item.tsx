@@ -76,7 +76,7 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
       console.log("collectiom cart item cwm " + JSON.stringify(this.props));
 
-      let item = this.props.collectionMenuItems.filter((item: any) => item.id === this.props.item.menu_item_id);
+      let item = this.props.collectionMenuItems.filter((item: any) => item.menu_item_id === this.props.item.menu_item_id);
 
       console.log("item " + JSON.stringify(item));
 

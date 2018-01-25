@@ -277,7 +277,7 @@ defmodule Sconely.Schema do
         arg :payment_method_security_code, :string
         arg :payment_method_card_brand, :string
         arg :payment_method_zipcode, :string
-        arg :cart_items, list_of(:cart_item)
+        arg :cart_items, list_of(:collection_cart_item)
         arg :promo_code, :string
         arg :order_note, :string
         arg :gift_order, :boolean
@@ -323,7 +323,7 @@ defmodule Sconely.Schema do
         arg :payment_method_security_code, :string
         arg :payment_method_card_brand, :string
         arg :payment_method_zipcode, :string
-        arg :cart_items, list_of(:cart_item)
+        arg :cart_items, list_of(:collection_cart_item)
         arg :promo_code, :string
         arg :order_note, :string
         arg :gift_order, :boolean

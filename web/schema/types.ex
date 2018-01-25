@@ -127,6 +127,12 @@ defmodule Sconely.Schema.Types do
    field :size, :string
   end
 
+  input_object :collection_cart_item do
+   field :menu_item_id, :string
+   field :quantity, :integer
+   field :size, :string
+  end
+
   object :process_yours_social_pool_order_response do
     field :status, :string
     field :sconely_user_token, :string

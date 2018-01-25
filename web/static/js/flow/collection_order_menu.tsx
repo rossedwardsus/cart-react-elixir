@@ -213,7 +213,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
       console.log("collection_menu_item_id " + collection_menu_item_id);
 
-      let collectionMenuItem = this.props.collectionMenuItems.find((item: any) => {return item.id == collection_menu_item_id});
+      let collectionMenuItem = this.props.collectionMenuItems.find((item: any) => {return item.menu_item_id == collection_menu_item_id});
 
       console.log(JSON.stringify(collectionMenuItem));
 
@@ -480,7 +480,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
                                 return(
                                         <div className="col-xs-12 col-md-5 col-lg-5" style={{marginTop: 0, marginBottom: 0}}>
                                       
-                                              <img id="1" className="img-responsive" onClick={() => this.showItem(item.id)} src={"/images/collections/hearts/" + image_name + ".jpg"} data-target="myModal" alt="..." />
+                                              <img id="1" className="img-responsive" onClick={() => this.showItem(item.menu_item_id)} src={"/images/collections/hearts/" + image_name + ".jpg"} data-target="myModal" alt="..." />
                                           <br/>
                                           <b>{item.collection_name}</b>
                                           <br/>
