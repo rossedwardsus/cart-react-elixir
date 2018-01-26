@@ -74,8 +74,8 @@ class CollectionPayment extends React.Component<any, any> {
 
         name_on_card: "form-group has-error",
         //order: Immutable.fromJS({name: "name", contact: "contact", cart: [], delivery_address: {street: ""}, payment: ""}),
-        button_complete_order_classname: "btn btn-default",
-        button_complete_order_disabled: false,
+        button_complete_order_classname: "btn btn-default disabled",
+        button_complete_order_disabled: true,
         cartItems: [],      
         promo_code: "",
         promo_code_discount: 0,
@@ -124,7 +124,8 @@ class CollectionPayment extends React.Component<any, any> {
 
     let paymentValidations = this.props.User.orderSession.validations;
 
-    if(paymentValidations.paymentMethodCardNumberValidated == true && paymentValidations.paymentMethodExpiryMonthValidated == true && paymentValidations.paymentMethodExpiryYearValidated == true && paymentValidations.paymentMethodSecurityCodeValidated == true){
+    //if(paymentValidations.paymentMethodCardNumberValidated == true && paymentValidations.paymentMethodExpiryMonthValidated == true && paymentValidations.paymentMethodExpiryYearValidated == true && paymentValidations.paymentMethodSecurityCodeValidated == true){
+    if(paymentValidations.paymentMethodSecurityCodeValidated == true){
     
       this.setState({button_complete_order_classname: "btn btn-default"});
       this.setState({button_complete_order_disabled: false});
@@ -159,7 +160,7 @@ class CollectionPayment extends React.Component<any, any> {
     if (this.props.User.orderSession.validations.paymentMethodSecurityCodeValidated == true){
 
           this.setState({button_complete_order_classname: "btn btn-default"});
-          this.setState({button_complete_order_disabled: ""});
+          this.setState({button_complete_order_disabled: false});
 
     }
 

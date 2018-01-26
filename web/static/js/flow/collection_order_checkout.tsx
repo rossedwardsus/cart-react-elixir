@@ -150,7 +150,7 @@ class CollectionCheckout extends React.Component<any, any> {
       this.setState({collectionMenuItems: nextProps.collectionMenuItems});
 
 
-      if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["dateValidated"] == true){
+      if(this.props.User.orderSession.validations["firstNameValidated"] == true && this.props.User.orderSession.validations["lastNameValidated"] == true && this.props.User.orderSession.validations["contactEmailValidated"] == true && this.props.User.orderSession.validations["contactEmailAgainValidated"] == true && this.props.User.orderSession.validations["contactMobileValidated"] == true && this.props.User.orderSession.validations["deliveryContactAddressValidated"] == true && this.props.User.orderSession.validations["timeValidated"] == true){
 
         console.log("checkout validated");
       

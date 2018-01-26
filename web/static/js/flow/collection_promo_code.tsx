@@ -145,7 +145,7 @@ class CollectionPromoCode extends React.Component<any, any> {
                                       Discount
                                   </div>
                                   <div className="col-md-2">
-                                      %{this.state.promoCodeDiscount}
+                                      {this.state.promoCodeDiscount}%
                                   </div>
                                 </div>
                             </form>
