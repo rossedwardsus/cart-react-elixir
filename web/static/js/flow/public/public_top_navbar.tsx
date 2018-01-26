@@ -103,10 +103,15 @@ export default class Menu extends React.Component<any, any> {
                                       <div className="modal-content">
                                         <div className="modal-header">
                                           <button type="button" onClick={() => this.closeDeliveryLocations()} className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          <h4 className="modal-title" id="myModalLabel">Free Delivery Areas + Times</h4>
+                                          <h4 className="modal-title" id="myModalLabel">Delivery Areas + Times</h4>
                                         </div>
                                         <div className="modal-body">
                                           <div className="col-md-6" style={{paddingLeft: "30px"}}>
+                                            Free delivery or pickup in Downtown LA
+                                            <br/>
+                                            $10 delivery for the following locations:
+                                            <br/>
+                                            <br/>
                                             Beverly Hills
                                             <br/>
                                             Brentwood
