@@ -675,7 +675,7 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
                         <div className="hidden-lg col-xs-1">
                           <br/>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-sm-2">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressState(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>State</option>
                             <option value="CA">CA</option>
