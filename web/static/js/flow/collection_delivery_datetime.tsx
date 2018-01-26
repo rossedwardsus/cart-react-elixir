@@ -638,6 +638,7 @@ class CollectionDeliveryDateTime extends React.Component<any, any> {
                                 <div className="col-md-3">
                                   <select onChange={(e: any) => this.props.setSpecificTime(e)} className="form-control" style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                                       <option>Time</option>
+                                      <option value="anytime">Anytime between 8:00 am - 12:00 pm</option>
                                       <option value="800-830">8:00 am - 8:30 am</option>
                                       <option value="830-900">8:30 am - 9:00 am</option>
                                       <option value="900-930">9:00 am - 9:30 am </option>

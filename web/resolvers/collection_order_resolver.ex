@@ -1054,6 +1054,7 @@ defmodule Sconely.CollectionOrderResolver do
                                     delivery_time_formatted = args[:order_delivery_datetime_time] <> " am"
 
                                     case args[:order_delivery_datetime_time] do
+                                       "anytime" -> delivery_time_formatted = "Anytime between 8:00 am and 12:00 pm"
                                        "800-830" -> delivery_time_formatted = "8:00 am - 8:30 am"
                                        "830-900" -> delivery_time_formatted = "8:30 am - 9:00 am"
                                        "900-930" -> delivery_time_formatted = "9:00 am - 9:30 am"
