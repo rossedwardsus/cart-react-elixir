@@ -80,7 +80,13 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
 
       console.log("item " + JSON.stringify(item));
 
-      this.setState({itemName: item[0].collection_name});
+      //if item is not empty
+
+      if(item.length !== 0){
+
+        this.setState({itemName: item[0].collection_name});
+
+      }
       
       //this.setState({itemNameText: item[0].collection_name});
       //this.setState({itemQuantityText: "1 1/2 dz"});
@@ -148,6 +154,19 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
   componentWillReceiveProps = (nextProps: any) => {
 
       console.log("collectiom cart item cwrp" + JSON.stringify(nextProps));
+      //console.log("collectiom cart item cwrp " + JSON.stringify(this.props));
+
+      let item = nextProps.collectionMenuItems.filter((item: any) => item.menu_item_id === this.props.item.menu_item_id);
+
+      console.log("item cwrp " + JSON.stringify(item));
+
+      //if item is not empty
+
+      if(item.length !== 0){
+
+        this.setState({itemName: item[0].collection_name});
+
+      }
 
       /*let quotient = Math.floor(this.props.item.quantity/12);
       let remainder = this.props.item.quantity % 12;

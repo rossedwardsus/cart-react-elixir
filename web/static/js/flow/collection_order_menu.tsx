@@ -93,11 +93,27 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
     //}
 
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
 
-    this.props.getCollectionDetails("hearts_collection");
+
+    //check if the collection has already been fetced and order created
+    console.log("cwm collectiondetails" + JSON.stringify(this.props.collectionDetails));
+    console.log("cwm user" + JSON.stringify(this.props.collectionDetails));
+
+    if(this.props.collectionDetails.length === 0){
+    
+          this.props.getCollectionDetails("hearts_collection");
+
+    }
+
     this.props.getCollectionMenuItems("hearts_collection");
-    this.props.createOrder("collection");
+    
+    if(this.props.User.orders.length === 0){
+      
+          this.props.createOrder("collection");
+
+    }
+
     //this.setState({menuItems: this.props.menuItems});
 
 
@@ -123,6 +139,8 @@ class CollectionOrderMenu extends React.Component<any, any> {
   componentWillReceiveProps = (nextProp:any) => {
 
       //cart items
+
+      window.scrollTo(0, 0);
 
       console.log("collection order menu cwrp " + JSON.stringify(nextProp.collectionDetails));
       console.log("collection order menu mi cwrp " + JSON.stringify(nextProp.collectionMenuItems));
