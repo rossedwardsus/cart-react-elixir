@@ -439,7 +439,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                     Freshly baked, ready to be gifted
                                     <br/>
                                     <div className="col-lg-1"></div>
-                                    <div className="hidden-xs col-lg-3">
+                                    <div className="col-xs-3">
                                         <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
                                     </div>
                                     <br/>
@@ -453,7 +453,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                       Freshly baked, delivered to your event
                                       <br/>
                                     </div>
-                                    
+
                                     <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>SHOP</button>
                                     <br/>
                                     <br/>
