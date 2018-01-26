@@ -438,10 +438,9 @@ export class PublicHomePage extends React.Component<any, any> {
                                     <br/>
                                     Freshly baked, ready to be gifted
                                     <br/>
-                                    <div className="col-lg-1"></div>
-                                    <div className="col-xs-3">
-                                        <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
-                                    </div>
+                                    <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
+                                    <br/>
+                                    <br/>
                                     <br/>
                                     <br/>
                                     <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>
