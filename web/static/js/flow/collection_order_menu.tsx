@@ -144,6 +144,7 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
       console.log("collection order menu cwrp " + JSON.stringify(nextProp.collectionDetails));
       console.log("collection order menu mi cwrp " + JSON.stringify(nextProp.collectionMenuItems));
+      console.log("collection order menu cartitems length " + JSON.stringify(nextProp.User.orders[0].cartItems.length));
 
       let collectionDescription = "";
 
@@ -160,9 +161,11 @@ class CollectionOrderMenu extends React.Component<any, any> {
 
       }
 
-      
-      //this.setState({totalItems: nextProp.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)});
-   
+      //if(nextProp.User.orders.length > 0){
+        //this.setState({totalItems: nextProp.User.orders[0].cartItems.reduce((amount: any, item: any) => amount + item.quantity, 0)});
+        this.setState({totalItems: nextProp.User.orders[0].cartItems.length});
+
+      //}
 
       /*let four_items = [];
       let six_items = [];
@@ -463,7 +466,11 @@ class CollectionOrderMenu extends React.Component<any, any> {
                             <b>{this.state.collectionDetails.name}</b>
                             <br/>
                             <br/>
-                            {this.state.totalItems < 1 && this.state.collectionDescription}
+                            <form className="form-horizontal">
+                              <div className="form-group">
+                              {(this.state.totalItems < 1) && this.state.collectionDescription}
+                              </div>
+                            </form>
                             <CollectionsSidebarCart User={this.props.User} collectionDetails={this.props.collectionDetails} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>

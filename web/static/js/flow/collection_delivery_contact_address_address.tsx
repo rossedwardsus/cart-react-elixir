@@ -665,7 +665,7 @@ class CollectionDeliveryAddress extends React.Component<any, any> {
                 </form>
                 <form className="form-horizontal">
                       <div className="form-group">
-                        <div className="col-sm-3 col-md-3">
+                        <div className="col-sm-2 col-md-2">
                           <select className="form-control" onChange={(value) => this.setDeliveryContactAddressCity(value)} style={{borderRadius: 0, WebkitAppearance: "none", height: 36, fontSize: 16}}>
                             <option>City</option>
                             <option value="Los Angeles">Los Angeles</option>

@@ -242,13 +242,13 @@ class CollectionOrderSidebarCartItem extends React.Component<any, any> {
   render(){
 
     
-    return (<form className="form-horizontal" style={{border: 1, position: "static"}}>
-                      <div className="form-group" style={{border: 1}}>
-                      <div className="col-md-6 col-xs-5" style={{fontType: "helvetica", fontSize: 12}}>{this.state.itemName}<br/>(Box of {this.props.item.size})</div>
-                      <div className="col-xs-1" style={{fontType: "helvetica", fontSize: 12}}><a onClick={() => this.props.increaseCartItemQuantity(this.props.index)}>+</a></div>
-                      <div className="col-xs-1" style={{fontType: "helvetica", fontSize: 12}}>{this.state.itemQuantityText}</div>
-                      <div className="col-xs-1" style={{fontType: "helvetica", fontSize: 12}}><a onClick={(index: any) => this.props.decreaseCartItemQuantity(this.props.index)}>-</a></div>
-                      <div className="col-xs-1" style={{fontType: "helvetica", fontSize: 12}}><a onClick={() => this.props.removeCartItem(this.props.index)}>X</a></div>
+    return (<form className="form-horizontal" style={{position: "static"}}>
+                      <div className="form-group">
+                        <div className="col-md-6 col-xs-5" style={{fontType: "helvetica", fontSize: 12}}>{this.state.itemName}<br/>(Box of {this.props.item.size})</div>
+                        <div className="col-xs-1" style={{fontType: "helvetica", fontSize: 12}}><a onClick={() => this.props.increaseCartItemQuantity(this.props.index)}>+</a></div>
+                        <div className="col-xs-1" style={{fontType: "helvetica", fontSize: 12}}>{this.state.itemQuantityText}</div>
+                        <div className="col-xs-1" style={{fontType: "helvetica", fontSize: 12}}><a onClick={(index: any) => this.props.decreaseCartItemQuantity(this.props.index)}>-</a></div>
+                        <div className="col-xs-1" style={{fontType: "helvetica", fontSize: 12}}><a onClick={() => this.props.removeCartItem(this.props.index)}>X</a></div>
                       </div>
                 </form>)
   }
