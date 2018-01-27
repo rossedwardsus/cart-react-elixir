@@ -407,8 +407,7 @@ export class PublicHomePage extends React.Component<any, any> {
                               HEARTS COLLECTION
                             </div>
                             <br/>
-                            <br/>
-                            Handcrafted heart-shaped scones 
+                           Handcrafted heart-shaped scones 
                             <br/>
                             Freshly baked, ready to be gifted
                             <br/>
