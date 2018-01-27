@@ -41,7 +41,7 @@
   </table>
   <table width="50%">
     <%= for item <- @key.cart_items do %>
-    <tr><td><img width="50" height="50" src="https://sconely-test.herokuapp.com/images/collections/hearts/<%= String.downcase(item.menu_image_name) |> String.replace(" ", "") |> String.replace("'", "") |> String.replace("'", "") |> String.replace("(", "") |> String.replace(")", "") %>.jpg"></td><td><b><%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
+    <tr><td><img width="50" height="50" src="https://sconely-test.herokuapp.com/images/collections/hearts/<%= String.downcase(item.menu_image_name) %>.jpg"></td><td><b><%= item.name %></b></td><td><b><%= item.quantity %></b></td></tr>
     <% end %>
   </table>
   <br/>

@@ -82,6 +82,7 @@ class CollectionCheckout extends React.Component<any, any> {
 
     this.state = {
 
+        gift_order_checked: "",
         poolName: "",
         pickupLocation: "",
         selectedDate: "",
@@ -245,7 +246,9 @@ class CollectionCheckout extends React.Component<any, any> {
 
   setGiftOrder = (e: any) => {
 
-      if(this.state.gift_order_checked == ""){
+      console.log("hello" + e.target.value);
+
+      if(this.state.gift_order_checked === ""){
 
           console.log("hello");
 
