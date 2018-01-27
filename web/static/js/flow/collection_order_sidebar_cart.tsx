@@ -89,7 +89,7 @@ class CollectionSidebarCart extends React.Component<any, any> {
     }else{
 
         this.setState({deliveryCost : parseInt(this.props.User.orders[0].deliveryCost).toFixed(2)});
-        this.setState({deliveryCostFormatted : "" + parseInt(this.props.User.orders[0].deliveryCost).toFixed(2)});
+        this.setState({deliveryCostFormatted : "$" + parseInt(this.props.User.orders[0].deliveryCost).toFixed(2)});
 
     }
 
