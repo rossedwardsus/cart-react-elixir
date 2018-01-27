@@ -107,7 +107,7 @@ export class PublicTeam extends React.Component<any, any> {
                         </div>
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                           <br/>
-                          <img src="/images/Sconelyteam2.jpg"/>
+                          <img src="/images/Sconelyteam3.jpg"/>
                           <br/>
                           <br/>
                           <b>Julia Friedman, Founder & CEO</b>
@@ -115,13 +115,14 @@ export class PublicTeam extends React.Component<any, any> {
                           An entrepreneur, with a passion for food and art, Julia is in search of the perfect scone: a scone that not only tastes heavenly, but also looks out of this world. She comes from a family where food is an expression of love and is the centerpiece of social gatherings. After overcoming cancer nine years ago, she worked to develop healthier recipes that maximize nutrition and flavor. A former gallery owner, Julia is also the current Founder & CEO of ExchangeWorks, a platform that brings visual artists and the public together through exchanges. She is a graduate of Washington University, St. Louis.
                           ​<br/>
                           <br/>
-                          <b>Ross Edwards, Lead Engineer</b>
+                          <b>Ross Edwards, Founding Engineer</b>
                           <br/>
                           Ross has a passion for startups, technology, innovation and food. Ross has eaten far too much pizza at events and is excited for the potential of another option. He has a degree in computer science and is currently learning snowboarding. He also enjoys hiking, scuba diving and is a perpetual learner.​
                           <br/>
                           <br/>
                           <b>Culinary Team</b>
                           Sconely's talented culinary team prepares and bakes our homemade scones. Our bakers come from reputable culinary schools and have worked at some of the top restaurants, catering companies and bakeries.
+                          <br/>
                           <br/>
                           <b>Dadi Revivo, Recipe Consultant</b>
                           <br/>
