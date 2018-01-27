@@ -474,6 +474,8 @@ class CollectionOrderMenu extends React.Component<any, any> {
                           <div className="col-xs-12 col-md-7" style={{paddingLeft: 0, paddingRight: 0}}>
                             <br/>
                             <div className="visible-xs">
+                              {(this.state.totalItems < 1) && this.state.collectionDescription}
+                              <br/>
                               <CollectionsSidebarCart User={this.props.User} collectionDetails={this.props.collectionDetails} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             </div>
                             <br/>
