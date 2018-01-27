@@ -403,18 +403,13 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            <div style={{fontSize: "16px", fontFamily: "Helvetica-Bold"}}>
-                              HEARTS COLLECTION
-                            </div>
+                            HEARTS COLLECTION
                             <br/>
                             Handcrafted heart-shaped scones 
                             <br/>
                             Freshly baked, ready to be gifted
                             <br/>
-                            <div className="col-lg-1"></div>
-                            <div className="hidden-xs col-lg-3">
-                                <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
-                            </div>
+                            <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
                           </div>
                           <br/>
                         <br/>   
@@ -430,9 +425,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
-                                    <div style={{fontSize: "16px", fontFamily: "Helvetica-Bold"}}>  
-                                      HEARTS COLLECTION
-                                    </div>
+                                    HEARTS COLLECTION
                                     <br/>
                                     Handcrafted heart-shaped scones 
                                     <br/>
@@ -452,8 +445,7 @@ export class PublicHomePage extends React.Component<any, any> {
                                       Freshly baked, delivered to your event
                                       <br/>
                                     </div>
-
-                                    <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>SHOP</button>
+                                    <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>SHOP FOR YOUR EVENT</button>
                                     <br/>
                                     <br/>
                                     <br/>
@@ -491,9 +483,7 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                           </div>
                           <br/>
-                          <div className="hidden-xs col-lg-12" style={{textAlign: "center"}}>
-                            <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>SHOP</button>
-                          </div>
+                          <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>SHOP FOR YOUR EVENT</button>
                           <br/>
                           <br/>
                           <br/>
