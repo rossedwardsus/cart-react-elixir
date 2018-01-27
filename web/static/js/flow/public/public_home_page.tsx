@@ -403,13 +403,20 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                             <br/>
                             <br/>
-                            HEARTS COLLECTION
+                            <div style={{fontSize: "16px", fontFamily: "Helvetica-Bold"}}>
+                              HEARTS COLLECTION
+                            </div>
+                            <br/>
                             <br/>
                             Handcrafted heart-shaped scones 
                             <br/>
                             Freshly baked, ready to be gifted
                             <br/>
-                            <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
+                            <div>
+                              <div className="hidden-xs col-lg-12" style={{textAlign: "center"}}>
+                                  <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
+                              </div>
+                            </div>
                           </div>
                           <br/>
                         <br/>   
@@ -425,15 +432,17 @@ export class PublicHomePage extends React.Component<any, any> {
                                   <br/>
                                   <br/>
                                   <div className="visible-xs">
-                                    HEARTS COLLECTION
+                                    <div style={{fontSize: "16px", fontFamily: "Helvetica-Bold"}}>  
+                                      HEARTS COLLECTION
+                                    </div>
                                     <br/>
                                     Handcrafted heart-shaped scones 
                                     <br/>
                                     Freshly baked, ready to be gifted
                                     <br/>
-                                    <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
-                                    <br/>
-                                    <br/>
+                                    <div className="col-xs-12">
+                                          <a href="/collections/order/menu"><img src="/images/collections/hearts/hearts_collection_shop.jpg"/></a>
+                                    </div>
                                     <br/>
                                     <br/>
                                     <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>
@@ -483,7 +492,9 @@ export class PublicHomePage extends React.Component<any, any> {
                             <br/>
                           </div>
                           <br/>
-                          <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>SHOP FOR YOUR EVENT</button>
+                          <div className="hidden-xs col-lg-12" style={{textAlign: "center"}}>
+                            <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>SHOP FOR YOUR EVENT</button>
+                          </div>
                           <br/>
                           <br/>
                           <br/>

@@ -647,23 +647,6 @@ class DeliveryAddress extends React.Component<any, any> {
                 </form>
                 <form className="form-horizontal">
                   <div className="form-group">
-                    <div className="col-sm-3 col-md-4">
-                        <div className={this.state.contact_email_classname}>
-                          <input type="text" value={this.state.contact_email} onChange={this.setDeliveryContactAddressEmail} onInput={this.setDeliveryContactAddressEmail} className="form-control" placeholder="Email" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
-                        </div>
-                    </div>
-                    <div className="hidden-lg col-xs-1">
-                      <br/>
-                    </div>
-                    <div className="col-sm-3 col-md-4">
-                        <div className={this.state.contact_email_classname}>
-                          <input type="text" value={this.state.contact_email_again} onChange={this.setDeliveryContactAddressEmailAgain} className="form-control" placeholder="Email Again" style={{borderRadius: 0, borderColor: this.state.email_border_color}}/>
-                        </div>
-                    </div>
-                  </div>
-                </form>
-                <form className="form-horizontal">
-                  <div className="form-group">
                     <div className="col-sm-3 col-md-3">
                         <div className={this.state.contact_mobile_classname}>
                           <input type="text" value={this.state.contact_mobile_displayed} maxLength={12} onChange={this.setDeliveryContactAddressMobile} onInput={this.setDeliveryContactAddressMobile} className="form-control" id="exampleInputName2" placeholder="Mobile" style={{borderRadius: 0, borderColor: this.state.mobile_border_color}}/>

@@ -466,11 +466,8 @@ class CollectionOrderMenu extends React.Component<any, any> {
                             <b>{this.state.collectionDetails.name}</b>
                             <br/>
                             <br/>
-                            <form className="form-horizontal">
-                              <div className="form-group">
-                              {(this.state.totalItems < 1) && this.state.collectionDescription}
-                              </div>
-                            </form>
+                            {(this.state.totalItems < 1) && this.state.collectionDescription}
+                            <br/>
                             <CollectionsSidebarCart User={this.props.User} collectionDetails={this.props.collectionDetails} path={this.props.path} collectionMenuItems={this.state.collectionMenuItems} increaseCartItemQuantity={(item_index: any) => this.props.increaseCartItemQuantity(item_index)} decreaseCartItemQuantity={(item_index: any) => this.props.decreaseCartItemQuantity(item_index)} removeCartItem={(item_index: any) => this.props.removeCartItem(item_index)} updateOrderSession={(screen: any) => this.props.updateOrderSession(screen)}/>
                             <br/>
                           </div>
