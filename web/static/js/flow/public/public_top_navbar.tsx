@@ -92,7 +92,7 @@ export default class Menu extends React.Component<any, any> {
                       <div className="collapse navbar-collapse" id="navigationbar">
                         <ul className="nav navbar-nav navbar-right">
                               <li><Link to="/public/about_us">ABOUT US</Link></li>
-                              <li><a onClick={() => this.showDeliveryLocations()}>FREE DELIVERY AREAS + TIMES</a></li>
+                              <li><a onClick={() => this.showDeliveryLocations()}>DELIVERY AREAS + TIMES</a></li>
                               <li><Link to="/public/free_sample">FREE SAMPLE</Link></li>
                         </ul>
                       </div>
