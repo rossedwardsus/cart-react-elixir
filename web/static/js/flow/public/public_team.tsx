@@ -43,6 +43,8 @@ export class PublicTeam extends React.Component<any, any> {
 
   componentDidMount(){
 
+      window.scrollTo(0, 0);
+
   }
 
   static get contextTypes() {
@@ -121,6 +123,7 @@ export class PublicTeam extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <b>Culinary Team</b>
+                          <br/>
                           Sconely's talented culinary team prepares and bakes our homemade scones. Our bakers come from reputable culinary schools and have worked at some of the top restaurants, catering companies and bakeries.
                           <br/>
                           <br/>
