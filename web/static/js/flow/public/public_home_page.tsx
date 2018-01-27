@@ -485,16 +485,16 @@ export class PublicHomePage extends React.Component<any, any> {
                           <br/>
                           <br/>
                           <div style={{fontSize: "16px", fontFamily: "Helvetica-Bold"}}>SCONELY SOCIAL</div>
-                          <div style={{fontSize: "15px"}}>
-                            Dozens of regular sized or mini scones
+                            <div style={{fontSize: "15px"}}>
+                              Dozens of regular sized or mini scones
+                              <br/>
+                              Freshly baked, delivered to your event
+                              <br/>
+                            </div>
                             <br/>
-                            Freshly baked, delivered to your event
-                            <br/>
-                          </div>
-                          <br/>
-                          <div className="hidden-xs col-lg-12" style={{textAlign: "center"}}>
-                            <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>SHOP FOR YOUR EVENT</button>
-                          </div>
+                            <div>
+                              <button onClick={() => this.props.createOrder("social")} className="btn btn-default" style={{borderRadius: 0, WebkitAppearance: "none", height: 35}}>SHOP FOR YOUR EVENT</button>
+                            </div>
                           <br/>
                           <br/>
                           <br/>
