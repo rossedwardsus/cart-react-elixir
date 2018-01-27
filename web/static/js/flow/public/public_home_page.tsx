@@ -444,6 +444,8 @@ export class PublicHomePage extends React.Component<any, any> {
                                     </div>
                                     <br/>
                                     <br/>
+                                    <br/>
+                                    <br/>
                                     <div style={{fontSize: this.state.fontSizeLarge, fontFamily: "Helvetica-Bold"}}>
                                         SCONELY SOCIAL
                                     </div>
