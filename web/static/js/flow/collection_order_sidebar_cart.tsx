@@ -497,9 +497,9 @@ class CollectionSidebarCart extends React.Component<any, any> {
                             <br/>
                             {(this.state.collectionImage.length !== 0) && <img src={"/images/collections/hearts/" + this.state.collectionImage + ".jpg"} />}
                             <br/>
-                            Personalized Box of 4 for $14
+                            Personalized gift box of 4 for $14
                             <br/>
-                            Personalized Box of 6 for $22
+                            Personalized gift box of 6 for $22
                             <br/>
                             </div>)}
                   <br/>
