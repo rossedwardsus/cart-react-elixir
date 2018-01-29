@@ -23,27 +23,38 @@ import PublicPrivacyTermsNavbar from './public_privacy_terms_navbar.tsx';
 export class PublicTeam extends React.Component<any, any> {
   //props: Props;
 
+  //_div: any;
+
   constructor(props: any) {
     super(props);
     //this.getData();
+
+    //let _div = null;
   
     //alert("sconely yours1" + this.props.params.order_id);
-
-    this.state = {
-
-        gallery_images: ["/images/gallery/SconelyGallery1.jpg", "/images/gallery/SconelyGallery2.jpg", "/images/gallery/SconelyGallery3.jpg", "/images/gallery/SconelyGallery4.jpg"],
-        gallery_image: "",
-        gallery_image_index: 0,
-        guest_code: "",
-        interval: ""
-        
-    };
+    window.scrollTo(0, 0);
+    //this._div.scrollTop = 0
 
   }
 
-  componentDidMount(){
+  componentWillMount = () => {
+
+      console.log("cwm");
 
       window.scrollTo(0, 0);
+      //this._div.scrollTop = 0
+
+  }
+
+  componentDidMount = () => {
+
+      console.log("cdm");
+
+      setTimeout(() => {
+      
+        window.scrollTo(0, 0);
+
+      }, 100);
 
   }
 
@@ -60,42 +71,7 @@ export class PublicTeam extends React.Component<any, any> {
 
 
     
-    /*if(this.props.user.user_id != undefined){
-        
-        menu = <div id="navbar" className="navbar-collapse collapse navbar-right">
-                      <ul className="nav navbar-header">
-                        <li className="inactive">Profile<span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive">Start Order</li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><span className="sr-only">(current)</span></li>
-                      </ul>
-                      <ul className="nav navbar-nav">
-                        <li className="inactive"><span className="sr-only">Home</span></li>
-                      </ul>
-                    </div>
-    }else{
-
-        menu = <div>
-                      <ul id="navbar" className="nav navbar-nav navbar-left">
-                      <li><Link to="/login">Login</Link></li>
-                      <li><Link to="/register">Signup</Link></li>
-                      <ul className="nav navbar-nav">
-                        <li><span className="sr-only">(current)</span></li>
-                      </ul>
-                    </ul>
-                    <div id="navbar" className="nav navbar-form navbar-right">
-                              <div className="hidden-xs form-group">
-                                <input type="text" className="hidden-xs form-control" placeholder="Guest Code" value={this.state.guest_code} onChange={(e: any) => this.guestCodeChange(e)}/>
-                              </div>
-                              <button type="submit" className="btn btn-default">Submit</button>
-                    </div>
-                </div>
-
-    }*/
-
+  
     return (
               <div>
                    <PublicTopNavbar/>
@@ -109,7 +85,7 @@ export class PublicTeam extends React.Component<any, any> {
                         </div>
                         <div className="col-md-7" style={{paddingLeft: "30px"}}>
                           <br/>
-                          <img src="/images/Sconelyteam3.jpg"/>
+                          <img src="/images/sconelyteam.jpg"/>
                           <br/>
                           <br/>
                           <b>Julia Friedman, Founder & CEO</b>

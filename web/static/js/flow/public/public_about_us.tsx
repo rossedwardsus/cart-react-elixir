@@ -31,11 +31,33 @@ export default class Menu extends React.Component<any, any> {
        
   }
 
+  componentWillMount = () => {
+
+      //window.scrollTo(0, 0);
+
+      //setTimeout(() => {
+      //  window.scrollTo(0, 0);
+      //  document.body.scrollTop=0;      
+      //}, 100)
+
+  }
+
+  componentDidMount = () => {
+
+      window.scrollTo(0, 0);
+
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      //  document.body.scrollTop=0;      
+      }, 100)
+
+  }
+
   
   render(): JSX.Element {
 
     return (
-            <div>
+            <div style={{top: 0, left: 0}}>
                   <PublicTopNavbar/>
                     <div className="row">
                         <div className="hidden-xs col-md-3">
@@ -72,7 +94,7 @@ export default class Menu extends React.Component<any, any> {
                             <b>Sconely Signature</b>: 1 dozen – 10 dozen scones, providing the option for guests to pre-select their preferred scone before an event. The scones are delivered in individual personalized packages. Sconely Signature ensures that everyone at an event has something they can eat, decreases waste by allowing guests to pre-select their preferred scone, and creates community through shared food experiences.
                             ​<br/>
                             <br/>
-                            Sconely bakes at Crafted Kitchen in Downtown Los Angeles. Contact us at eat@sconely.com for more information.
+                            Sconely bakes at 672 S Santa Fe in Downtown Los Angeles. Contact us at eat@sconely.com for more information.
                         </div>
                         <div className="col-md-3">
                         </div>

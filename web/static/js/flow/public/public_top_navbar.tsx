@@ -49,7 +49,7 @@ export default class Menu extends React.Component<any, any> {
 
   showDeliveryLocations(){
 
-      $('#deliveryAreas').modal('show').css("background-color", "rgba(0,0,0,.0001)");
+      $('#deliveryAreas').modal('show').css("background-color", "rgba(0,0,0,.0001)").css("max-height", "auto !important");
 
       //e.preventDefault();
 
@@ -100,7 +100,7 @@ export default class Menu extends React.Component<any, any> {
                   </nav>
                   <div className="modal fade" id="deliveryAreas" role="dialog" aria-labelledby="myModalLabel">
                                     <div className="modal-dialog" role="document">
-                                      <div className="modal-content">
+                                      <div className="modal-content" style={{height: "500"}}>
                                         <div className="modal-header">
                                           <button type="button" onClick={() => this.closeDeliveryLocations()} className="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                           <h4 className="modal-title" id="myModalLabel">Delivery Areas + Times</h4>
@@ -133,6 +133,17 @@ export default class Menu extends React.Component<any, any> {
                                             West Hollywood
                                             <br/>
                                             Westwood
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
+                                            <br/>
                                             <br/>
                                           </div>
                                           <div className="col-md-6" style={{paddingLeft: "30px"}}>
