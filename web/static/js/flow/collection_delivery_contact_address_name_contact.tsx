@@ -155,10 +155,13 @@ class DeliveryAddress extends React.Component<any, any> {
 
 
       // /^[a-zA-Z]*$/
-      let first_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
-      console.log(first_name_result);
+      //let first_name_result = (/^[[!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/a-zA-Z]*$/.test(e.target.value));
+      //console.log("first name result" + first_name_result);
 
-      if(first_name_result){
+      let symbol_patt = /[!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      let symbol_res = symbol_patt.test(e.target.value);
+
+      if(!symbol_res){
 
           this.setState({first_name_border_color: "grey"});
           
@@ -181,10 +184,14 @@ class DeliveryAddress extends React.Component<any, any> {
       this.props.setDeliveryContactAddressLastName(e);
 
 
-     // /^[a-zA-Z]*$/
-      let last_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
+      // /^[a-zA-Z]*$/
+      //let last_name_result = (/^[a-zA-Z]*$/.test(e.target.value));
 
-      if(last_name_result){
+      let symbol_patt = /[!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+      let symbol_res = symbol_patt.test(e.target.value);
+
+
+      if(!symbol_res){
 
           this.setState({last_name_border_color: "grey"});
 
