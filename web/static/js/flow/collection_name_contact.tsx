@@ -106,7 +106,7 @@ class CollectionNameContact extends React.Component<any, any> {
 
     if(e.target.value.length > 0){
 
-        let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+        let symbol_patt = /[!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
         let symbol_res = symbol_patt.test(e.target.value);
 
         //let number_res = (/[0-9]/.test(e.target.value));
@@ -165,7 +165,7 @@ class CollectionNameContact extends React.Component<any, any> {
 
       if(e.target.value.length > 0){    
 
-          let symbol_patt = /[-!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+          let symbol_patt = /[!@$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
           let symbol_res = symbol_patt.test(e.target.value);
 
           //console.log(symbol_res);
