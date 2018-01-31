@@ -118,8 +118,6 @@ export default class Menu extends React.Component<any, any> {
                                             <br/>
                                             Century City
                                             <br/>
-                                            Downtown LA
-                                            <br/>
                                             Hancock Park
                                             <br/>
                                             Marina Del Rey

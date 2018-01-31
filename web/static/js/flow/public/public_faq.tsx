@@ -441,7 +441,7 @@ export class PublicFaq extends React.Component<any, any> {
                             <b>Is there a charge for delivery?</b>
                             <br/>
                             <br/>
-                            We offer free delivery to Beverly Hills, Brentwood, Century City, Downtown LA, Marina Del Rey, Playa Vista, Hancock Park, Santa Monica, West Hollywood, Westwood and Venice between 8am and noon, Wednesday through Saturday. For deliveries to other areas of LA there is a $15 charge, if we can accommodate your request.
+                            Delivery is free in Downtown LA. There is a $10 delivery charge for deliveries to the following areas: Beverly Hills, Brentwood, Century City, Hancock Park, Marina Del Rey, Playa Vista, Santa Monica, Venice, West Hollywood and Westwood. 
                             <br/>
                             <br/>
                             <b>Can you deliver at specific times?</b>
