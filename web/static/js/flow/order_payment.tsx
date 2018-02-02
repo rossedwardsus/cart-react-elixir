@@ -746,6 +746,15 @@ class OrderDateTimeContact extends React.Component<any, any> {
 
           //}
         
+        }else if(promo_code.toUpperCase() == "TUESDAYNIGHTS"){
+
+          //if(promo_codes.indexof(e.target.value) > -1){
+
+              this.setState({promo_code_discount: 15})
+              this.props.setPromoCode(promo_code);
+
+          //}
+        
         }else if(promo_code == ""){
 
           //if(promo_codes.indexof(e.target.value) > -1){
