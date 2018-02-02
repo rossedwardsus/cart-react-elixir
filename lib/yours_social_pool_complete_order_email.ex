@@ -17,14 +17,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #send to admin as well
 
     new_email(
-      #to: _params["order_contact_email"],
-      to: ["rossedwards.us@gmail.com"],
-      from: "order@sconely.com",
-      subject: "Sconely.com order: " <> _params.order_id,
-      html_body: template,
-      #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
-      #text_body: "Thanks for joining!"
-    )
+       )
 
   end
 
@@ -43,13 +36,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #send to admin as well
 
     new_email(
-      to: "rossedwards.us@gmail.com",
-      from: "order@sconely.com",
-      subject: "Admin - order for jan 1, 2017 - dtla/99025: " <> _params["order_id"],
-      html_body: template,
-      #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
-      #text_body: "Thanks for joining!"
-    )
+       )
 
   end
 
@@ -68,13 +55,6 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #send to admin as well
 
     new_email(
-      #to: _params["order_contact_email"],
-      to: ["rossedwards.us@gmail.com"],
-      from: "order@sconely.com",
-      subject: "Sconely.com order: " <> _params.order_id,
-      html_body: template,
-      #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
-      #text_body: "Thanks for joining!"
     )
 
   end
@@ -94,13 +74,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #send to admin as well
 
     new_email(
-      to: "rossedwards.us@gmail.com",
-      from: "order@sconely.com",
-      subject: "Admin - order for jan 1, 2017 - dtla/99025: " <> _params["order_id"],
-      html_body: template,
-      #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
-      #text_body: "Thanks for joining!"
-    )
+     )
 
   end
 
@@ -129,14 +103,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #send to admin as well
 
     new_email(
-      #to: _params["order_contact_email"],
-      to: [_params.args[:user_contact_email]],
-      from: "orders@sconely.com",
-      subject: "Sconely.com order: " <> _params.order_datetime_formatted,
-      html_body: template,
-      #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
-      #text_body: "Thanks for joining!"
-    )
+     )
 
   end
 
@@ -157,13 +124,7 @@ defmodule Sconely.YoursSocialPoolCompleteOrderEmail do
     #send to admin as well
 
     new_email(
-      to: ["rossedwards.us@gmail.com", "julia@sconely.com"],
-      from: "orders@sconely.com",
-      subject: _params[:admin_email_subject],
-      html_body: template,
-      #html_body: "Thanks for your Sconely Order<br>pickup-smorgasburgh-payment method-contact-name-datetime-items" <> _params["order_id"],
-      #text_body: "Thanks for joining!"
-    )
+      )
 
   end
 end
